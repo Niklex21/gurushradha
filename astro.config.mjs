@@ -13,13 +13,14 @@ const env = loadEnv("", process.cwd(), "STORYBLOK");
 export default defineConfig({
   integrations: [
     tailwind({
-      applyBaseStyles: false,
     }),
     react(),
     storyblok({
       accessToken: env.STORYBLOK_TOKEN,
       components: {
-        page_home: "storyblok/pages/Home",
+        page: "storyblok/Page",
+        global_reference: "storyblok/GlobalReference",
+        navbar: "storyblok/Navbar",
       },
       apiOptions: {
         // Choose your Storyblok space region
@@ -27,7 +28,9 @@ export default defineConfig({
       },
     }),
   ],
-
   output: "server",
   adapter: vercel(),
+  redirects: {
+    "/": "/home",
+  }
 });

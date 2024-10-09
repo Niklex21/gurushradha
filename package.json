@@ -8,7 +8,8 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "sb-sync": "storyblok pull-components --space 1021919 --path /Users/alex/Desktop/dev/gurushradha/src/ --file-name schema && storyblok generate-typescript-typedefs --sourceFilePaths /Users/alex/Desktop/dev/gurushradha/src/components.schema.json --destinationFilePath  /Users/alex/Desktop/dev/gurushradha/src/component-types.d.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
