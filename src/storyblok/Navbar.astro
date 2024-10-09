@@ -1,0 +1,52 @@
+---
+import type { NavbarStoryblok } from '@/component-types';
+import { Image } from 'astro:assets';
+import { twMerge } from 'tailwind-merge';
+
+const { blok } = Astro.props as { blok: NavbarStoryblok };
+
+const { pathname } = Astro.url;
+---
+
+<div class="w-full flex flex-row gap-4 justify-between items-center p-6">
+    <div class="flex flex-row gap-4">
+        <a href="/">
+            <Image
+                src={blok.logo.filename ?? ''}
+                alt={blok.logo.name}
+                width={50}
+                height={50}
+            />
+        </a>
+    </div>
+    <div class="flex flex-row gap-4">
+        {
+            blok.menu_items.map((item) => {
+                const href =
+                    item.link.linktype === 'story'
+                        ? item.link.cached_url
+                        : item.link.url;
+                const active = href === pathname.slice(1); // to remove the slash
+
+                return (
+                    <a
+                        href={href}
+                        class={twMerge(
+                            'hover:underline',
+                            active && 'underline'
+                        )}
+                    >
+                        {item.name}
+                    </a>
+                );
+            })
+        }
+    </div>
+    <div class="">
+        {
+            blok.social_links?.map((link) => {
+                return <a href={link.url}>{link.name}</a>;
+            })
+        }
+    </div>
+</div>

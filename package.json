@@ -7,7 +7,9 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "format": "prettier --write .",
+    "sb-sync": "storyblok pull-components --space 1021919 --path /Users/alex/Desktop/dev/gurushradha/src/ --file-name schema && storyblok generate-typescript-typedefs --sourceFilePaths /Users/alex/Desktop/dev/gurushradha/src/components.schema.json --destinationFilePath  /Users/alex/Desktop/dev/gurushradha/src/component-types.d.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -29,5 +31,9 @@
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.6.2",
     "vite": "^5.4.8"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3",
+    "prettier-plugin-astro": "^0.14.1"
   }
 }
