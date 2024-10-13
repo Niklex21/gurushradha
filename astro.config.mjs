@@ -21,6 +21,7 @@ export default defineConfig({
         page: "storyblok/Page",
         global_reference: "storyblok/GlobalReference",
         navbar: "storyblok/Navbar",
+        social_link: "storyblok/SocialLink"
       },
       apiOptions: {
         // Choose your Storyblok space region

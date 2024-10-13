@@ -1,5 +1,6 @@
 ---
 import type { NavbarStoryblok } from '@/component-types';
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
 import { Image } from 'astro:assets';
 import { twMerge } from 'tailwind-merge';
 
@@ -42,11 +43,11 @@ const { pathname } = Astro.url;
             })
         }
     </div>
-    <div class="">
+    <div class="flex flex-row gap-4 items-center">
         {
-            blok.social_links?.map((link) => {
-                return <a href={link.url}>{link.name}</a>;
-            })
+            blok.social_links?.map((link) =>
+                <StoryblokComponent blok={link} />
+            )
         }
     </div>
 </div>
