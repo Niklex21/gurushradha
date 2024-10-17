@@ -62,6 +62,35 @@
       "component_group_name": ""
     },
     {
+      "name": "hero",
+      "display_name": null,
+      "created_at": "2024-10-17T06:02:24.190Z",
+      "updated_at": "2024-10-17T06:06:01.526Z",
+      "id": 251258,
+      "schema": {
+        "video_url": {
+          "type": "multilink",
+          "pos": 0,
+          "required": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "hero",
+      "component_group_uuid": "all",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": ""
+    },
+    {
       "name": "menu_item",
       "display_name": null,
       "created_at": "2024-10-09T05:38:50.089Z",
