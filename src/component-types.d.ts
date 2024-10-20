@@ -142,6 +142,7 @@ export interface NavbarStoryblok {
   logo: AssetStoryblok;
   menu_items: MenuItemStoryblok[];
   social_links?: SocialLinkStoryblok[];
+  logo_text: AssetStoryblok;
   component: "navbar";
   _uid: string;
   [k: string]: any;

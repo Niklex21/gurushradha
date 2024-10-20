@@ -144,7 +144,7 @@
       "name": "navbar",
       "display_name": null,
       "created_at": "2024-10-09T05:36:21.249Z",
-      "updated_at": "2024-10-09T06:59:28.353Z",
+      "updated_at": "2024-10-20T04:17:00.415Z",
       "id": 249095,
       "schema": {
         "logo": {
@@ -154,7 +154,7 @@
         },
         "menu_items": {
           "type": "bloks",
-          "pos": 1,
+          "pos": 2,
           "restrict_type": "",
           "restrict_components": true,
           "component_whitelist": [
@@ -164,12 +164,17 @@
         },
         "social_links": {
           "type": "bloks",
-          "pos": 2,
+          "pos": 3,
           "restrict_type": "",
           "restrict_components": true,
           "component_whitelist": [
             "social_link"
           ]
+        },
+        "logo_text": {
+          "type": "asset",
+          "pos": 1,
+          "required": true
         }
       },
       "image": null,
