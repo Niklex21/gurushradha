@@ -5,6 +5,7 @@ export interface GlobalStoryblok {
   global?: (
     | GlobalStoryblok
     | GlobalReferenceStoryblok
+    | HeroStoryblok
     | MenuItemStoryblok
     | NavbarStoryblok
     | PageStoryblok
@@ -96,6 +97,13 @@ export type MultilinkStoryblok =
       [k: string]: any;
     };
 
+export interface HeroStoryblok {
+  video_url: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  component: "hero";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface MenuItemStoryblok {
   name: string;
   link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
@@ -134,6 +142,7 @@ export interface NavbarStoryblok {
   logo: AssetStoryblok;
   menu_items: MenuItemStoryblok[];
   social_links?: SocialLinkStoryblok[];
+  logo_text: AssetStoryblok;
   component: "navbar";
   _uid: string;
   [k: string]: any;
@@ -143,6 +152,7 @@ export interface PageStoryblok {
   body?: (
     | GlobalStoryblok
     | GlobalReferenceStoryblok
+    | HeroStoryblok
     | MenuItemStoryblok
     | NavbarStoryblok
     | PageStoryblok

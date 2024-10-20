@@ -6,10 +6,7 @@ const { blok } = Astro.props as { blok: GlobalReferenceStoryblok };
 ---
 
 {
-    blok.reference ? (
-        // This is a global reference to a component
-        <StoryblokComponent blok={blok.reference?.[0].content.global[0]} />
-    ) : (
-        <></>
-    )
+    blok.reference?.map((ref) => (
+        <StoryblokComponent blok={ref.content.global[0]} />
+    ))
 }
