@@ -1,0 +1,11 @@
+---
+import type { InstagramFeedStoryblok } from '@/component-types';
+import InstagramFeedComponent from '@/components/InstagramFeed';
+
+const { blok } = Astro.props as { blok: InstagramFeedStoryblok };
+---
+
+<InstagramFeedComponent
+    instagramId={blok.instagram_id}
+    limit={parseInt(blok.limit)}
+/>

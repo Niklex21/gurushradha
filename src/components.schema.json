@@ -1,6 +1,45 @@
 {
   "components": [
     {
+      "name": "gallery_photoshoot",
+      "display_name": null,
+      "created_at": "2024-10-27T05:13:16.551Z",
+      "updated_at": "2024-10-27T05:15:50.497Z",
+      "id": 253878,
+      "schema": {
+        "name": {
+          "type": "text",
+          "pos": 0
+        },
+        "folder_name": {
+          "type": "text",
+          "pos": 1,
+          "required": true
+        },
+        "date": {
+          "type": "datetime",
+          "pos": 2,
+          "required": true,
+          "disable_time": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "gallery_photoshoot",
+      "component_group_uuid": "all",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": ""
+    },
+    {
       "name": "global",
       "display_name": null,
       "created_at": "2024-10-09T05:28:41.926Z",
@@ -82,6 +121,43 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "hero",
+      "component_group_uuid": "all",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": ""
+    },
+    {
+      "name": "instagram_feed",
+      "display_name": null,
+      "created_at": "2024-10-27T01:45:53.873Z",
+      "updated_at": "2024-10-27T01:46:43.652Z",
+      "id": 253870,
+      "schema": {
+        "instagram_id": {
+          "type": "text",
+          "pos": 0,
+          "required": true
+        },
+        "limit": {
+          "type": "number",
+          "pos": 1,
+          "required": true,
+          "min_value": 1,
+          "steps": 1,
+          "decimals": 0
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "instagram_feed",
       "component_group_uuid": "all",
       "color": null,
       "icon": null,
@@ -203,11 +279,21 @@
       "name": "page",
       "display_name": null,
       "created_at": "2024-10-05T20:49:53.205Z",
-      "updated_at": "2024-10-05T20:49:53.205Z",
+      "updated_at": "2024-10-27T05:14:30.859Z",
       "id": 248712,
       "schema": {
         "body": {
           "type": "bloks"
+        },
+        "events": {
+          "type": "bloks",
+          "pos": 1,
+          "required": false,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "gallery_photoshoot"
+          ]
         }
       },
       "image": null,
