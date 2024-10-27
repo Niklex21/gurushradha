@@ -8,7 +8,6 @@ import type { GalleryPhotoshootStoryblok } from '@/component-types';
 import GalleryEvent from '@/components/GalleryEvent';
 
 const { data } = await useStoryblokGet('cdn/stories/gallery');
-
 const response = await GetGalleryAssets(Astro);
 
 if (!response.ok) {
