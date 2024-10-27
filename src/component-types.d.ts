@@ -6,6 +6,7 @@ export interface GlobalStoryblok {
     | GlobalStoryblok
     | GlobalReferenceStoryblok
     | HeroStoryblok
+    | InstagramFeedStoryblok
     | MenuItemStoryblok
     | NavbarStoryblok
     | PageStoryblok
@@ -104,6 +105,14 @@ export interface HeroStoryblok {
   [k: string]: any;
 }
 
+export interface InstagramFeedStoryblok {
+  instagram_id: string;
+  limit: string;
+  component: "instagram_feed";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface MenuItemStoryblok {
   name: string;
   link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
@@ -153,6 +162,7 @@ export interface PageStoryblok {
     | GlobalStoryblok
     | GlobalReferenceStoryblok
     | HeroStoryblok
+    | InstagramFeedStoryblok
     | MenuItemStoryblok
     | NavbarStoryblok
     | PageStoryblok

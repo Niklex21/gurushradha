@@ -91,6 +91,43 @@
       "component_group_name": ""
     },
     {
+      "name": "instagram_feed",
+      "display_name": null,
+      "created_at": "2024-10-27T01:45:53.873Z",
+      "updated_at": "2024-10-27T01:46:43.652Z",
+      "id": 253870,
+      "schema": {
+        "instagram_id": {
+          "type": "text",
+          "pos": 0,
+          "required": true
+        },
+        "limit": {
+          "type": "number",
+          "pos": 1,
+          "required": true,
+          "min_value": 1,
+          "steps": 1,
+          "decimals": 0
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "instagram_feed",
+      "component_group_uuid": "all",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": ""
+    },
+    {
       "name": "menu_item",
       "display_name": null,
       "created_at": "2024-10-09T05:38:50.089Z",

@@ -1,11 +1,28 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import { useStoryblokGet, useStoryblokGetStory } from '@/utils';
+import { GET } from './gallery-assets';
 import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+import { useStoryblokGet } from '@/utils';
+import type { GalleryData } from '@/types';
 
 const { data } = await useStoryblokGet('cdn/stories/gallery');
+
+const response = await GET(Astro);
+
+if (!response.ok) {
+    throw new Error('Network response was not ok');
+}
+
+const galleryData : GalleryData = await response.json();
 ---
 
 <Layout title="Gallery">
     <StoryblokComponent blok={data.story.content} />
+    <div class="grid grid-cols-3 gap-4">
+        {galleryData.asset_folders?.map((folder, index) => (
+            <div>
+                <h2>{folder.name}</h2>
+            </div>
+        ))}
+    </div>
 </Layout>

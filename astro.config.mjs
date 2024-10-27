@@ -22,7 +22,8 @@ export default defineConfig({
         global_reference: "storyblok/GlobalReference",
         navbar: "storyblok/Navbar",
         social_link: "storyblok/SocialLink",
-        hero: "storyblok/Hero"
+        hero: "storyblok/Hero",
+        instagram_feed: "storyblok/InstagramFeed",
       },
       apiOptions: {
         // Choose your Storyblok space region
