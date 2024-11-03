@@ -11,7 +11,7 @@ export async function GET({ params }: any) {
     const response = await STORYBLOK_CLIENT.get(
         `spaces/${STORYBLOK_SPACE_ID}/asset_folders/`,
         {
-            with_parent: 19337 // gallery folder
+            with_parent: 19337, // gallery folder
         }
     );
 

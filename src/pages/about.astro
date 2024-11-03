@@ -3,9 +3,9 @@ import Layout from '@/layouts/Layout.astro';
 import { useStoryblokGet } from '@/utils';
 import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
 
-const { data } = await useStoryblokGet('cdn/stories/our-story');
+const { data } = await useStoryblokGet('cdn/stories/classes');
 ---
 
-<Layout title="Our Story">
+<Layout title="About">
     <StoryblokComponent blok={data.story.content} />
 </Layout>
