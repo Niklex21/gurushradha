@@ -7,11 +7,11 @@ const STORYBLOK_CLIENT = new StoryblokClient({
 
 const STORYBLOK_SPACE_ID = import.meta.env.STORYBLOK_SPACE_ID;
 
-export async function GET({ params }: any) {
+export async function GET() {
     const response = await STORYBLOK_CLIENT.get(
         `spaces/${STORYBLOK_SPACE_ID}/asset_folders/`,
         {
-            with_parent: 19337 // gallery folder
+            with_parent: 19337, // gallery folder
         }
     );
 

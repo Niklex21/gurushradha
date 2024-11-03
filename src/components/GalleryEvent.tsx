@@ -1,11 +1,8 @@
 import type { GalleryPhotoshootStoryblok } from '@/component-types';
-import { Skeleton } from './ui/skeleton';
 import { useEffect, useState } from 'react';
-import { GET as GetFolderAssets } from '@/pages/[folderId].folder-assets';
 import type { Asset } from '@/types';
 import {
     ChevronLeftIcon,
-    ChevronRightCircleIcon,
     ChevronRightIcon,
     Loader2,
     XIcon,
