@@ -58,7 +58,7 @@
 }
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border font-sans not-italic;
   }
   body {
     @apply bg-background text-foreground;
