@@ -11,29 +11,29 @@ const env = loadEnv("", process.cwd(), "STORYBLOK");
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [
-    tailwind({}),
-    react(),
-    storyblok({
-      accessToken: env.STORYBLOK_TOKEN,
-      components: {
-        page: "storyblok/Page",
-        global_reference: "storyblok/GlobalReference",
-        navbar: "storyblok/Navbar",
-        social_link: "storyblok/SocialLink",
-        hero: "storyblok/Hero",
-        instagram_feed: "storyblok/InstagramFeed",
-        section: "storyblok/Section",
-      },
-      apiOptions: {
-        // Choose your Storyblok space region
-        region: "us", // optional,  or 'eu' (default)
-      },
-    }),
-  ],
-  output: "server",
-  adapter: vercel(),
-  redirects: {
-    "/": "/home",
-  },
+    integrations: [
+        tailwind({}),
+        react(),
+        storyblok({
+            accessToken: env.STORYBLOK_TOKEN,
+            components: {
+                page: "storyblok/Page",
+                global_reference: "storyblok/GlobalReference",
+                navbar: "storyblok/Navbar",
+                social_link: "storyblok/SocialLink",
+                hero: "storyblok/Hero",
+                instagram_feed: "storyblok/InstagramFeed",
+                section: "storyblok/Section",
+            },
+            apiOptions: {
+                // Choose your Storyblok space region
+                region: "us", // optional,  or 'eu' (default)
+            },
+        }),
+    ],
+    output: "server",
+    adapter: vercel(),
+    redirects: {
+        "/": "/home",
+    },
 });
