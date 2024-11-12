@@ -7,7 +7,6 @@ import { actions } from 'astro:actions';
 const { blok } = Astro.props as { blok: InstagramFeedStoryblok };
 
 const { data: posts, error } = await actions.fetchInstagramPosts();
-console.log(posts);
 ---
 
 <div class="space-y-6 flex flex-col p-4">
