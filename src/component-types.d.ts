@@ -20,6 +20,7 @@ export interface GlobalStoryblok {
     | MenuItemStoryblok
     | NavbarStoryblok
     | PageStoryblok
+    | SectionStoryblok
     | SocialLinkStoryblok
   )[];
   component: "global";
@@ -177,10 +178,29 @@ export interface PageStoryblok {
     | MenuItemStoryblok
     | NavbarStoryblok
     | PageStoryblok
+    | SectionStoryblok
     | SocialLinkStoryblok
   )[];
   events?: GalleryPhotoshootStoryblok[];
+  sections?: SectionStoryblok[];
   component: "page";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface RichtextStoryblok {
+  type: string;
+  content?: RichtextStoryblok[];
+  marks?: RichtextStoryblok[];
+  attrs?: any;
+  text?: string;
+  [k: string]: any;
+}
+
+export interface SectionStoryblok {
+  asset?: AssetStoryblok;
+  text?: RichtextStoryblok;
+  component: "section";
   _uid: string;
   [k: string]: any;
 }

@@ -10,10 +10,10 @@ const { pathname } = Astro.url;
 ---
 
 <div
-    class="fixed w-full top-0 left-0 z-50 flex flex-row gap-4 justify-between items-center p-6 bg-white transition-all rounded-b-xl"
+    class="sticky w-full top-0 left-0 z-50 flex flex-row gap-4 justify-between items-center p-6 bg-white transition-all rounded-b-xl"
 >
     <a href="/">
-        <div class="flex flex-row gap-4">
+        <div class="flex flex-row gap-4 items-center">
             <Image
                 src={blok.logo.filename ?? ''}
                 alt={blok.logo.name}
@@ -26,7 +26,7 @@ const { pathname } = Astro.url;
                 alt={blok.logo_text.name}
                 width={50}
                 height={50}
-                class="h-12 w-auto"
+                class="h-8 w-auto"
             />
         </div>
     </a>

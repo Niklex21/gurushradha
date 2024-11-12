@@ -1,0 +1,29 @@
+---
+import type { SectionStoryblok } from '@/component-types';
+
+const { section } = Astro.props as { section: SectionStoryblok };
+console.log(section.text);
+---
+
+<div class="flex flex-col md:grid md:grid-cols-2 gap-4 md:gap-8 w-full">
+    <div class="flex p-8 justify-center">
+        {
+            section.asset && section.asset.filename && (
+                <img
+                    src={section.asset.filename}
+                    alt={section.asset?.alt}
+                    loading={'lazy'}
+                    decoding="async"
+                    class="rounded-xl object-cover"
+                />
+            )
+        }
+    </div>
+    {
+        section.text && (
+            <div class="flex p-8 justify-center text-black md:my-auto">
+                <pre class="text-wrap text-left font-sans text-xl max-w-prose">{section.text}</pre>
+            </div>
+        )
+    }
+</div>
