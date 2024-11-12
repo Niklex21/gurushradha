@@ -7,24 +7,24 @@ import {
     type ISbStory,
     type ISbStoryData,
     type ISbStoryParams,
-} from '@storyblok/astro';
+} from "@storyblok/astro";
 
 const storyblokApi = useStoryblokApi();
-const VERSION = import.meta.env.DEV ? 'draft' : 'published';
+const VERSION = import.meta.env.DEV ? "draft" : "published";
 
 export const useStoryblokGet = async (
     slug: string,
     params?: ISbStoriesParams,
-    fetchOptions?: any
+    fetchOptions?: any,
 ): Promise<ISbResult> => {
     return await storyblokApi.get(
         slug,
         {
             version: VERSION,
-            resolve_relations: 'global_reference.reference',
+            resolve_relations: "global_reference.reference",
             ...params,
         },
-        fetchOptions
+        fetchOptions,
     );
 };
 
@@ -32,17 +32,17 @@ export const useStoryblokGetAll = async (
     slug: string,
     params?: ISbStoriesParams,
     entity?: string,
-    fetchOptions?: any
+    fetchOptions?: any,
 ): Promise<any[]> => {
     return await storyblokApi.getAll(
         slug,
         {
             version: VERSION,
-            resolve_relations: 'global_reference.reference',
+            resolve_relations: "global_reference.reference",
             ...params,
         },
         entity,
-        fetchOptions
+        fetchOptions,
     );
 };
 
@@ -58,23 +58,23 @@ interface ISbResponseData {
 export const useStoryblokPost = async (
     slug: string,
     params?: ISbStoriesParams | ISbContentMangmntAPI,
-    fetchOptions?: any
+    fetchOptions?: any,
 ): Promise<ISbResponseData> => {
     return await storyblokApi.post(
         slug,
         {
             version: VERSION,
-            resolve_relations: 'global_reference.reference',
+            resolve_relations: "global_reference.reference",
             ...params,
         },
-        fetchOptions
+        fetchOptions,
     );
 };
 
 export const useStoryblokPut = async (
     slug: string,
     params?: ISbStoriesParams | ISbContentMangmntAPI,
-    fetchOptions?: any
+    fetchOptions?: any,
 ): Promise<ISbResponseData> => {
     return await storyblokApi.put(
         slug,
@@ -82,14 +82,14 @@ export const useStoryblokPut = async (
             version: VERSION,
             ...params,
         },
-        fetchOptions
+        fetchOptions,
     );
 };
 
 export const useStoryblokDelete = async (
     slug: string,
     params?: ISbStoriesParams | ISbContentMangmntAPI,
-    fetchOptions?: any
+    fetchOptions?: any,
 ): Promise<ISbResponseData> => {
     return await storyblokApi.delete(
         slug,
@@ -97,36 +97,36 @@ export const useStoryblokDelete = async (
             version: VERSION,
             ...params,
         },
-        fetchOptions
+        fetchOptions,
     );
 };
 
 export const useStoryblokGetStories = async (
     params?: ISbStoriesParams,
-    fetchOptions?: any
+    fetchOptions?: any,
 ): Promise<ISbStories> => {
     return await storyblokApi.getStories(
         {
             version: VERSION,
-            resolve_relations: 'global_reference.reference',
+            resolve_relations: "global_reference.reference",
             ...params,
         },
-        fetchOptions
+        fetchOptions,
     );
 };
 
 export const useStoryblokGetStory = async (
     slug: string,
     params?: ISbStoryParams,
-    fetchOptions?: any
+    fetchOptions?: any,
 ): Promise<ISbStory> => {
     return await storyblokApi.getStory(
         slug,
         {
             version: VERSION,
-            resolve_relations: 'global_reference.reference',
+            resolve_relations: "global_reference.reference",
             ...params,
         },
-        fetchOptions
+        fetchOptions,
     );
 };

@@ -1,13 +1,13 @@
-import type { GalleryPhotoshootStoryblok } from '@/component-types';
-import { useEffect, useState } from 'react';
-import type { Asset } from '@/types';
+import type { GalleryPhotoshootStoryblok } from "@/component-types";
+import { useEffect, useState } from "react";
+import type { Asset } from "@/types";
 import {
     ChevronLeftIcon,
     ChevronRightIcon,
     Loader2,
     XIcon,
-} from 'lucide-react';
-import { Button } from './ui/button';
+} from "lucide-react";
+import { Button } from "./ui/button";
 
 type GalleryImageProps = {
     asset: Asset;
@@ -19,10 +19,10 @@ function GalleryImage({ asset, ...props }: GalleryImageProps) {
             <img
                 loading="lazy"
                 src={
-                    asset.filename.replace('s3.amazonaws.com/', '') +
-                    '/m/500x500/filters:quality(50)'
+                    asset.filename.replace("s3.amazonaws.com/", "") +
+                    "/m/500x500/filters:quality(50)"
                 }
-                alt={asset.alt ?? 'image'}
+                alt={asset.alt ?? "image"}
                 decoding="async"
                 className="object-cover w-full h-full rounded-xl hover:brightness-90 cursor-pointer"
                 {...props}
@@ -51,23 +51,24 @@ export default function GalleryEvent({
                 return;
             }
 
-            if (e.key === 'Escape') {
+            if (e.key === "Escape") {
                 setCurrentFullScreenIndex(-1);
-            } else if (e.key === 'ArrowRight') {
+            } else if (e.key === "ArrowRight") {
                 setCurrentFullScreenIndex(
-                    (currentFullScreenIndex + 1) % assets.length
+                    (currentFullScreenIndex + 1) % assets.length,
                 );
-            } else if (e.key === 'ArrowLeft') {
+            } else if (e.key === "ArrowLeft") {
                 setCurrentFullScreenIndex(
-                    (currentFullScreenIndex - 1 + assets.length) % assets.length
+                    (currentFullScreenIndex - 1 + assets.length) %
+                        assets.length,
                 );
             }
         };
 
-        document.addEventListener('keydown', handleEscape);
+        document.addEventListener("keydown", handleEscape);
 
         return () => {
-            document.removeEventListener('keydown', handleEscape);
+            document.removeEventListener("keydown", handleEscape);
         };
     }, [currentFullScreenIndex]);
 
@@ -100,10 +101,10 @@ export default function GalleryEvent({
                     </span>
                     <div className="hidden sm:flex w-20 bg-gray-200 h-[1px]" />
                     <span className="text-base text-gray-200 opacity-80">
-                        {new Date(event.date).toLocaleDateString('en-US', {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric',
+                        {new Date(event.date).toLocaleDateString("en-US", {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
                         })}
                     </span>
                 </div>
@@ -139,14 +140,14 @@ export default function GalleryEvent({
                 >
                     <div className="flex relative max-h-full w-auto">
                         <img
-                            loading={'lazy'}
+                            loading={"lazy"}
                             src={
                                 assets[currentFullScreenIndex].filename.replace(
-                                    's3.amazonaws.com/',
-                                    ''
-                                ) + '/m/'
+                                    "s3.amazonaws.com/",
+                                    "",
+                                ) + "/m/"
                             }
-                            alt={assets[currentFullScreenIndex].alt ?? 'image'}
+                            alt={assets[currentFullScreenIndex].alt ?? "image"}
                             decoding="async"
                             className="relative max-h-full w-auto object-contain"
                             onClick={(e) => e.stopPropagation()}
@@ -163,11 +164,12 @@ export default function GalleryEvent({
                             className="p-4 bg-gray-200 bg-opacity-50 rounded-full hover:bg-gray-200"
                             onClick={(e) => {
                                 setCurrentFullScreenIndex(
-                                    (currentFullScreenIndex + 1) % assets.length
+                                    (currentFullScreenIndex + 1) %
+                                        assets.length,
                                 );
                                 e.stopPropagation();
                             }}
-                            size={'icon'}
+                            size={"icon"}
                         >
                             <ChevronRightIcon />
                         </Button>
@@ -177,18 +179,20 @@ export default function GalleryEvent({
                             className="p-4 bg-gray-200 bg-opacity-50 rounded-full hover:bg-gray-200"
                             onClick={(e) => {
                                 setCurrentFullScreenIndex(
-                                    (currentFullScreenIndex + 1) % assets.length
+                                    (currentFullScreenIndex + 1) %
+                                        assets.length,
                                 );
                                 e.stopPropagation();
                             }}
-                            size={'icon'}
+                            size={"icon"}
                         >
                             <ChevronLeftIcon />
                         </Button>
                     </div>
                     <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
                         <span className="text-gray-200">
-                            {event.name} - {currentFullScreenIndex + 1}/{assets.length}
+                            {event.name} - {currentFullScreenIndex + 1}/
+                            {assets.length}
                         </span>
                     </div>
                 </div>

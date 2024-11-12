@@ -35,4 +35,20 @@ export type Asset = {
     publish_at: string | null;
     is_private: boolean;
     meta_data: object;
+};
+
+export interface InstagramPost {
+    permalink: string;
+    id: string;
+}
+
+export interface InstagramApiResponse {
+    data: InstagramPost[];
+    paging: {
+        cursors: {
+            before: string;
+            after: string;
+        };
+        next: string;
+    };
 }
