@@ -12,8 +12,7 @@ const env = loadEnv("", process.cwd(), "STORYBLOK");
 // https://astro.build/config
 export default defineConfig({
   integrations: [
-    tailwind({
-    }),
+    tailwind({}),
     react(),
     storyblok({
       accessToken: env.STORYBLOK_TOKEN,
@@ -36,5 +35,5 @@ export default defineConfig({
   adapter: vercel(),
   redirects: {
     "/": "/home",
-  }
+  },
 });

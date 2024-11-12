@@ -110,7 +110,10 @@ export type MultilinkStoryblok =
     };
 
 export interface HeroStoryblok {
-  video_url: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  video_url: Exclude<
+    MultilinkStoryblok,
+    { linktype?: "email" } | { linktype?: "asset" }
+  >;
   component: "hero";
   _uid: string;
   [k: string]: any;
@@ -126,7 +129,10 @@ export interface InstagramFeedStoryblok {
 
 export interface MenuItemStoryblok {
   name: string;
-  link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  link: Exclude<
+    MultilinkStoryblok,
+    { linktype?: "email" } | { linktype?: "asset" }
+  >;
   submenus?: MenuItemStoryblok[];
   component: "menu_item";
   _uid: string;
@@ -207,7 +213,10 @@ export interface SectionStoryblok {
 
 export interface SocialLinkStoryblok {
   type: "facebook" | "instagram" | "youtube" | "tiktok";
-  link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  link: Exclude<
+    MultilinkStoryblok,
+    { linktype?: "email" } | { linktype?: "asset" }
+  >;
   component: "social_link";
   _uid: string;
   [k: string]: any;
