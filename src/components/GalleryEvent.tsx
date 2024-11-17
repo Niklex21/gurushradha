@@ -179,7 +179,7 @@ export default function GalleryEvent({
                             className="p-4 bg-gray-200 bg-opacity-50 rounded-full hover:bg-gray-200"
                             onClick={(e) => {
                                 setCurrentFullScreenIndex(
-                                    (currentFullScreenIndex + 1) %
+                                    (currentFullScreenIndex - 1) %
                                         assets.length,
                                 );
                                 e.stopPropagation();
