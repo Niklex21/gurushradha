@@ -44,35 +44,43 @@ const { pathname } = Astro.url;
 </div>
 <!-- desktop navbar -->
 <div
-id="navbar"
-    class="hidden sm:flex w-full sticky top-0 left-0 z-50 flex-row gap-4 justify-between items-center p-6 bg-white transition-all rounded-b-xl"
+    id="navbar"
+    class="hidden sm:flex w-full flex-col sticky top-0 left-0 z-50 bg-white transition-all rounded-b-xl drop-shadow-md"
 >
-    <a href="/">
-        <div class="flex flex-row gap-4 items-center">
-            <Image
-                src={blok.logo.filename ?? ''}
-                alt={blok.logo.name}
-                width={50}
-                height={50}
-                class="aspect-square h-12 w-auto"
-            />
-            <Image
-                src={blok.logo_text.filename ?? ''}
-                alt={blok.logo_text.name}
-                width={50}
-                height={50}
-                class="h-8 w-auto"
-            />
+    <div class="flex flex-row gap-4 justify-between items-center p-6">
+        <a href="/">
+            <div class="flex flex-row gap-4 items-center">
+                <Image
+                    src={blok.logo.filename ?? ''}
+                    alt={blok.logo.name}
+                    width={50}
+                    height={50}
+                    class="aspect-square h-12 w-auto"
+                />
+                <Image
+                    src={blok.logo_text.filename ?? ''}
+                    alt={blok.logo_text.name}
+                    width={50}
+                    height={50}
+                    class="h-8 w-auto"
+                />
+            </div>
+        </a>
+        <div class="flex flex-row gap-4">
+            {
+                blok.menu_items.map((item) => (
+                    <MenuLink pathname={pathname} item={item} />
+                ))
+            }
         </div>
-    </a>
-    <div class="flex flex-row gap-4">
-        {
-            blok.menu_items.map((item) => (
-                <MenuLink pathname={pathname} item={item} />
-            ))
-        }
+        <div class="flex flex-row gap-4 items-center">
+            {
+                blok.social_links?.map((link) => (
+                    <StoryblokComponent blok={link} />
+                ))
+            }
+        </div>
     </div>
-    <div class="flex flex-row gap-4 items-center">
-        {blok.social_links?.map((link) => <StoryblokComponent blok={link} />)}
+    <div class="flex w-full bg-[url('/src/images/saree.png')] h-10 bg-repeat">
     </div>
 </div>

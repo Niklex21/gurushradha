@@ -9,6 +9,7 @@ const { data } = await useStoryblokGet('cdn/stories/classes');
 
 <Layout title="Classes">
     <StoryblokComponent blok={data.story.content} />
+    <h1 class="font-bold text-5xl p-8 underline">Classes</h1>
     {
         data.story.content.sections?.map((section: any) => <Section section={section} />)
     }

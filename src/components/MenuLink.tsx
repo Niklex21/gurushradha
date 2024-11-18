@@ -17,8 +17,8 @@ export function MenuLink({
             <a
                 href={href}
                 className={twMerge(
-                    "hover:text-black uppercase font-bold text-black/50",
-                    active && "text-black",
+                    "hover:text-[#A00A0A] uppercase font-bold text-black",
+                    active && "text-[#A00A0A]",
                 )}
             >
                 {item.name}

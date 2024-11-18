@@ -24,6 +24,8 @@ export default defineConfig({
                 hero: "storyblok/Hero",
                 instagram_feed: "storyblok/InstagramFeed",
                 section: "storyblok/Section",
+                home_main_text: "storyblok/HomeMainText",
+                vision: "storyblok/Vision",
             },
             apiOptions: {
                 // Choose your Storyblok space region
