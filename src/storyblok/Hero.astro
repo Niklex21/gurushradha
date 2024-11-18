@@ -1,9 +1,15 @@
 ---
-
+import { Button } from "@/components/ui/button";
 ---
 
-<video
-    autoplay
-    loop
-    class="fixed top-0 left-0 w-full h-dvh bg-fixed object-cover -z-10"
-    src={'/videos/hero.mp4'}></video>
+<div class="flex relative w-full h-[80dvh] overflow-hidden bg-fixed">
+    <video
+        autoplay
+        muted
+        loop
+        playsinline
+        class="fixed top-0 left-0 w-full h-dvh object-cover -z-10"
+    >
+        <source src="/videos/hero.mp4" type="video/mp4" />
+    </video>
+</div>
