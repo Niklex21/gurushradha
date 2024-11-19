@@ -1,53 +1,45 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import { GET as GetGalleryAssets } from './gallery-assets';
-import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
-import { useStoryblokGet } from '@/utils';
-import type { GalleryData } from '@/types';
-import type { GalleryPhotoshootStoryblok } from '@/component-types';
-import GalleryEvent from '@/components/GalleryEvent';
+import Layout from "@/layouts/Layout.astro";
+import { GET as GetGalleryAssets } from "./gallery-assets";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import { useStoryblokGet } from "@/utils";
+import type { GalleryData } from "@/types";
+import type { GalleryPhotoshootStoryblok } from "@/component-types";
+import GalleryEvent from "@/components/GalleryEvent";
 
-const { data } = await useStoryblokGet('cdn/stories/gallery');
+const { data } = await useStoryblokGet("cdn/stories/gallery");
 const response = await GetGalleryAssets(Astro);
 
 if (!response.ok) {
-    throw new Error('Network response was not ok');
+  throw new Error("Network response was not ok");
 }
 
 const galleryData: GalleryData = await response.json();
 ---
 
 <Layout title="Gallery">
-    <!-- todo: this will be removed once the navbar is refactored -->
-    <StoryblokComponent blok={data.story.content} />
-    <div class="flex flex-col gap-16 p-4 sm:p-16 bg-black">
-        {
-            (data.story.content.events as GalleryPhotoshootStoryblok[])
-                ?.sort(
-                    (a, b) =>
-                        // sort the dates in descending order
-                        new Date(b.date).getTime() - new Date(a.date).getTime()
-                )
-                .map((event) => {
-                    const folderId =
-                        galleryData.asset_folders.find(
-                            (folder) => folder.name === event.folder_name
-                        )?.id ?? -1;
+  <!-- todo: this will be removed once the navbar is refactored -->
+  <StoryblokComponent blok={data.story.content} />
+  <div class="flex flex-col gap-16 p-4 sm:p-16 bg-black">
+    {
+      (data.story.content.events as GalleryPhotoshootStoryblok[])
+        ?.sort(
+          (a, b) =>
+            // sort the dates in descending order
+            new Date(b.date).getTime() - new Date(a.date).getTime(),
+        )
+        .map((event) => {
+          const folderId =
+            galleryData.asset_folders.find(
+              (folder) => folder.name === event.folder_name,
+            )?.id ?? -1;
 
-                    if (folderId === -1) {
-                        console.error(
-                            `Folder with name ${event.folder} not found`
-                        );
-                    }
+          if (folderId === -1) {
+            console.error(`Folder with name ${event.folder} not found`);
+          }
 
-                    return (
-                        <GalleryEvent
-                            event={event}
-                            folderId={folderId}
-                            client:load
-                        />
-                    );
-                })
-        }
-    </div>
+          return <GalleryEvent event={event} folderId={folderId} client:load />;
+        })
+    }
+  </div>
 </Layout>

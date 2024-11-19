@@ -184,9 +184,7 @@
           "pos": 3,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "bullet_point"
-          ]
+          "component_whitelist": ["bullet_point"]
         }
       },
       "image": null,
@@ -264,9 +262,7 @@
           "pos": 2,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "menu_item"
-          ]
+          "component_whitelist": ["menu_item"]
         }
       },
       "image": null,
@@ -286,9 +282,7 @@
           "name": "navbar"
         }
       ],
-      "internal_tag_ids": [
-        "8202"
-      ],
+      "internal_tag_ids": ["8202"],
       "content_type_asset_preview": null,
       "component_group_name": ""
     },
@@ -309,9 +303,7 @@
           "pos": 2,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "menu_item"
-          ],
+          "component_whitelist": ["menu_item"],
           "required": true
         },
         "social_links": {
@@ -319,9 +311,7 @@
           "pos": 3,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "social_link"
-          ]
+          "component_whitelist": ["social_link"]
         },
         "logo_text": {
           "type": "asset",
@@ -346,9 +336,7 @@
           "name": "global"
         }
       ],
-      "internal_tag_ids": [
-        "8201"
-      ],
+      "internal_tag_ids": ["8201"],
       "content_type_asset_preview": null
     },
     {
@@ -367,18 +355,14 @@
           "required": false,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "gallery_photoshoot"
-          ]
+          "component_whitelist": ["gallery_photoshoot"]
         },
         "sections": {
           "type": "bloks",
           "pos": 2,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "section"
-          ]
+          "component_whitelist": ["section"]
         }
       },
       "image": null,

@@ -1,42 +1,42 @@
 ---
 import type {
-    BulletPointStoryblok,
-    HomeMainTextStoryblok,
-} from '@/component-types';
-import { Button } from '@/components/ui/button';
+  BulletPointStoryblok,
+  HomeMainTextStoryblok,
+} from "@/component-types";
+import { Button } from "@/components/ui/button";
 
 const { blok } = Astro.props as { blok: HomeMainTextStoryblok };
 ---
 
 <div class="flex flex-row gap-8 items-center">
-    <div class="flex flex-col gap-4 w-full p-8 bg-white rounded-t-xl py-16">
-        <div class="flex flex-row gap-8 items-center">
-            <div class="flex flex-col gap-4 justify-start">
-                <h1
-                    class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-4xl font-bold text-black max-w-prose flex"
-                >
-                    {blok.headline}
-                </h1>
-                <div
-                    class="flex flex-col gap-8 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-black"
-                >
-                    <span class="">{blok.call_to_action}</span>
-                </div>
-            </div>
+  <div class="flex flex-col gap-4 w-full p-8 bg-[#FEFCF5] rounded-t-xl py-16 items-center">
+    <div class="flex flex-row gap-8 items-center justify-center">
+      <div class="flex flex-col gap-4 justify-start text-center">
+        <h1
+          class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-4xl font-bold text-black max-w-prose flex"
+        >
+          {blok.headline}
+        </h1>
+        <div
+          class="flex flex-col gap-8 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-black"
+        >
+          <span class="">{blok.call_to_action}</span>
         </div>
-        <ul class="flex flex-col list-disc gap-y-4 mt-8 max-w-lg ml-6">
-            {
-                blok.bullet_points?.map((point: BulletPointStoryblok) => (
-                    <li>{point.text}</li>
-                ))
-            }
-        </ul>
-        <a href={blok.donate_link?.url ?? '#'} class="mr-auto mt-8">
-            <Button
-                className="bg-white w-96 border-[#A00A0A] border text-[#A00A0A] hover:bg-[#A00A0A] hover:text-white transition-all duration-200 text-xl px-4 py-2 rounded-xl"
-            >
-                Donate Today
-            </Button>
-        </a>
+      </div>
     </div>
+    <ul class="flex flex-col list-disc gap-y-4 mt-8 max-w-lg ml-6">
+      {
+        blok.bullet_points?.map((point: BulletPointStoryblok) => (
+          <li>{point.text}</li>
+        ))
+      }
+    </ul>
+    <a href={"/support-us"} class="mt-8">
+      <Button
+        className="bg-[#FEFCF5] w-96 border-[#A00A0A] border text-[#A00A0A] hover:bg-[#A00A0A] hover:text-[#FEFCF5] transition-all duration-200 text-xl px-4 py-2 rounded-xl"
+      >
+        Donate Today
+      </Button>
+    </a>
+  </div>
 </div>

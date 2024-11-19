@@ -1,11 +1,11 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import { useStoryblokGet } from '@/utils';
-import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+import Layout from "@/layouts/Layout.astro";
+import { useStoryblokGet } from "@/utils";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 
-const { data } = await useStoryblokGet('cdn/stories/home');
+const { data } = await useStoryblokGet("cdn/stories/home");
 ---
 
 <Layout title="Home">
-    <StoryblokComponent blok={data.story.content} />
+  <StoryblokComponent blok={data.story.content} />
 </Layout>

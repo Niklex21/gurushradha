@@ -1,43 +1,43 @@
 {
-    "name": "gurushradha",
-    "type": "module",
-    "version": "0.0.1",
-    "scripts": {
-        "dev": "astro dev",
-        "start": "astro dev",
-        "build": "astro check && astro build",
-        "preview": "astro preview",
-        "astro": "astro",
-        "format": "prettier --write .",
-        "sb-sync": "storyblok pull-components --space 1021919 --path /Users/alex/Desktop/dev/gurushradha/src/ --file-name schema && storyblok generate-typescript-typedefs --sourceFilePaths /Users/alex/Desktop/dev/gurushradha/src/components.schema.json --destinationFilePath  /Users/alex/Desktop/dev/gurushradha/src/component-types.d.ts"
-    },
-    "dependencies": {
-        "@astrojs/check": "^0.9.4",
-        "@astrojs/react": "^3.6.2",
-        "@astrojs/tailwind": "5.1.2",
-        "@astrojs/vercel": "7.8.2",
-        "@fontsource-variable/playfair-display": "^5.1.0",
-        "@radix-ui/react-dialog": "^1.1.2",
-        "@radix-ui/react-slot": "^1.1.0",
-        "@storyblok/astro": "^5.0.2",
-        "@types/node": "^22.7.4",
-        "@types/react": "^18.3.11",
-        "@types/react-dom": "^18.3.0",
-        "astro": "4.16.7",
-        "class-variance-authority": "^0.7.0",
-        "clsx": "^2.1.1",
-        "lucide-react": "^0.452.0",
-        "react": "^18.3.1",
-        "react-dom": "^18.3.1",
-        "storyblok-js-client": "^6.10.1",
-        "tailwind-merge": "^2.5.3",
-        "tailwindcss": "^3.4.13",
-        "tailwindcss-animate": "^1.0.7",
-        "typescript": "^5.6.2",
-        "vite": "^5.4.8"
-    },
-    "devDependencies": {
-        "prettier": "^3.3.3",
-        "prettier-plugin-astro": "^0.14.1"
-    }
+  "name": "gurushradha",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "format": "prettier --write .",
+    "sb-sync": "storyblok pull-components --space 1021919 --path /Users/alex/Desktop/dev/gurushradha/src/ --file-name schema && storyblok generate-typescript-typedefs --sourceFilePaths /Users/alex/Desktop/dev/gurushradha/src/components.schema.json --destinationFilePath  /Users/alex/Desktop/dev/gurushradha/src/component-types.d.ts"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/react": "^3.6.2",
+    "@astrojs/tailwind": "5.1.2",
+    "@astrojs/vercel": "7.8.2",
+    "@fontsource-variable/playfair-display": "^5.1.0",
+    "@radix-ui/react-dialog": "^1.1.2",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@storyblok/astro": "^5.0.2",
+    "@types/node": "^22.7.4",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.0",
+    "astro": "4.16.7",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.452.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "storyblok-js-client": "^6.10.1",
+    "tailwind-merge": "^2.5.3",
+    "tailwindcss": "^3.4.13",
+    "tailwindcss-animate": "^1.0.7",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.8"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3",
+    "prettier-plugin-astro": "^0.14.1"
+  }
 }
