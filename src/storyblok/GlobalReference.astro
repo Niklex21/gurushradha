@@ -1,12 +1,12 @@
 ---
-import type { GlobalReferenceStoryblok } from '@/component-types';
-import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+import type { GlobalReferenceStoryblok } from "@/component-types";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 
 const { blok } = Astro.props as { blok: GlobalReferenceStoryblok };
 ---
 
 {
-    blok.reference?.map((ref) => (
-        <StoryblokComponent blok={ref.content.global[0]} />
-    ))
+  blok.reference?.map((ref) => (
+    <StoryblokComponent blok={ref.content.global[0]} />
+  ))
 }

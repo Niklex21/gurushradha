@@ -3,27 +3,32 @@ import type { VisionStoryblok } from "@/component-types";
 
 const { blok } = Astro.props as { blok: VisionStoryblok };
 ---
-<div class="p-16 flex w-full flex-col gap-8">
-    <h1 class="text-5xl font-bold mx-auto">Vision</h1>
-    <h1 class="text-3xl text-[#A00A0A] font-bold mx-auto">
-        "{blok.headline}"
-    </h1>
-    <div class="grid grid-cols-2 mt-10 gap-16">
-        <div class="flex flex-col gap-6 my-auto">
-            <h1 class="text-5xl font-bold">Mission</h1>
-            <h1 class="text-2xl">{
-                blok.mission
-            }</h1>
-        </div>
-        <img src={blok.mission_image.filename} alt={blok.mission_image.alt} class="rounded-xl" />
+
+<div class="p-16 flex w-full flex-col gap-8 bg-[#FEFCF5]">
+  <h1 class="text-5xl font-bold mx-auto underline">Vision</h1>
+  <h1 class="text-3xl text-[#A00A0A] font-bold mx-auto">
+    "{blok.headline}"
+  </h1>
+  <div class="grid grid-cols-2 mt-10 gap-16">
+    <div class="flex flex-col gap-6 my-auto">
+      <h1 class="text-5xl font-bold">Mission</h1>
+      <h1 class="text-2xl">{blok.mission}</h1>
     </div>
-    <div class="grid grid-cols-2 mt-16 gap-16">
-        <img src={blok.vision_image.filename} alt={blok.vision_image.alt} class="rounded-xl" />
-        <div class="flex flex-col gap-6 my-auto">
-            <h1 class="text-5xl font-bold">Vision</h1>
-            <h1 class="text-2xl">{
-                blok.our_vision
-            }</h1>
-        </div>
+    <img
+      src={blok.mission_image.filename}
+      alt={blok.mission_image.alt}
+      class="rounded-xl"
+    />
+  </div>
+  <div class="grid grid-cols-2 mt-16 gap-16">
+    <img
+      src={blok.vision_image.filename}
+      alt={blok.vision_image.alt}
+      class="rounded-xl"
+    />
+    <div class="flex flex-col gap-6 my-auto">
+      <h1 class="text-5xl font-bold">Vision</h1>
+      <h1 class="text-2xl">{blok.our_vision}</h1>
     </div>
+  </div>
 </div>

@@ -1,25 +1,8 @@
 ---
-import type { SocialLinkStoryblok } from '@/component-types';
-import { Image } from 'astro:assets';
+import type { SocialLinkStoryblok } from "@/component-types";
+import SocialLinkComponent from "@/components/SocialLinkComponent.astro";
 
 const { blok } = Astro.props as { blok: SocialLinkStoryblok };
-
-const iconPath = 'https://cdn.simpleicons.org/' + blok.type;
 ---
 
-<a href={blok.link.url} target="_blank" class="group cursor-pointer">
-    <Image
-        src={iconPath + '/A00A0A'}
-        width={20}
-        height={20}
-        alt={blok.type}
-        class="group-hover:hidden"
-    />
-    <Image
-        src={iconPath}
-        width={20}
-        height={20}
-        alt={blok.type}
-        class="hover:scale-125 duration-200 transition-transform hidden group-hover:flex"
-    />
-</a>
+<SocialLinkComponent linkType={blok.type} url={blok.link.url} />

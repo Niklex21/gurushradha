@@ -1,16 +1,20 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import Section from '@/storyblok/Section.astro';
-import { useStoryblokGet } from '@/utils';
-import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+import Layout from "@/layouts/Layout.astro";
+import Section from "@/storyblok/Section.astro";
+import { useStoryblokGet } from "@/utils";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 
-const { data } = await useStoryblokGet('cdn/stories/classes');
+const { data } = await useStoryblokGet("cdn/stories/classes");
 ---
 
 <Layout title="Classes">
-    <StoryblokComponent blok={data.story.content} />
-    <h1 class="font-bold text-5xl p-8 underline">Classes</h1>
+  <StoryblokComponent blok={data.story.content} />
+  <div class="bg-[#FEFCF5] w-full h-full flex flex-col">
+    <h1 class="font-bold text-5xl p-8 underline mx-auto">Classes</h1>
     {
-        data.story.content.sections?.map((section: any) => <Section section={section} />)
+      data.story.content.sections?.map((section: any) => (
+        <Section section={section} />
+      ))
     }
+  </div>
 </Layout>
