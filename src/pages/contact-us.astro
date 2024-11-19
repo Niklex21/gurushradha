@@ -15,9 +15,9 @@ const { data } = await useStoryblokGet("cdn/stories/contact-us");
     style={{ backgroundImage: `url(${backgroundImage.src})` }}
   >
     <h1 class="text-5xl font-bold mx-auto underline">Contact us</h1>
-    <div class="flex flex-col gap-4 sm:grid grid-cols-2 w-full">
+    <div class="flex flex-col gap-16 sm:grid grid-cols-2 w-full">
       <form class="flex flex-col gap-4">
-        <div class="flex flex-row gap-4 w-full">
+        <div class="flex flex-col sm:flex-row gap-4 w-full">
           <div class="space-y-2 flex w-full flex-col">
             <label
               for="first-name"
@@ -102,7 +102,7 @@ const { data } = await useStoryblokGet("cdn/stories/contact-us");
           Submit
         </Button>
       </form>
-      <div class="flex flex-col h-full justify-between ml-auto">
+      <div class="flex flex-col h-full justify-between ml-auto gap-8">
         <div class="flex flex-col gap-4">
           <span>
             Email address: <a target="_blank" class="underline" href="mailto:gurushradha@gmail.com"
@@ -128,7 +128,7 @@ const { data } = await useStoryblokGet("cdn/stories/contact-us");
         <div class="flex flex-col gap-4">
           <span class="text-xl">Subscribe</span>
           <span>Sign up to receive newsletter and updates.</span>
-          <div class="flex flex-row gap-4">
+          <div class="flex flex-col sm:flex-row gap-4">
             <input
               type="email"
               placeholder="Email"
