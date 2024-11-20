@@ -54,7 +54,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["Playfair Display Variable", ...defaultTheme.fontFamily.sans],
+        sans: ["Open Sans Variable", ...defaultTheme.fontFamily.sans],
+        serif: ["Playfair Display Variable", ...defaultTheme.fontFamily.serif],
       },
     },
   },

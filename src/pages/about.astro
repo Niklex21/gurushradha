@@ -9,6 +9,6 @@ const { data } = await useStoryblokGet("cdn/stories/about");
 <Layout title="About">
   <StoryblokComponent blok={data.story.content} />
   <div class="p-16 flex w-full flex-col gap-8 bg-[#FEFCF5]">
-    <h1 class="text-5xl font-bold mx-auto underline">About</h1>
+    <h1 class="text-5xl font-bold mx-auto uppercase font-serif">About</h1>
   </div>
 </Layout>
