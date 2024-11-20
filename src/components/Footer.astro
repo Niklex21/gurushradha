@@ -1,7 +1,6 @@
 ---
 import SocialLinkComponent from "./SocialLinkComponent.astro";
 import { Button } from "./ui/button";
-import backgroundImage from "@/images/footer_background.png";
 
 const socials = [
   {
@@ -24,21 +23,21 @@ const socials = [
 ---
 
 <div
-  class="flex flex-col gap-8 sm:grid sm:grid-cols-4 w-full p-16 text-[#A00A0A] mt-auto bg-no-repeat bg-cover bg-blend-lighten bg-[#FEFCF5]/80"
-  style={{ backgroundImage: `url(${backgroundImage.src})` }}
+  class="flex flex-col gap-8 sm:grid sm:grid-cols-4 w-full p-8 text-white mt-auto bg-no-repeat bg-cover"
+  style="background-image: url('/src/images/footer_background.png');"
 >
   <div class="flex flex-col gap-8 col-span-1">
     <h1 class="text-2xl">Guru Shradha</h1>
     <div class="flex flex-row gap-4 items-center">
       {
         socials.map((social) => (
-          <SocialLinkComponent linkType={social.linkType} url={social.url} />
+          <SocialLinkComponent linkType={social.linkType} url={social.url} hexColor="FFFFFF" />
         ))
       }
     </div>
     <a href={"/support-us"} class="mr-auto">
       <Button
-        className="bg-[#A00A0A] w-48 border-[#A00A0A] border text-[#FEFCF5] hover:bg-[#FEFCF5] hover:text-[#A00A0A] transition-all duration-200 text-xl px-4 py-2 rounded-xl"
+        className="bg-[#A00A0A] w-48 border-[#A00A0A] border text-[#FEFCF5] hover:bg-[#FEFCF5] hover:text-white transition-all duration-200 text-xl px-4 py-2 rounded-xl"
       >
         Donate
       </Button>
@@ -52,27 +51,27 @@ const socials = [
   <div class="col-span-2 sm:items-center flex flex-col gap-8">
     <h1 class="text-2xl font-bold">Subscribe</h1>
     <span class="text-lg">Sign up to receive newsletter and updates.</span>
-    <div class="flex flex-col sm:flex-row gap-4">
+    <div class="flex flex-row gap-4">
       <input
         type="email"
         placeholder="Email"
         class="border border-[#A00A0A] px-4 py-2 rounded-xl"
       />
       <Button
-        className="bg-[#A00A0A] border-[#A00A0A] border text-[#FEFCF5] hover:bg-[#FEFCF5] hover:text-[#A00A0A] transition-all duration-200 text-xl px-4 py-2 rounded-xl"
+        className="bg-[#A00A0A] border-[#A00A0A] border text-[#FEFCF5] hover:bg-[#FEFCF5] hover:text-white transition-all duration-200 text-xl px-4 py-2 rounded-xl"
       >
         Subscribe
       </Button>
     </div>
   </div>
   <div
-    class="col-span-1 flex flex-col h-full gap-2 text-xl justify-between sm:items-end"
+    class="col-span-1 flex flex-col h-full gap-2 text-lg justify-between sm:items-end"
   >
-    <a href="/about" class="text-[#A00A0A] underline font-bold">About</a>
-    <a href="/events" class="text-[#A00A0A] underline font-bold">Events</a>
-    <a href="/classes" class="text-[#A00A0A] underline font-bold">Classes</a>
-    <a href="/gallery" class="text-[#A00A0A] underline font-bold">Gallery</a>
-    <a href="/support-us" class="text-[#A00A0A] underline font-bold">Support</a>
-    <a href="/contact-us" class="text-[#A00A0A] underline font-bold">Contact</a>
+    <a href="/about" class="text-white underline font-bold">About</a>
+    <a href="/events" class="text-white underline font-bold">Events</a>
+    <a href="/classes" class="text-white underline font-bold">Classes</a>
+    <a href="/gallery" class="text-white underline font-bold">Gallery</a>
+    <a href="/support-us" class="text-white underline font-bold">Support</a>
+    <a href="/contact-us" class="text-white underline font-bold">Contact</a>
   </div>
 </div>
