@@ -1,14 +1,18 @@
 ---
 import { Image } from "astro:assets";
 
-const { linkType, url } = Astro.props as { linkType: string; url: string };
+const { linkType, url, hexColor } = Astro.props as {
+  linkType: string;
+  url: string;
+  hexColor?: string;
+};
 
 const iconPath = "https://cdn.simpleicons.org/" + linkType;
 ---
 
 <a href={url} target="_blank" class="group cursor-pointer">
   <Image
-    src={iconPath + "/A00A0A"}
+    src={iconPath + "/" + (hexColor ?? "A00A0A")}
     width={20}
     height={20}
     alt={linkType}
