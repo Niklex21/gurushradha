@@ -21,7 +21,7 @@ const galleryData: GalleryData = await response.json();
   <!-- todo: this will be removed once the navbar is refactored -->
   <StoryblokComponent blok={data.story.content} />
   <div class="flex flex-col gap-16 p-4 sm:p-16 bg-black">
-    <h1 class="text-5xl text-[#FEFCF5] underline">Gallery</h1>
+    <h1 class="text-5xl text-[#FEFCF5] uppercase font-serif mx-auto font-bold">Gallery</h1>
     {
       (data.story.content.events as GalleryPhotoshootStoryblok[])
         ?.sort(
