@@ -1,16 +1,21 @@
 import type { MenuItemStoryblok } from "@/component-types";
 import { twMerge } from "tailwind-merge";
-import SculptureSupport from "@/images/sculptures/support.png";
+import SculptureSupport from "@/images/sculptures/support.svg";
+import SculptureAbout from "@/images/sculptures/about.svg";
+import SculptureClasses from "@/images/sculptures/classes.svg";
+import SculptureGallery from "@/images/sculptures/gallery.svg";
+import SculptureContact from "@/images/sculptures/contact.svg";
+import SculptureEvents from "@/images/sculptures/events.svg";
 
 const ITEM_NAME_TO_SCULPTURE: {
   [key: string]: ImageMetadata | undefined;
 } = {
-  about: undefined,
-  events: undefined,
-  classes: undefined,
-  gallery: undefined,
+  about: SculptureAbout,
+  events: SculptureEvents,
+  classes: SculptureClasses,
+  gallery: SculptureGallery,
   support: SculptureSupport,
-  contact: undefined,
+  contact: SculptureContact,
 };
 
 export function MenuLink({
@@ -25,11 +30,11 @@ export function MenuLink({
   const active = href === pathname.slice(1); // to remove the slash
 
   return (
-    <div className="flex flex-col sm:flex-row relative group/menu">
+    <div className="flex flex-col h-full sm:flex-row relative group/menu">
       <a
         href={href}
         className={twMerge(
-          "hover:text-[#A00A0A] relative uppercase font-serif font-bold text-black group",
+          "hover:text-[#A00A0A] text-xl h-full flex relative uppercase font-serif font-bold text-black",
           active && "text-[#A00A0A]",
         )}
       >
@@ -38,8 +43,8 @@ export function MenuLink({
             src={ITEM_NAME_TO_SCULPTURE[item.name.toLowerCase()]?.src}
             alt="sculpture"
             className={twMerge(
-              "w-20 h-20 absolute top-1/2 left-1/2 -translate-x-[47%] -translate-y-[47%] opacity-50 group-hover:opacity-100 -z-[5]",
-              active && "opacity-100",
+               "absolute h-20 w-auto aspect-auto top-1/2 left-1/2 -translate-x-[47%] -translate-y-[47%] opacity-30 group-hover/menu:opacity-50 -z-[5]",
+              active && "opacity-50",
             )}
           />
         )}

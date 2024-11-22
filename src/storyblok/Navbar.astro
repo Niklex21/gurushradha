@@ -24,8 +24,8 @@ const { pathname } = Astro.url;
     />
   </a>
   <MobileMenuSheetWrapper client:load>
-    <div class="bg-[#FEFCF5] h-full w-full p-8 gap-8 flex flex-col">
-      <div class="flex flex-col gap-4">
+    <div class="bg-[#FEFCF5] h-full w-full p-8 gap-12 flex flex-col">
+      <div class="flex flex-col gap-4 h-full">
         {
           blok.menu_items.map((item) => (
             <MenuLink pathname={pathname} item={item} />
@@ -73,6 +73,6 @@ const { pathname } = Astro.url;
       {blok.social_links?.map((link) => <StoryblokComponent blok={link} />)}
     </div>
   </div>
-  <div class="flex w-full bg-[url('/src/images/saree.png')] h-20 bg-repeat-x">
+  <div class="flex w-full bg-[url('/src/images/saree.png')] h-20 bg-repeat-x bg-contain rounded-b-xl">
   </div>
 </div>

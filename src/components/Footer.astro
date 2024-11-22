@@ -24,7 +24,7 @@ const socials = [
 ---
 
 <div
-  class="flex flex-col gap-8 sm:grid sm:grid-cols-4 w-full p-8 text-white mt-auto bg-no-repeat bg-cover"
+  class="flex flex-col gap-8 sm:grid sm:grid-cols-4 w-full p-8 text-[#FEFCF5] mt-auto bg-no-repeat bg-cover bg-black/50 bg-blend-darken"
   style={`background-image: url(${FooterImage.src});`}
 >
   <div class="flex flex-col gap-8 col-span-1">
@@ -35,14 +35,14 @@ const socials = [
           <SocialLinkComponent
             linkType={social.linkType}
             url={social.url}
-            hexColor="FFFFFF"
+            hexColor="FEFCF5"
           />
         ))
       }
     </div>
     <a href={"/support-us"} class="mr-auto">
       <Button
-        className="bg-[#A00A0A] w-48 border-[#A00A0A] border text-[#FEFCF5] hover:bg-[#FEFCF5] hover:text-white transition-all duration-200 text-xl px-4 py-2 rounded-xl"
+        className="bg-[#A00A0A] w-48 border-[#A00A0A] border text-[#FEFCF5] hover:bg-[#FEFCF5] hover:text-[#A00A0A] transition-all duration-200 text-xl px-4 py-2 rounded-xl"
       >
         Donate
       </Button>
@@ -53,7 +53,7 @@ const socials = [
       Niharika Mohanty
     </span>
   </div>
-  <div class="col-span-2 sm:items-center flex flex-col gap-8">
+  <div class="col-span-2 sm:items-center flex flex-col gap-8 my-auto">
     <h1 class="text-2xl font-bold">Subscribe</h1>
     <span class="text-lg">Sign up to receive newsletter and updates.</span>
     <div class="flex flex-row gap-4">
@@ -63,7 +63,7 @@ const socials = [
         class="border border-[#A00A0A] px-4 py-2 rounded-xl"
       />
       <Button
-        className="bg-[#A00A0A] border-[#A00A0A] border text-[#FEFCF5] hover:bg-[#FEFCF5] hover:text-white transition-all duration-200 text-xl px-4 py-2 rounded-xl"
+        className="bg-[#A00A0A] border-[#A00A0A] border text-[#FEFCF5] hover:bg-[#FEFCF5] hover:text-[#FEFCF5] transition-all duration-200 text-xl px-4 py-2 rounded-xl"
       >
         Subscribe
       </Button>
@@ -72,11 +72,11 @@ const socials = [
   <div
     class="col-span-1 flex flex-col h-full gap-2 text-lg justify-between sm:items-end"
   >
-    <a href="/about" class="text-white underline font-bold">About</a>
-    <a href="/events" class="text-white underline font-bold">Events</a>
-    <a href="/classes" class="text-white underline font-bold">Classes</a>
-    <a href="/gallery" class="text-white underline font-bold">Gallery</a>
-    <a href="/support-us" class="text-white underline font-bold">Support</a>
-    <a href="/contact-us" class="text-white underline font-bold">Contact</a>
+    <a href="/about" class="text-[#FEFCF5] underline font-bold">About</a>
+    <a href="/events" class="text-[#FEFCF5] underline font-bold">Events</a>
+    <a href="/classes" class="text-[#FEFCF5] underline font-bold">Classes</a>
+    <a href="/gallery" class="text-[#FEFCF5] underline font-bold">Gallery</a>
+    <a href="/support-us" class="text-[#FEFCF5] underline font-bold">Support</a>
+    <a href="/contact-us" class="text-[#FEFCF5] underline font-bold">Contact</a>
   </div>
 </div>
