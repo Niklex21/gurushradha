@@ -31,6 +31,8 @@ export interface GlobalStoryblok {
     | PageStoryblok
     | SectionStoryblok
     | SocialLinkStoryblok
+    | TestimonialStoryblok
+    | TestimonialsStoryblok
     | VisionStoryblok
   )[];
   component: "global";
@@ -120,10 +122,7 @@ export type MultilinkStoryblok =
     };
 
 export interface HeroStoryblok {
-  video_url: Exclude<
-    MultilinkStoryblok,
-    { linktype?: "email" } | { linktype?: "asset" }
-  >;
+  video_url: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   component: "hero";
   _uid: string;
   [k: string]: any;
@@ -132,10 +131,7 @@ export interface HeroStoryblok {
 export interface HomeMainTextStoryblok {
   headline: string;
   call_to_action: string;
-  donate_link?: Exclude<
-    MultilinkStoryblok,
-    { linktype?: "email" } | { linktype?: "asset" }
-  >;
+  donate_link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   bullet_points?: BulletPointStoryblok[];
   component: "home_main_text";
   _uid: string;
@@ -152,10 +148,7 @@ export interface InstagramFeedStoryblok {
 
 export interface MenuItemStoryblok {
   name: string;
-  link: Exclude<
-    MultilinkStoryblok,
-    { linktype?: "email" } | { linktype?: "asset" }
-  >;
+  link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   submenus?: MenuItemStoryblok[];
   component: "menu_item";
   _uid: string;
@@ -211,6 +204,8 @@ export interface PageStoryblok {
     | PageStoryblok
     | SectionStoryblok
     | SocialLinkStoryblok
+    | TestimonialStoryblok
+    | TestimonialsStoryblok
     | VisionStoryblok
   )[];
   events?: GalleryPhotoshootStoryblok[];
@@ -230,11 +225,24 @@ export interface SectionStoryblok {
 
 export interface SocialLinkStoryblok {
   type: "facebook" | "instagram" | "youtube" | "tiktok";
-  link: Exclude<
-    MultilinkStoryblok,
-    { linktype?: "email" } | { linktype?: "asset" }
-  >;
+  link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   component: "social_link";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface TestimonialStoryblok {
+  person_name: string;
+  quote: string;
+  relation_to_gs: string;
+  component: "testimonial";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface TestimonialsStoryblok {
+  testimonials?: TestimonialStoryblok[];
+  component: "testimonials";
   _uid: string;
   [k: string]: any;
 }

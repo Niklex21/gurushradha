@@ -117,13 +117,19 @@ export default function GalleryEvent({
             ) : loading ? (
               <Loader2 className="animate-spin 2-8 h-8 text-gray-200" />
             ) : (
-              assets?.map((asset, index) => (
-                <GalleryImage
-                  asset={asset}
-                  key={index}
-                  onClick={() => setCurrentFullScreenIndex(index)}
-                />
-              ))
+              assets
+                ?.sort(
+                  (a, b) =>
+                    new Date(a.created_at).getTime() -
+                    new Date(b.created_at).getTime(),
+                )
+                .map((asset, index) => (
+                  <GalleryImage
+                    asset={asset}
+                    key={index}
+                    onClick={() => setCurrentFullScreenIndex(index)}
+                  />
+                ))
             )}
           </div>
         </div>

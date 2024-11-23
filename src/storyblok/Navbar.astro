@@ -51,18 +51,18 @@ const { pathname } = Astro.url;
           alt={blok.logo.name}
           width={50}
           height={50}
-          class="aspect-square h-[4.5rem] w-auto"
+          class="aspect-square h-20 w-auto"
         />
         <Image
           src={blok.logo_text.filename ?? ""}
           alt={blok.logo_text.name}
           width={50}
           height={50}
-          class="h-10 w-auto"
+          class="h-12 w-auto"
         />
       </div>
     </a>
-    <div class="flex flex-row gap-4">
+    <div class="flex flex-row gap-4 sm:absolute sm:left-1/2 sm:-translate-x-1/2">
       {
         blok.menu_items.map((item) => (
           <MenuLink pathname={pathname} item={item} />

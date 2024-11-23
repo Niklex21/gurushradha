@@ -3,6 +3,7 @@
     {
       "name": "bullet_point",
       "display_name": null,
+      "description": null,
       "created_at": "2024-11-18T05:41:28.511Z",
       "updated_at": "2024-11-18T05:41:36.060Z",
       "id": 258704,
@@ -32,6 +33,7 @@
     {
       "name": "gallery_photoshoot",
       "display_name": null,
+      "description": null,
       "created_at": "2024-10-27T05:13:16.551Z",
       "updated_at": "2024-10-27T05:15:50.497Z",
       "id": 253878,
@@ -71,6 +73,7 @@
     {
       "name": "global",
       "display_name": null,
+      "description": null,
       "created_at": "2024-10-09T05:28:41.926Z",
       "updated_at": "2024-10-09T05:28:58.608Z",
       "id": 249094,
@@ -99,6 +102,7 @@
     {
       "name": "global_reference",
       "display_name": null,
+      "description": null,
       "created_at": "2024-10-09T05:55:40.920Z",
       "updated_at": "2024-10-09T05:56:10.697Z",
       "id": 249098,
@@ -132,6 +136,7 @@
     {
       "name": "hero",
       "display_name": null,
+      "description": null,
       "created_at": "2024-10-17T06:02:24.190Z",
       "updated_at": "2024-10-17T06:06:01.526Z",
       "id": 251258,
@@ -161,6 +166,7 @@
     {
       "name": "home_main_text",
       "display_name": null,
+      "description": null,
       "created_at": "2024-11-18T00:39:26.410Z",
       "updated_at": "2024-11-18T05:42:07.547Z",
       "id": 258685,
@@ -184,7 +190,9 @@
           "pos": 3,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": ["bullet_point"]
+          "component_whitelist": [
+            "bullet_point"
+          ]
         }
       },
       "image": null,
@@ -206,6 +214,7 @@
     {
       "name": "instagram_feed",
       "display_name": null,
+      "description": null,
       "created_at": "2024-10-27T01:45:53.873Z",
       "updated_at": "2024-10-27T01:46:43.652Z",
       "id": 253870,
@@ -243,8 +252,9 @@
     {
       "name": "menu_item",
       "display_name": null,
+      "description": null,
       "created_at": "2024-10-09T05:38:50.089Z",
-      "updated_at": "2024-10-09T07:03:24.066Z",
+      "updated_at": "2024-11-23T05:13:59.971Z",
       "id": 249096,
       "schema": {
         "name": {
@@ -255,14 +265,16 @@
         "link": {
           "type": "multilink",
           "pos": 1,
-          "required": true
+          "required": false
         },
         "submenus": {
           "type": "bloks",
           "pos": 2,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": ["menu_item"]
+          "component_whitelist": [
+            "menu_item"
+          ]
         }
       },
       "image": null,
@@ -282,13 +294,16 @@
           "name": "navbar"
         }
       ],
-      "internal_tag_ids": ["8202"],
+      "internal_tag_ids": [
+        "8202"
+      ],
       "content_type_asset_preview": null,
       "component_group_name": ""
     },
     {
       "name": "navbar",
       "display_name": null,
+      "description": null,
       "created_at": "2024-10-09T05:36:21.249Z",
       "updated_at": "2024-10-20T04:17:00.415Z",
       "id": 249095,
@@ -303,7 +318,9 @@
           "pos": 2,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": ["menu_item"],
+          "component_whitelist": [
+            "menu_item"
+          ],
           "required": true
         },
         "social_links": {
@@ -311,7 +328,9 @@
           "pos": 3,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": ["social_link"]
+          "component_whitelist": [
+            "social_link"
+          ]
         },
         "logo_text": {
           "type": "asset",
@@ -336,12 +355,15 @@
           "name": "global"
         }
       ],
-      "internal_tag_ids": ["8201"],
+      "internal_tag_ids": [
+        "8201"
+      ],
       "content_type_asset_preview": null
     },
     {
       "name": "page",
       "display_name": null,
+      "description": null,
       "created_at": "2024-10-05T20:49:53.205Z",
       "updated_at": "2024-11-11T06:36:33.897Z",
       "id": 248712,
@@ -355,14 +377,18 @@
           "required": false,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": ["gallery_photoshoot"]
+          "component_whitelist": [
+            "gallery_photoshoot"
+          ]
         },
         "sections": {
           "type": "bloks",
           "pos": 2,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": ["section"]
+          "component_whitelist": [
+            "section"
+          ]
         }
       },
       "image": null,
@@ -383,6 +409,7 @@
     {
       "name": "section",
       "display_name": null,
+      "description": null,
       "created_at": "2024-11-11T06:34:06.725Z",
       "updated_at": "2024-11-12T03:57:03.999Z",
       "id": 256492,
@@ -416,6 +443,7 @@
     {
       "name": "social_link",
       "display_name": null,
+      "description": null,
       "created_at": "2024-10-09T05:40:17.609Z",
       "updated_at": "2024-10-09T06:03:21.179Z",
       "id": 249097,
@@ -473,8 +501,85 @@
       "component_group_name": ""
     },
     {
+      "name": "testimonial",
+      "display_name": null,
+      "description": null,
+      "created_at": "2024-11-22T21:28:23.935Z",
+      "updated_at": "2024-11-22T21:54:49.692Z",
+      "id": 262280,
+      "schema": {
+        "person_name": {
+          "type": "text",
+          "pos": 0,
+          "required": true
+        },
+        "quote": {
+          "type": "text",
+          "pos": 1,
+          "required": true,
+          "display_name": ""
+        },
+        "relation_to_gs": {
+          "type": "text",
+          "pos": 2,
+          "required": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "testimonial",
+      "component_group_uuid": "all",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": ""
+    },
+    {
+      "name": "testimonials",
+      "display_name": null,
+      "description": null,
+      "created_at": "2024-11-22T21:47:43.410Z",
+      "updated_at": "2024-11-22T21:48:04.521Z",
+      "id": 262283,
+      "schema": {
+        "testimonials": {
+          "type": "bloks",
+          "pos": 0,
+          "required": false,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "testimonial"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "testimonials",
+      "component_group_uuid": "all",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": ""
+    },
+    {
       "name": "vision",
       "display_name": null,
+      "description": null,
       "created_at": "2024-11-18T05:52:55.624Z",
       "updated_at": "2024-11-18T06:14:14.549Z",
       "id": 258707,

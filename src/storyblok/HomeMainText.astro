@@ -9,7 +9,9 @@ const { blok } = Astro.props as { blok: HomeMainTextStoryblok };
 ---
 
 <div class="flex flex-row gap-8 items-center">
-  <div class="flex flex-col gap-4 w-full p-8 bg-[#FEFCF5] rounded-t-xl py-16 items-center">
+  <div
+    class="flex flex-col gap-4 w-full p-8 bg-[#FEFCF5]/80 rounded-t-xl py-16 items-center"
+  >
     <div class="flex flex-row gap-8 items-center justify-center">
       <div class="flex flex-col gap-4 justify-start text-center">
         <h1
@@ -33,7 +35,7 @@ const { blok } = Astro.props as { blok: HomeMainTextStoryblok };
     </ul>
     <a href={"/support-us"} class="mt-8">
       <Button
-        className="bg-[#FEFCF5] w-96 border-[#A00A0A] border text-[#A00A0A] hover:bg-[#A00A0A] hover:text-[#FEFCF5] transition-all duration-200 text-xl px-4 py-2 rounded-xl"
+        className="bg-[#A00A0A] w-96 border-[#FEFCF5] border text-[#FEFCF5] hover:bg-[#FEFCF5] hover:text-[#A00A0A] transition-all duration-200 text-xl px-4 py-2 rounded-xl"
       >
         Donate Today
       </Button>

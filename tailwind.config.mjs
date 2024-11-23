@@ -56,6 +56,7 @@ export default {
       fontFamily: {
         sans: ["Open Sans Variable", ...defaultTheme.fontFamily.sans],
         serif: ["Playfair Display Variable", ...defaultTheme.fontFamily.serif],
+        yatra: ["Yatra One", ...defaultTheme.fontFamily.serif],
       },
     },
   },

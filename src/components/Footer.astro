@@ -24,59 +24,69 @@ const socials = [
 ---
 
 <div
-  class="flex flex-col gap-8 sm:grid sm:grid-cols-4 w-full p-8 text-[#FEFCF5] mt-auto bg-no-repeat bg-cover"
-  style={`background-image: url(${FooterImage.src});`}
+  class="relative flex flex-col w-full"
 >
-  <div class="flex flex-col gap-8 col-span-1">
-    <h1 class="text-2xl">Guru Shradha</h1>
-    <div class="flex flex-row gap-4 items-center">
-      {
-        socials.map((social) => (
-          <SocialLinkComponent
-            linkType={social.linkType}
-            url={social.url}
-            hexColor="FEFCF5"
-          />
-        ))
-      }
-    </div>
-    <a href={"/support-us"} class="mr-auto">
-      <Button
-        className="bg-[#A00A0A] w-48 border-[#A00A0A] border text-[#FEFCF5] hover:bg-[#FEFCF5] hover:text-[#A00A0A] transition-all duration-200 text-xl px-4 py-2 rounded-xl"
-      >
-        Donate
-      </Button>
-    </a>
-    <span class="text-xs">
-      © 2024 Guru Shradha. All rights reserved. Designed and developed by Alex
-      Nikanov, Maya Devalcheruvu, Ragini Vecham, Mayura Garg, Trina Sarkar, and
-      Niharika Mohanty
-    </span>
-  </div>
-  <div class="col-span-2 sm:items-center flex flex-col gap-8 my-auto">
-    <h1 class="text-2xl font-bold">Subscribe</h1>
-    <span class="text-lg">Sign up to receive newsletter and updates.</span>
-    <div class="flex flex-row gap-4">
-      <input
-        type="email"
-        placeholder="Email"
-        class="border border-[#A00A0A] px-4 py-2 rounded-xl"
-      />
-      <Button
-        className="bg-[#A00A0A] border-[#A00A0A] border text-[#FEFCF5] hover:bg-[#FEFCF5] hover:text-[#A00A0A] transition-all duration-200 text-xl px-4 py-2 rounded-xl"
-      >
-        Subscribe
-      </Button>
-    </div>
+  <div class="absolute top-0 left-0 -translate-y-12 flex w-full h-12 from-transparent to-[#896B34] bg-gradient-to-b">
   </div>
   <div
-    class="col-span-1 flex flex-col h-full gap-2 text-lg justify-between sm:items-end"
+    class="flex flex-col gap-8 sm:grid sm:grid-cols-4 w-full p-8 text-[#FEFCF5] mt-auto bg-no-repeat bg-cover"
+    style={`background-image: url(${FooterImage.src});`}
   >
-    <a href="/about" class="text-[#FEFCF5] underline font-bold">About</a>
-    <a href="/events" class="text-[#FEFCF5] underline font-bold">Events</a>
-    <a href="/classes" class="text-[#FEFCF5] underline font-bold">Classes</a>
-    <a href="/gallery" class="text-[#FEFCF5] underline font-bold">Gallery</a>
-    <a href="/support-us" class="text-[#FEFCF5] underline font-bold">Support</a>
-    <a href="/contact-us" class="text-[#FEFCF5] underline font-bold">Contact</a>
+    <div class="flex flex-col gap-8 col-span-1">
+      <h1 class="text-2xl">Guru Shradha</h1>
+      <div class="flex flex-row gap-4 items-center">
+        {
+          socials.map((social) => (
+            <SocialLinkComponent
+              linkType={social.linkType}
+              url={social.url}
+              hexColor="FEFCF5"
+            />
+          ))
+        }
+      </div>
+      <a href={"/support-us"} class="mr-auto">
+        <Button
+          className="bg-[#A00A0A] w-48 border-[#A00A0A] border text-[#FEFCF5] hover:bg-[#FEFCF5] hover:text-[#A00A0A] transition-all duration-200 text-xl px-4 py-2 rounded-xl"
+        >
+          Donate
+        </Button>
+      </a>
+      <span class="text-xs">
+        © 2024 Guru Shradha. All rights reserved. Designed and developed by
+        Alex Nikanov, Maya Devalcheruvu, Ragini Vecham, Mayura Garg, Trina
+        Sarkar, and Niharika Mohanty.
+      </span>
+    </div>
+    <div class="col-span-2 sm:items-center flex flex-col gap-8 my-auto">
+      <h1 class="text-2xl font-bold">Subscribe</h1>
+      <span class="text-lg">Sign up to receive newsletter and updates.</span>
+      <div class="flex flex-row gap-4">
+        <input
+          type="email"
+          placeholder="Email"
+          class="border border-[#A00A0A] px-4 py-2 rounded-xl"
+        />
+        <Button
+          className="bg-[#A00A0A] border-[#A00A0A] border text-[#FEFCF5] hover:bg-[#FEFCF5] hover:text-[#A00A0A] transition-all duration-200 text-xl px-4 py-2 rounded-xl"
+        >
+          Subscribe
+        </Button>
+      </div>
+    </div>
+    <div
+      class="col-span-1 flex flex-col h-full gap-2 text-lg justify-between sm:items-end"
+    >
+      <a href="/about" class="text-[#FEFCF5] underline font-bold">About</a>
+      <a href="/events" class="text-[#FEFCF5] underline font-bold">Events</a>
+      <a href="/classes" class="text-[#FEFCF5] underline font-bold">Classes</a>
+      <a href="/gallery" class="text-[#FEFCF5] underline font-bold">Gallery</a>
+      <a href="/support-us" class="text-[#FEFCF5] underline font-bold"
+        >Support</a
+      >
+      <a href="/contact-us" class="text-[#FEFCF5] underline font-bold"
+        >Contact</a
+      >
+    </div>
   </div>
 </div>
