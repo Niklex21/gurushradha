@@ -40,6 +40,18 @@ export type Asset = {
 export interface InstagramPost {
   permalink: string;
   id: string;
+  caption: string;
+  media_url: string;
+  media_type: "IMAGE" | "VIDEO" | "CAROUSEL_ALBUM";
+  thumbnail_url?: string;
+  children?: InstagramChildPost[];
+}
+
+export interface InstagramChildPost {
+  id: string;
+  media_type: "IMAGE" | "VIDEO";
+  media_url: string;
+  thumbnail_url?: string;
 }
 
 export interface InstagramApiResponse {
