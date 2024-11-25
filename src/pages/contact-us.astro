@@ -14,7 +14,9 @@ const { data } = await useStoryblokGet("cdn/stories/contact-us");
     class="p-16 flex w-full flex-col pb-48 text-[#FEFCF5] gap-8 bg-[#FEFCF5] bg-cover bg-no-repeat bg-blend-darken bg-black/90"
     style={{ backgroundImage: `url(${backgroundImage.src})` }}
   >
-    <h1 class="text-5xl font-bold mx-auto uppercase font-serif mb-16">Contact</h1>
+    <h1 class="text-5xl font-bold mx-auto uppercase font-serif mb-16">
+      Contact
+    </h1>
     <div class="flex flex-col gap-16 sm:grid grid-cols-2 w-full">
       <form class="flex flex-col gap-4">
         <div class="flex flex-col sm:flex-row gap-4 w-full">
@@ -96,31 +98,38 @@ const { data } = await useStoryblokGet("cdn/stories/contact-us");
             class="w-full px-4 py-2 bg-[#FEFCF5] text-gray-900 rounded-xl focus:ring-2 focus:ring-gold focus:outline-none"
             required></textarea>
         </div>
-        <Button
-          className="text-xl bg-[#FEFCF5] text-[#A00A0A] rounded-xl font-bold border-[#FEFCF5] border hover:bg-[#A00A0A] hover:text-[#FEFCF5]"
-        >
-          Submit
-        </Button>
+        <Button>Submit</Button>
       </form>
       <div class="flex flex-col h-full justify-between ml-auto gap-8">
         <div class="flex flex-col gap-4">
           <span>
-            Email address: <a target="_blank" class="underline" href="mailto:gurushradha@gmail.com"
-              >gurushradha@gmail.com</a
+            Email address: <a
+              target="_blank"
+              class="underline"
+              href="mailto:gurushradha@gmail.com">gurushradha@gmail.com</a
             >
           </span>
           <span>
-            Facebook: <a target="_blank" class="underline" href="https://www.facebook.com/GuruShradha/"
+            Facebook: <a
+              target="_blank"
+              class="underline"
+              href="https://www.facebook.com/GuruShradha/"
               >https://www.facebook.com/GuruShradha/</a
             >
           </span>
           <span
-            >Instagram: <a target="_blank" class="underline" href="https://www.instagram.com/gurushradha/"
+            >Instagram: <a
+              target="_blank"
+              class="underline"
+              href="https://www.instagram.com/gurushradha/"
               >https://www.instagram.com/gurushradha/</a
             ></span
           >
           <span
-            >YouTube: <a target="_blank" class="underline" href="https://www.youtube.com/@GuruShradha"
+            >YouTube: <a
+              target="_blank"
+              class="underline"
+              href="https://www.youtube.com/@GuruShradha"
               >https://www.youtube.com/@GuruShradha</a
             ></span
           >
@@ -134,11 +143,7 @@ const { data } = await useStoryblokGet("cdn/stories/contact-us");
               placeholder="Email"
               class="border border-[#A00A0A] px-4 py-2 rounded-xl"
             />
-            <Button
-              className="bg-[#A00A0A] border-[#A00A0A] border text-[#FEFCF5] hover:bg-[#FEFCF5] hover:text-[#A00A0A] transition-all duration-200 text-xl px-4 py-2 rounded-xl"
-            >
-              Subscribe
-            </Button>
+            <Button>Subscribe</Button>
           </div>
           <span class="text-xs italic">
             We respect your privacy. Unsubscribe at any time.
