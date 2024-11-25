@@ -8,6 +8,48 @@ export interface BulletPointStoryblok {
   [k: string]: any;
 }
 
+export interface AssetStoryblok {
+  alt: string | null;
+  copyright?: string | null;
+  fieldtype: "asset";
+  id: number;
+  filename: string | null;
+  name: string;
+  title: string | null;
+  focus: string | null;
+  meta_data?: {
+    [k: string]: any;
+  };
+  source?: string | null;
+  is_external_url?: boolean;
+  is_private?: boolean;
+  src?: string;
+  updated_at?: string;
+  width?: number | null;
+  height?: number | null;
+  aspect_ratio?: number | null;
+  public_id?: string | null;
+  content_type?: string;
+  [k: string]: any;
+}
+
+export interface EventStoryblok {
+  name: string;
+  location?: string;
+  date?: string;
+  image: AssetStoryblok;
+  component: "event";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface EventsStoryblok {
+  events: EventStoryblok[];
+  component: "events";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface GalleryPhotoshootStoryblok {
   name?: string;
   folder_name: string;
@@ -20,6 +62,8 @@ export interface GalleryPhotoshootStoryblok {
 export interface GlobalStoryblok {
   global?: (
     | BulletPointStoryblok
+    | EventStoryblok
+    | EventsStoryblok
     | GalleryPhotoshootStoryblok
     | GlobalStoryblok
     | GlobalReferenceStoryblok
@@ -155,31 +199,6 @@ export interface MenuItemStoryblok {
   [k: string]: any;
 }
 
-export interface AssetStoryblok {
-  alt: string | null;
-  copyright?: string | null;
-  fieldtype: "asset";
-  id: number;
-  filename: string | null;
-  name: string;
-  title: string | null;
-  focus: string | null;
-  meta_data?: {
-    [k: string]: any;
-  };
-  source?: string | null;
-  is_external_url?: boolean;
-  is_private?: boolean;
-  src?: string;
-  updated_at?: string;
-  width?: number | null;
-  height?: number | null;
-  aspect_ratio?: number | null;
-  public_id?: string | null;
-  content_type?: string;
-  [k: string]: any;
-}
-
 export interface NavbarStoryblok {
   logo: AssetStoryblok;
   menu_items: MenuItemStoryblok[];
@@ -193,6 +212,8 @@ export interface NavbarStoryblok {
 export interface PageStoryblok {
   body?: (
     | BulletPointStoryblok
+    | EventStoryblok
+    | EventsStoryblok
     | GalleryPhotoshootStoryblok
     | GlobalStoryblok
     | GlobalReferenceStoryblok

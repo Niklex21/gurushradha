@@ -27,6 +27,7 @@ export default defineConfig({
         home_main_text: "storyblok/HomeMainText",
         vision: "storyblok/Vision",
         testimonials: "storyblok/Testimonials",
+        events: "storyblok/Events",
       },
       apiOptions: {
         // Choose your Storyblok space region

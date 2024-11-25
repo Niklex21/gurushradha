@@ -31,6 +31,86 @@
       "component_group_name": ""
     },
     {
+      "name": "event",
+      "display_name": null,
+      "description": null,
+      "created_at": "2024-11-25T08:40:41.470Z",
+      "updated_at": "2024-11-25T08:42:01.278Z",
+      "id": 262545,
+      "schema": {
+        "name": {
+          "type": "text",
+          "pos": 0,
+          "required": true
+        },
+        "location": {
+          "type": "text",
+          "pos": 1,
+          "required": false
+        },
+        "date": {
+          "type": "datetime",
+          "pos": 2,
+          "required": false
+        },
+        "image": {
+          "type": "asset",
+          "pos": 3,
+          "required": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "event",
+      "component_group_uuid": "all",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": ""
+    },
+    {
+      "name": "events",
+      "display_name": null,
+      "description": null,
+      "created_at": "2024-11-25T08:42:56.976Z",
+      "updated_at": "2024-11-25T08:43:10.383Z",
+      "id": 262546,
+      "schema": {
+        "events": {
+          "type": "bloks",
+          "pos": 0,
+          "required": true,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "event"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "events",
+      "component_group_uuid": "all",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": ""
+    },
+    {
       "name": "gallery_photoshoot",
       "display_name": null,
       "description": null,
