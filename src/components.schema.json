@@ -35,7 +35,7 @@
       "display_name": null,
       "description": null,
       "created_at": "2024-11-25T08:40:41.470Z",
-      "updated_at": "2024-11-25T08:42:01.278Z",
+      "updated_at": "2024-11-27T09:18:44.694Z",
       "id": 262545,
       "schema": {
         "name": {
@@ -57,6 +57,10 @@
           "type": "asset",
           "pos": 3,
           "required": true
+        },
+        "description": {
+          "type": "text",
+          "pos": 4
         }
       },
       "image": null,
@@ -283,6 +287,80 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "home_main_text",
+      "component_group_uuid": "all",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": ""
+    },
+    {
+      "name": "home_testimonial",
+      "display_name": null,
+      "description": null,
+      "created_at": "2024-11-27T08:37:12.528Z",
+      "updated_at": "2024-11-27T08:38:15.872Z",
+      "id": 264216,
+      "schema": {
+        "text": {
+          "type": "text",
+          "pos": 0,
+          "required": true
+        },
+        "person_name": {
+          "type": "text",
+          "pos": 1,
+          "required": true
+        },
+        "relation_to_gs": {
+          "type": "text",
+          "pos": 2
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "home_testimonial",
+      "component_group_uuid": "all",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": ""
+    },
+    {
+      "name": "home_testimonials",
+      "display_name": null,
+      "description": null,
+      "created_at": "2024-11-27T08:38:35.056Z",
+      "updated_at": "2024-11-27T08:38:50.549Z",
+      "id": 264217,
+      "schema": {
+        "testimonials": {
+          "type": "bloks",
+          "pos": 0,
+          "required": true,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "home_testimonial"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "home_testimonials",
       "component_group_uuid": "all",
       "color": null,
       "icon": null,
@@ -585,7 +663,7 @@
       "display_name": null,
       "description": null,
       "created_at": "2024-11-22T21:28:23.935Z",
-      "updated_at": "2024-11-22T21:54:49.692Z",
+      "updated_at": "2024-11-27T08:23:54.194Z",
       "id": 262280,
       "schema": {
         "person_name": {
@@ -603,6 +681,23 @@
           "type": "text",
           "pos": 2,
           "required": true
+        },
+        "type": {
+          "type": "option",
+          "pos": 3,
+          "use_uuid": true,
+          "options": [
+            {
+              "_uid": "3c03ad35-4088-4767-ae53-8c48f97c3f94",
+              "name": "Review",
+              "value": "review"
+            },
+            {
+              "_uid": "7c6df47e-6ef5-48cf-baba-3ef799d5f257",
+              "value": "testimonial",
+              "name": "Testimonial"
+            }
+          ]
         }
       },
       "image": null,

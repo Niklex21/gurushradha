@@ -6,6 +6,6 @@ import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 const { data } = await useStoryblokGet("cdn/stories/testimonials");
 ---
 
-<Layout title="Testimonials">
+<Layout title="Wall of Love">
   <StoryblokComponent blok={data.story.content} />
 </Layout>

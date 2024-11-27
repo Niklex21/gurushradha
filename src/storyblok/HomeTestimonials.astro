@@ -1,0 +1,10 @@
+---
+import type { HomeTestimonialsStoryblok } from "@/component-types";
+import TestimonialRotator from "@/components/TestimonialRotator";
+
+const { blok } = Astro.props as { blok: HomeTestimonialsStoryblok };
+---
+
+<div class="flex w-full h-60 bg-[#FEFCF5] px-8 py-16">
+  <TestimonialRotator testimonials={blok.testimonials} client:load />
+</div>

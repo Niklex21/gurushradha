@@ -38,6 +38,7 @@ export interface EventStoryblok {
   location?: string;
   date?: string;
   image: AssetStoryblok;
+  description?: string;
   component: "event";
   _uid: string;
   [k: string]: any;
@@ -69,6 +70,8 @@ export interface GlobalStoryblok {
     | GlobalReferenceStoryblok
     | HeroStoryblok
     | HomeMainTextStoryblok
+    | HomeTestimonialStoryblok
+    | HomeTestimonialsStoryblok
     | InstagramFeedStoryblok
     | MenuItemStoryblok
     | NavbarStoryblok
@@ -182,6 +185,22 @@ export interface HomeMainTextStoryblok {
   [k: string]: any;
 }
 
+export interface HomeTestimonialStoryblok {
+  text: string;
+  person_name: string;
+  relation_to_gs?: string;
+  component: "home_testimonial";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface HomeTestimonialsStoryblok {
+  testimonials: HomeTestimonialStoryblok[];
+  component: "home_testimonials";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface InstagramFeedStoryblok {
   instagram_id: string;
   limit: string;
@@ -219,6 +238,8 @@ export interface PageStoryblok {
     | GlobalReferenceStoryblok
     | HeroStoryblok
     | HomeMainTextStoryblok
+    | HomeTestimonialStoryblok
+    | HomeTestimonialsStoryblok
     | InstagramFeedStoryblok
     | MenuItemStoryblok
     | NavbarStoryblok
@@ -256,6 +277,7 @@ export interface TestimonialStoryblok {
   person_name: string;
   quote: string;
   relation_to_gs: string;
+  type?: "" | "review" | "testimonial";
   component: "testimonial";
   _uid: string;
   [k: string]: any;

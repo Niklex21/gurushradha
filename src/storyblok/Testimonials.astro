@@ -8,18 +8,43 @@ const { blok } = Astro.props as { blok: TestimonialsStoryblok };
   <h1 class="text-5xl font-bold sm:mx-auto uppercase font-serif">
     Wall of Love
   </h1>
-  <h2 class="text-2xl mx-auto">Read what our community is saying about Guru Shradha.</h2>
-  <div class="flex flex-row max-w-1/2 flex-wrap gap-8 mt-8 mx-auto">
-    {
-      blok.testimonials?.map((testimonial) => (
-        <div class="flex flex-col p-6 rounded-xl border-gray-200 border-2">
-          <span class="text-xl">{testimonial.quote}</span>
-          <h1 class="text-lg font-bold mt-6">
-            {testimonial.person_name}
-          </h1>
-          <span class="text-sm text-gray-500">{testimonial.relation_to_gs}</span>
-        </div>
-      ))
-    }
+  <h2 class="text-2xl mx-auto">
+    Read what our community is saying about Guru Shradha.
+  </h2>
+  <div class="flex flex-col gap-8 sm:grid sm:grid-cols-2">
+    <div class="flex flex-col max-w-1/2 flex-wrap gap-8 mt-8">
+      <!-- review -->
+      <h2 class="text-2xl font-bold">Review</h2>
+      {
+        blok.testimonials
+          ?.filter((testimonial) => testimonial.type === "review")
+          .map((testimonial) => (
+            <div class="flex flex-col p-6 rounded-xl border-gray-200 border-2">
+              <span class="text-xl">{testimonial.quote}</span>
+              <h1 class="text-lg font-bold mt-6">{testimonial.person_name}</h1>
+              <span class="text-sm text-gray-500">
+                {testimonial.relation_to_gs}
+              </span>
+            </div>
+          ))
+      }
+    </div>
+    <!-- testimonials -->
+    <div class="flex flex-col max-w-1/2 flex-wrap gap-8 mt-8">
+      <h2 class="text-2xl font-bold">Testimonials</h2>
+      {
+        blok.testimonials
+          ?.filter((testimonial) => testimonial.type === "testimonial")
+          .map((testimonial) => (
+            <div class="flex flex-col p-6 rounded-xl border-gray-200 border-2">
+              <span class="text-xl">{testimonial.quote}</span>
+              <h1 class="text-lg font-bold mt-6">{testimonial.person_name}</h1>
+              <span class="text-sm text-gray-500">
+                {testimonial.relation_to_gs}
+              </span>
+            </div>
+          ))
+      }
+    </div>
   </div>
 </div>

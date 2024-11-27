@@ -26,7 +26,7 @@ export default function InstagramPost({ post }: InstagramPostProps) {
     <a
       href={post.permalink}
       target="_blank"
-      className="flex-none h-96 group hover:brightness-90"
+      className="flex-none h-60 group hover:brightness-90"
     >
       {post.media_type === "CAROUSEL_ALBUM" ? (
         <div className="relative h-full w-auto rounded-xl">

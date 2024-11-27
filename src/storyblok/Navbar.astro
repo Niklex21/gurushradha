@@ -41,7 +41,7 @@ const { pathname } = Astro.url;
 <!-- desktop navbar -->
 <div
   id="navbar"
-  class="hidden sm:flex w-full flex-col sticky top-0 left-0 z-50 bg-[#FEFCF5] transition-all rounded-b-xl drop-shadow-md"
+  class="hidden sm:flex w-full flex-col sticky top-0 left-0 z-50 bg-[#FEFCF5] transition-all drop-shadow-md"
 >
   <div class="flex flex-row gap-4 justify-between items-center p-6">
     <a href="/">
@@ -73,6 +73,6 @@ const { pathname } = Astro.url;
       {blok.social_links?.map((link) => <StoryblokComponent blok={link} />)}
     </div>
   </div>
-  <div class="flex w-full bg-[url('/src/images/saree.png')] h-20 bg-repeat-x bg-contain rounded-b-xl">
+  <div class="flex w-full bg-[url('/src/images/saree.jpeg')] h-20 bg-repeat-x bg-contain">
   </div>
 </div>
