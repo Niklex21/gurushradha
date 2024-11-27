@@ -8,6 +8,7 @@ import {
   type ISbStoryData,
   type ISbStoryParams,
 } from "@storyblok/astro";
+import type { MultilinkStoryblok } from "./component-types";
 
 const storyblokApi = useStoryblokApi();
 const VERSION = import.meta.env.DEV ? "draft" : "published";
@@ -130,3 +131,7 @@ export const useStoryblokGetStory = async (
     fetchOptions,
   );
 };
+
+export const getHref = (link: MultilinkStoryblok) => {
+  return link.linktype === "story" ? link.cached_url : link.url;
+}

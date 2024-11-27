@@ -6,6 +6,7 @@ import SculptureClasses from "@/images/sculptures/classes.svg";
 import SculptureGallery from "@/images/sculptures/gallery.svg";
 import SculptureContact from "@/images/sculptures/contact.svg";
 import SculptureEvents from "@/images/sculptures/events.svg";
+import { getHref } from "@/utils";
 
 const ITEM_NAME_TO_SCULPTURE: {
   [key: string]: ImageMetadata | undefined;
@@ -25,8 +26,7 @@ export function MenuLink({
   item: MenuItemStoryblok;
   pathname: string;
 }) {
-  const href =
-    item.link?.linktype === "story" ? item.link.cached_url : item.link?.url;
+  const href = item.link ? getHref(item.link) : undefined;
   const active = href === pathname.slice(1); // to remove the slash
 
   return (

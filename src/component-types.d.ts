@@ -277,6 +277,7 @@ export interface TestimonialStoryblok {
   person_name: string;
   quote: string;
   relation_to_gs: string;
+  source?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   type?: "" | "review" | "testimonial";
   component: "testimonial";
   _uid: string;
