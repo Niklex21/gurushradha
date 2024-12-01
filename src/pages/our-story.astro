@@ -5,14 +5,161 @@ import { useStoryblokGet } from "@/utils";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 
 const { data } = await useStoryblokGet("cdn/stories/our-story");
+
+const timelineData = [
+  { year: "2004", label: "Guru Kelucharan Mohapatra's Blessing" },
+  { year: "2008", label: "Guru Shradha Established" },
+  { year: "2010-2015", label: "International Recognition" },
+  { year: "2018", label: "10th Anniversary Celebration" },
+  { year: "2019-Present", label: "Global Impact & Innovation" },
+];
 ---
 
 <Layout title="Our Story">
   <StoryblokComponent blok={data.story.content} />
   <VerticalBordersLayout>
-    <div class="p-16 flex w-full flex-col gap-8 bg-[#FEFCF5]">
+    <div class="p-16 flex w-full flex-col gap-8 bg-[#FEFCF5] pb-32">
       <h1 class="text-5xl font-bold mx-auto uppercase font-serif">Our story</h1>
-      
+      <h2 class="mx-auto text-3xl font-bold text-[#A00A0A]">
+        "A Legacy of Grace: From Ancient India to Silicon Valley"
+      </h2>
+      <div class="py-8 px-4 bg-orange-50">
+        <h2 class="text-2xl font-bold text-center text-orange-700 mb-8">
+          Journey of Guru Shradha: A Legacy of Classical Dance
+        </h2>
+        <div class="relative flex flex-col items-center md:flex-row md:justify-between max-w-4xl mx-auto gap-4 mt-16">
+          {/* Line */}
+          <div class="absolute md:top-[38px] top-0 w-1 h-full bg-orange-300 md:w-full md:h-1"></div>
+          {/* Timeline Items */}
+          {timelineData.map((item, index) => (
+            <div class="relative flex flex-col items-center gap-2">
+              {/* Year */}
+              <p class="text-sm font-semibold text-orange-800">{item.year}</p>
+              {/* Circle */}
+              <div class="w-6 h-6 bg-orange-500 rounded-full border-2 border-orange-700 z-10"></div>
+              {/* Label */}
+              <p class="mt-1 text-center text-sm text-orange-600 line-clamp-2 p-2 rounded-xl bg-orange-100">{item.label}</p>
+            </div>
+          ))}
+        </div>
+        <div class="mt-16 text-center text-orange-700 font-medium">
+          Preserving and Propagating the Legacy of Guru Kelucharan Mohapatra
+        </div>
+      </div>
+      <h3 class="text-xl font-bold mt-8">
+        Our Journey: Key Milestones That Shape Our Story
+      </h3>
+      <div class="flex flex-col gap-8">
+        <ul class="list-disc">
+          <span class="font-bold">1982 - 1997: The Initiation</span>
+          <div class="ml-8 mt-4">
+            <li>
+              Niharika Mohanty trains under mainstream Canadian Indian dancer,
+              Dr. Menaka Thakkar, a prime disciple of legendary Odissi master
+              Guru Kelucharan Mohapatra and Governor General&apos;s Lifetime
+              Artistic Achievement in Dance Awardee
+            </li>
+            <li>
+              Niharika becomes the main Odissi teacher at Dr. Thakkar’s school
+              and company member of MTDC; also teaches in her hometown
+            </li>
+            <li>
+              She initiates many collaborations with dancers of various styles,
+              and works with renowned west African dancer, Zelma Badu and Order
+              of Canada awardee Lata Pada
+            </li>
+          </div>
+        </ul>
+        <ul class="list-disc">
+          <span class="font-bold">1989 - 2004: Training from the Best</span>
+          <div class="ml-8 mt-4">
+            <li>
+              Niharika Mohanty rigorously trains daily under Guru Kelucharan
+              Mohapatra for periods of months over the years
+            </li>
+            <li>
+              She accompanies him in his 1996 North American and European tours
+              and plays the key role of Sita in his dance ballet
+            </li>
+          </div>
+        </ul>
+        <ul class="list-disc">
+          <span class="font-bold">2004: A Sacred Beginning</span>
+          <div class="ml-8 mt-4">
+            <li>
+              Legendary master Guru Kelucharan Mohapatra bestows his blessing on
+              a new institution in North America
+            </li>
+            <li>
+              His vision: spreading the ancient art of Odissi dance beyond
+              India's borders
+            </li>
+          </div>
+        </ul>
+        <ul class="list-disc">
+          <span class="font-bold">2008: The Torch is Lit</span>
+          <div class="ml-8 mt-4">
+            <li>
+              Guru Shradha established as Guruji&apos;s second global
+              institution by Director & Principal Teacher Niharika Mohanty with
+              Guru Ratikant Mohapatra as Chief Advisor and Guru Sujata Mohapatra
+              as Artistic Director
+            </li>
+            <li>
+              Debut residency at the Asian Art Museum launches our public
+              presence
+            </li>
+            <li>
+              First dance workshops guided by Guru Ratikant & Guru Sujata
+              Mohapatra
+            </li>
+          </div>
+        </ul>
+        <ul class="list-disc">
+          <span class="font-bold">2010-2015: Growing Our Roots</span>
+          <div class="ml-8 mt-4">
+            <li>Launch of the annual Kelucharan Keerti Sampradaya Festival</li>
+            <li>
+              International performances in India's prestigious Odissi festivals
+            </li>
+            <li>Collaborative productions bridging classical traditions</li>
+          </div>
+        </ul>
+        <ul class="list-disc">
+          <span class="font-bold">2018: A Decade of Dance</span>
+          <div class="ml-8 mt-4">
+            <li>
+              10th Anniversary celebration featuring the illustrious trio of the
+              Mohapatra family - Guru Ratikant, Guru Sujata and their daughter
+              Preetisha
+            </li>
+            <li>
+              Established as a premier Odissi institution in North America
+            </li>
+          </div>
+        </ul>
+        <ul class="list-disc">
+          <span class="font-bold">2019-Present: Expanding Our Reach</span>
+          <div class="ml-8 mt-4">
+            <li>Recognition: Best of Palo Alto Dance School Award</li>
+            <li>
+              Successful adaptation to global challenges with online instruction
+            </li>
+            <li>Evolution to student-teacher mentorship program</li>
+            <li>Continued innovation through cross-cultural collaborations</li>
+          </div>
+        </ul>
+        <ul class="list-disc">
+          <span class="font-bold">Legacy in Numbers:</span>
+          <div class="ml-8 mt-4">
+            <li>15+ years of continuous instruction</li>
+            <li>100s of students trained</li>
+            <li>50+ major performances</li>
+            <li>6 dance styles collaborated with</li>
+            <li>2 continents connected through dance</li>
+          </div>
+        </ul>
+      </div>
     </div>
   </VerticalBordersLayout>
 </Layout>
