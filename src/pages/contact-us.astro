@@ -1,11 +1,14 @@
 ---
-import { Button } from "@/components/ui/button";
 import Layout from "@/layouts/Layout.astro";
 import { useStoryblokGet } from "@/utils";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import backgroundImage from "@/images/contact_background.jpg";
+import ContactForm from "@/components/ContactForm";
+import SubscribeForm from "@/components/SubscribeForm";
 
 const { data } = await useStoryblokGet("cdn/stories/contact-us");
+
+const ACCESS_KEY = import.meta.env.STATIC_FORMS_ACCESS_KEY;
 ---
 
 <Layout title="Contact Us">
@@ -21,88 +24,7 @@ const { data } = await useStoryblokGet("cdn/stories/contact-us");
       Contact
     </h1>
     <div class="flex flex-col gap-16 sm:grid grid-cols-2 w-full">
-      <form class="flex flex-col gap-4">
-        <div class="flex flex-col sm:flex-row gap-4 w-full">
-          <div class="space-y-2 flex w-full flex-col">
-            <label
-              for="first-name"
-              class="block text-[#FEFCF5] text-sm font-semibold"
-              >First Name <span class="text-gray-300">(required)</span></label
-            >
-            <input
-              type="text"
-              id="first-name"
-              name="first-name"
-              class="w-full bg-[#FEFCF5] px-4 py-2 text-gray-900 rounded-xl focus:ring-2 focus:ring-gold focus:outline-none"
-              required
-            />
-          </div>
-          <div class="space-y-2 flex w-full flex-col">
-            <label
-              for="last-name"
-              class="block text-[#FEFCF5] text-sm font-semibold"
-              >Last Name</label
-            >
-            <input
-              type="text"
-              id="last-name"
-              name="last-name"
-              class="w-full bg-[#FEFCF5] px-4 py-2 text-gray-900 rounded-xl focus:ring-2 focus:ring-gold focus:outline-none"
-            />
-          </div>
-        </div>
-        <div class="space-y-2">
-          <label for="email" class="block text-[#FEFCF5] text-sm font-semibold"
-            >Email <span class="text-gray-300">(required)</span></label
-          >
-          <input
-            type="email"
-            id="email"
-            name="email"
-            class="w-full px-4 py-2 bg-[#FEFCF5] text-gray-900 rounded-xl focus:ring-2 focus:ring-gold focus:outline-none"
-            required
-          />
-          <div class="flex items-center space-x-2">
-            <input
-              type="checkbox"
-              id="newsletter"
-              name="newsletter"
-              class="bg-[#FEFCF5]"
-            />
-            <label for="newsletter" class="text-[#FEFCF5] text-sm"
-              >Sign up for news and updates</label
-            >
-          </div>
-        </div>
-        <div class="space-y-2">
-          <label
-            for="subject"
-            class="block text-[#FEFCF5] text-sm font-semibold"
-            >Subject <span class="text-gray-300">(required)</span></label
-          >
-          <input
-            type="text"
-            id="subject"
-            name="subject"
-            class="w-full bg-[#FEFCF5] px-4 py-2 text-gray-900 rounded-xl focus:ring-2 focus:ring-gold focus:outline-none"
-            required
-          />
-        </div>
-        <div class="space-y-2">
-          <label
-            for="message"
-            class="block text-[#FEFCF5] text-sm font-semibold"
-            >Message <span class="text-gray-300">(required)</span></label
-          >
-          <textarea
-            id="message"
-            name="message"
-            rows="4"
-            class="w-full px-4 py-2 bg-[#FEFCF5] text-gray-900 rounded-xl focus:ring-2 focus:ring-gold focus:outline-none"
-            required></textarea>
-        </div>
-        <Button>Submit</Button>
-      </form>
+      <ContactForm client:load ACCESS_KEY={ACCESS_KEY} />
       <div class="flex flex-col h-full justify-between ml-auto gap-8">
         <div class="flex flex-col gap-4">
           <span>
@@ -140,14 +62,7 @@ const { data } = await useStoryblokGet("cdn/stories/contact-us");
         <div class="flex flex-col gap-4">
           <span class="text-xl">Subscribe</span>
           <span>Sign up to receive newsletter and updates.</span>
-          <div class="flex flex-col sm:flex-row gap-4">
-            <input
-              type="email"
-              placeholder="Email"
-              class="px-4 py-2 rounded-xl"
-            />
-            <Button>Subscribe</Button>
-          </div>
+          <SubscribeForm client:load />
           <span class="text-xs italic">
             We respect your privacy. Unsubscribe at any time.
           </span>
