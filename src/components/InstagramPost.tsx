@@ -26,7 +26,7 @@ export default function InstagramPost({ post }: InstagramPostProps) {
     <a
       href={post.permalink}
       target="_blank"
-      className="flex-none h-60 group hover:brightness-90"
+      className="flex-none h-80 group hover:brightness-90"
     >
       {post.media_type === "CAROUSEL_ALBUM" ? (
         <div className="relative h-full w-auto rounded-xl">
@@ -65,13 +65,13 @@ export default function InstagramPost({ post }: InstagramPostProps) {
                 <video
                   src={child.media_url}
                   controls
-                  className="h-full w-auto rounded-xl"
+                  className="h-full aspect-square rounded-xl object-cover"
                 />
               ) : (
                 <img
                   src={child.media_url}
                   alt={post.caption}
-                  className="h-full w-auto rounded-xl"
+                  className="h-full aspect-square rounded-xl object-cover"
                 />
               )}
             </div>
@@ -81,13 +81,13 @@ export default function InstagramPost({ post }: InstagramPostProps) {
         <video
           src={post.media_url}
           controls
-          className="h-full w-auto rounded-xl"
+          className="h-full aspect-square rounded-xl object-cover"
         />
       ) : (
         <img
           src={post.media_url}
           alt={post.caption}
-          className="h-full w-auto rounded-xl"
+          className="h-full aspect-square rounded-xl object-cover"
         />
       )}
       <div className="absolute top-0 rounded-t-xl left-0 w-full bg-black bg-opacity-50 text-[#FEFCF5] p-4 opacity-0 group-hover:opacity-100 sm:opacity-0 transition-opacity">
