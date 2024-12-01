@@ -1,5 +1,6 @@
 ---
 import SocialLinkComponent from "./SocialLinkComponent.astro";
+import SubscribeForm from "./SubscribeForm";
 import { Button } from "./ui/button";
 import FooterImage from "@/images/footer_background.png";
 
@@ -57,14 +58,7 @@ const socials = [
     <div class="col-span-2 sm:items-center flex flex-col gap-8 my-auto">
       <h1 class="text-2xl font-bold">Subscribe</h1>
       <span class="text-lg">Sign up to receive newsletter and updates.</span>
-      <div class="flex flex-row gap-4">
-        <input
-          type="email"
-          placeholder="Email"
-          class="border border-[#A00A0A] px-4 py-2 rounded-xl"
-        />
-        <Button>Subscribe</Button>
-      </div>
+      <SubscribeForm client:load />
     </div>
     <div
       class="col-span-1 flex flex-col h-full gap-2 text-lg justify-between sm:items-end"
