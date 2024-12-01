@@ -24,7 +24,7 @@ function GalleryImage({ asset, ...props }: GalleryImageProps) {
         }
         alt={asset.alt ?? "image"}
         decoding="async"
-        className="object-cover w-full h-full rounded-xl hover:brightness-90 cursor-pointer"
+        className="object-cover w-full aspect-square rounded-xl hover:brightness-90 cursor-pointer"
         {...props}
       />
     </>
