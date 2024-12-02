@@ -1,5 +1,6 @@
 import type { MultiassetStoryblok } from "@/component-types";
-import React, { useState, useEffect, useRef } from "react";
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 
 type SlideshowProps = {
   slides: MultiassetStoryblok;
@@ -47,6 +48,28 @@ export default function Slideshow({ slides }: SlideshowProps) {
     };
   }, [currentIndex]);
 
+  const goToPreviousSlide = useCallback(() => {
+    setPrevIndex(currentIndex);
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? slides.length - 1 : prevIndex - 1,
+    );
+  }, [currentIndex, slides.length, setPrevIndex, setCurrentIndex]);
+
+  const goToNextSlide = useCallback(() => {
+    setPrevIndex(currentIndex);
+    setCurrentIndex((prevIndex) =>
+      prevIndex === slides.length - 1 ? 0 : prevIndex + 1,
+    );
+  }, [currentIndex, slides.length, setPrevIndex, setCurrentIndex]);
+
+  const goToSlide = useCallback(
+    (index: number) => {
+      setPrevIndex(currentIndex);
+      setCurrentIndex(index);
+    },
+    [setPrevIndex, setCurrentIndex, currentIndex],
+  );
+
   if (!slides || slides.length === 0) {
     return null;
   }
@@ -58,7 +81,7 @@ export default function Slideshow({ slides }: SlideshowProps) {
   }
 
   return (
-    <div className="relative rounded-xl overflow-hidden h-full flex items-center justify-center">
+    <div className="group w-full relative overflow-hidden h-full min-h-96 flex items-center justify-center">
       {slides.map((slide, index) => {
         const isCurrent = index === currentIndex;
         const wasCurrent = index === prevIndex;
@@ -100,6 +123,33 @@ export default function Slideshow({ slides }: SlideshowProps) {
           </div>
         );
       })}
+
+      {/* Navigation Arrows */}
+      <button
+        onClick={goToPreviousSlide}
+        className="sm:invisible sm:group-hover:visible absolute left-2 top-1/2 transform -translate-y-1/2 bg-foreground bg-opacity-50 text-background p-2 rounded-full"
+      >
+        <ChevronLeftIcon />
+      </button>
+      <button
+        onClick={goToNextSlide}
+        className="sm:invisible sm:group-hover:visible absolute right-2 top-1/2 transform -translate-y-1/2 bg-foreground bg-opacity-50 text-background p-2 rounded-full"
+      >
+        <ChevronRightIcon />
+      </button>
+
+      {/* Dots */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={`w-3 h-3 rounded-full scale-100 transition-all duration-200 hover:scale-150 ${
+              index === currentIndex ? "bg-background" : "bg-gray-400"
+            }`}
+          />
+        ))}
+      </div>
     </div>
   );
 }
