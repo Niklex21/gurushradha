@@ -252,7 +252,7 @@
       "display_name": null,
       "description": null,
       "created_at": "2024-11-18T00:39:26.410Z",
-      "updated_at": "2024-11-18T05:42:07.547Z",
+      "updated_at": "2024-12-02T05:33:27.886Z",
       "id": 258685,
       "schema": {
         "headline": {
@@ -265,18 +265,10 @@
           "pos": 1,
           "required": true
         },
-        "donate_link": {
-          "type": "multilink",
-          "pos": 2
-        },
-        "bullet_points": {
-          "type": "bloks",
+        "text": {
+          "type": "richtext",
           "pos": 3,
-          "restrict_type": "",
-          "restrict_components": true,
-          "component_whitelist": [
-            "bullet_point"
-          ]
+          "description": ""
         }
       },
       "image": null,
@@ -523,30 +515,11 @@
       "display_name": null,
       "description": null,
       "created_at": "2024-10-05T20:49:53.205Z",
-      "updated_at": "2024-11-11T06:36:33.897Z",
+      "updated_at": "2024-12-02T06:48:18.466Z",
       "id": 248712,
       "schema": {
         "body": {
           "type": "bloks"
-        },
-        "events": {
-          "type": "bloks",
-          "pos": 1,
-          "required": false,
-          "restrict_type": "",
-          "restrict_components": true,
-          "component_whitelist": [
-            "gallery_photoshoot"
-          ]
-        },
-        "sections": {
-          "type": "bloks",
-          "pos": 2,
-          "restrict_type": "",
-          "restrict_components": true,
-          "component_whitelist": [
-            "section"
-          ]
         }
       },
       "image": null,
@@ -563,6 +536,51 @@
       "internal_tags_list": [],
       "internal_tag_ids": [],
       "content_type_asset_preview": null
+    },
+    {
+      "name": "page_classes",
+      "display_name": null,
+      "description": null,
+      "created_at": "2024-12-02T07:11:51.887Z",
+      "updated_at": "2024-12-02T07:22:13.841Z",
+      "id": 264713,
+      "schema": {
+        "slideshow": {
+          "type": "multiasset",
+          "pos": 0,
+          "filetypes": [
+            "videos",
+            "images"
+          ],
+          "asset_folder_id": 20238,
+          "required": true
+        },
+        "text_background": {
+          "type": "asset",
+          "pos": 1,
+          "required": true
+        },
+        "text": {
+          "type": "richtext",
+          "pos": 2,
+          "required": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "page_classes",
+      "component_group_uuid": "all",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": ""
     },
     {
       "name": "section",

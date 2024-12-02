@@ -4,8 +4,10 @@ import type {
   HomeMainTextStoryblok,
 } from "@/component-types";
 import { Button } from "@/components/ui/button";
+import { renderRichText } from "@storyblok/astro";
 
 const { blok } = Astro.props as { blok: HomeMainTextStoryblok };
+const renderedRichText = renderRichText(blok.text);
 ---
 
 <div class="flex flex-row gap-8 items-center">
@@ -14,25 +16,15 @@ const { blok } = Astro.props as { blok: HomeMainTextStoryblok };
   >
     <div class="flex flex-row gap-8 items-center justify-center">
       <div class="flex flex-col gap-4 justify-start text-center">
-        <h1
-          class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-4xl font-bold text-black max-w-prose flex font-serif"
-        >
+        <h1 class="font-serif">
           {blok.headline}
         </h1>
-        <div
-          class="flex flex-col gap-8 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-black font-serif"
-        >
-          <span class="">{blok.call_to_action}</span>
-        </div>
+        <h2 class="font-serif">{blok.call_to_action}</h2>
       </div>
     </div>
-    <ul class="flex flex-col list-disc gap-y-4 mt-8 max-w-lg ml-6">
-      {
-        blok.bullet_points?.map((point: BulletPointStoryblok) => (
-          <li>{point.text}</li>
-        ))
-      }
-    </ul>
+    <div class="mx-auto max-w-prose mt-8">
+      <div set:html={renderedRichText} />
+    </div>
     <a href={"/support-us"} class="mt-8">
       <Button>Donate Today</Button>
     </a>

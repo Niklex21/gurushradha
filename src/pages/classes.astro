@@ -1,20 +1,30 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import Section from "@/storyblok/Section.astro";
 import { useStoryblokGet } from "@/utils";
-import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import type { PageClassesStoryblok } from "@/component-types";
+import Slideshow from "@/components/Slideshow";
+import { renderRichText } from "@storyblok/astro";
 
 const { data } = await useStoryblokGet("cdn/stories/classes");
+
+const blok = data.story.content as PageClassesStoryblok;
+
+const textRendered = renderRichText(blok.text);
 ---
 
 <Layout title="Classes">
-  <StoryblokComponent blok={data.story.content} />
-  <div class="bg-black text-[#FEFCF5] w-full h-full flex flex-col pb-20 pt-10">
-    <h1 class="font-bold text-5xl p-8 uppercase font-serif mx-auto">Classes</h1>
-    {
-      data.story.content.sections?.map((section: any) => (
-        <Section section={section} />
-      ))
-    }
+  <div class="w-full h-full flex flex-col pb-20 pt-10 bg-foreground">
+    <h1 class="font-bold text-5xl p-8 uppercase font-serif mx-auto text-background">Classes</h1>
+    <div class="flex flex-col gap-8 sm:grid sm:grid-cols-2 p-16">
+      <Slideshow slides={blok.slideshow} client:load />
+      <div
+        class="flex !text-background bg-foreground/80 bg-blend-darken rounded-xl aspect-square w-full p-8 bg-cover"
+        style={{
+          backgroundImage: `url(${blok.text_background.filename})`,
+        }}
+      >
+        <div set:html={textRendered} class="my-auto text-2xl"/>
+      </div>
+    </div>
   </div>
 </Layout>

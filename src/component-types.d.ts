@@ -76,6 +76,7 @@ export interface GlobalStoryblok {
     | MenuItemStoryblok
     | NavbarStoryblok
     | PageStoryblok
+    | PageClassesStoryblok
     | SectionStoryblok
     | SocialLinkStoryblok
     | TestimonialStoryblok
@@ -175,11 +176,19 @@ export interface HeroStoryblok {
   [k: string]: any;
 }
 
+export interface RichtextStoryblok {
+  type: string;
+  content?: RichtextStoryblok[];
+  marks?: RichtextStoryblok[];
+  attrs?: any;
+  text?: string;
+  [k: string]: any;
+}
+
 export interface HomeMainTextStoryblok {
   headline: string;
   call_to_action: string;
-  donate_link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
-  bullet_points?: BulletPointStoryblok[];
+  text?: RichtextStoryblok;
   component: "home_main_text";
   _uid: string;
   [k: string]: any;
@@ -244,15 +253,48 @@ export interface PageStoryblok {
     | MenuItemStoryblok
     | NavbarStoryblok
     | PageStoryblok
+    | PageClassesStoryblok
     | SectionStoryblok
     | SocialLinkStoryblok
     | TestimonialStoryblok
     | TestimonialsStoryblok
     | VisionStoryblok
   )[];
-  events?: GalleryPhotoshootStoryblok[];
-  sections?: SectionStoryblok[];
   component: "page";
+  _uid: string;
+  [k: string]: any;
+}
+
+export type MultiassetStoryblok = {
+  alt: string | null;
+  copyright?: string | null;
+  fieldtype: "asset";
+  id: number;
+  filename: string | null;
+  name: string;
+  title: string | null;
+  focus: string | null;
+  meta_data?: {
+    [k: string]: any;
+  };
+  source?: string | null;
+  is_external_url?: boolean;
+  is_private?: boolean;
+  src?: string;
+  updated_at?: string;
+  width?: number | null;
+  height?: number | null;
+  aspect_ratio?: number | null;
+  public_id?: string | null;
+  content_type?: string;
+  [k: string]: any;
+}[];
+
+export interface PageClassesStoryblok {
+  slideshow: MultiassetStoryblok;
+  text_background: AssetStoryblok;
+  text: RichtextStoryblok;
+  component: "page_classes";
   _uid: string;
   [k: string]: any;
 }

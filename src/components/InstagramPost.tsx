@@ -38,7 +38,7 @@ export default function InstagramPost({ post }: InstagramPostProps) {
               }}
               variant={"ghost"}
               size="icon"
-              className="bg-[#FEFCF5] rounded-xl hover:bg-[#A00A0A] hover:text-[#FEFCF5]"
+              className="bg-background rounded-xl hover:brightness-90 text-foreground"
             >
               <ChevronLeftIcon className="" />
             </Button>
@@ -49,7 +49,7 @@ export default function InstagramPost({ post }: InstagramPostProps) {
               }}
               size="icon"
               variant={"ghost"}
-              className="bg-[#FEFCF5] rounded-xl hover:bg-[#A00A0A] hover:text-[#FEFCF5]"
+              className="bg-background rounded-xl hover:brightness-90 text-foreground"
             >
               <ChevronRightIcon />
             </Button>
@@ -90,7 +90,7 @@ export default function InstagramPost({ post }: InstagramPostProps) {
           className="h-full aspect-square rounded-xl object-cover"
         />
       )}
-      <div className="absolute top-0 rounded-t-xl left-0 w-full bg-black bg-opacity-50 text-[#FEFCF5] p-4 opacity-0 group-hover:opacity-100 sm:opacity-0 transition-opacity">
+      <div className="absolute top-0 rounded-t-xl left-0 w-full bg-black bg-opacity-50 text-background p-4 opacity-0 group-hover:opacity-100 sm:opacity-0 transition-opacity">
         <span className="line-clamp-2">{post.caption}</span>
       </div>
     </a>

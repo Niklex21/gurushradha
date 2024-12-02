@@ -3,8 +3,8 @@
 @tailwind utilities;
 @layer base {
   :root {
-    --background: [#FEFCF5];
-    --foreground: 0 0% 3.9%;
+    --background: 47 82% 98%;
+    --foreground: 0 0% 0%;
     --card: 0 0% 100%;
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
@@ -63,7 +63,20 @@
   body {
     @apply bg-background text-foreground;
   }
-  h1, h2, h3, h4, h5, h6 {
-    @apply !font-serif;
+  
+  h1 {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-4xl font-bold;
+  }
+
+  h2 {
+    @apply text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl;
+  }
+
+  a {
+    @apply underline hover:text-[#A00A0A];
+  }
+  
+  ul {
+    @apply list-disc gap-4 flex flex-col;
   }
 }

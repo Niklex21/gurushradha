@@ -1,0 +1,78 @@
+---
+import type { NavbarStoryblok } from "@/component-types";
+import { MenuLink } from "@/components/MenuLink";
+import MobileMenuSheetWrapper from "@/components/wrappers/MobileMenuSheetWrapper";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import { Image } from "astro:assets";
+
+const { blok } = Astro.props as { blok: NavbarStoryblok };
+
+const { pathname } = Astro.url;
+---
+
+<!-- mobile navbar -->
+<div
+  class="flex sm:hidden w-full sticky top-0 left-0 z-50 flex-row justify-between items-center p-4 bg-[#FEFCF5]"
+>
+  <a href="/">
+    <Image
+      src={blok.logo.filename ?? ""}
+      alt={blok.logo.name}
+      width={50}
+      height={50}
+      class="aspect-square h-12 w-auto"
+    />
+  </a>
+  <MobileMenuSheetWrapper client:load>
+    <div class="bg-[#FEFCF5] h-full w-full p-8 gap-12 flex flex-col">
+      <div class="flex flex-col gap-4 h-full">
+        {
+          blok.menu_items.map((item) => (
+            <MenuLink pathname={pathname} item={item} />
+          ))
+        }
+      </div>
+      <div class="flex flex-row gap-4">
+        {blok.social_links?.map((link) => <StoryblokComponent blok={link} />)}
+      </div>
+    </div>
+  </MobileMenuSheetWrapper>
+</div>
+<!-- desktop navbar -->
+<div
+  id="navbar"
+  class="hidden sm:flex w-full flex-col sticky top-0 left-0 z-50 bg-background transition-all drop-shadow-md"
+>
+  <div class="flex flex-row gap-4 justify-between items-center p-6">
+    <a href="/">
+      <div class="flex flex-row gap-4 items-center">
+        <Image
+          src={blok.logo.filename ?? ""}
+          alt={blok.logo.name}
+          width={50}
+          height={50}
+          class="aspect-square h-20 w-auto"
+        />
+        <Image
+          src={blok.logo_text.filename ?? ""}
+          alt={blok.logo_text.name}
+          width={50}
+          height={50}
+          class="h-12 w-auto"
+        />
+      </div>
+    </a>
+    <div class="flex flex-row gap-8 sm:absolute sm:left-1/2 sm:-translate-x-1/2">
+      {
+        blok.menu_items.map((item) => (
+          <MenuLink pathname={pathname} item={item} />
+        ))
+      }
+    </div>
+    <div class="flex flex-row gap-4 items-center">
+      {blok.social_links?.map((link) => <StoryblokComponent blok={link} />)}
+    </div>
+  </div>
+  <div class="flex w-full bg-[url('/src/images/saree.jpeg')] h-20 bg-repeat-x bg-contain">
+  </div>
+</div>

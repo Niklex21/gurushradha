@@ -1,7 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
-const HeroVideo: React.FC = () => {
+const HeroVideo = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  const videoSource = "https://a-us.storyblok.com/f/1021919/x/a0c458242c/homepage.mp4";
 
   useEffect(() => {
     const video = videoRef.current;
@@ -31,9 +33,9 @@ const HeroVideo: React.FC = () => {
         muted
         loop
         playsInline
-        className="fixed top-0 left-0 w-full h-dvh object-cover -z-10"
+        className="fixed bottom-0 left-0 w-full h-[80dvh] object-cover -z-10"
       >
-        <source src="/videos/hero.mp4" type="video/mp4" />
+        <source src={videoSource} type="video/mp4" />
       </video>
     </div>
   );
