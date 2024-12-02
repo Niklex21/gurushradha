@@ -69,6 +69,7 @@ export interface GlobalStoryblok {
     | GlobalStoryblok
     | GlobalReferenceStoryblok
     | HeroStoryblok
+    | HomeEventsStoryblok
     | HomeMainTextStoryblok
     | HomeTestimonialStoryblok
     | HomeTestimonialsStoryblok
@@ -176,6 +177,13 @@ export interface HeroStoryblok {
   [k: string]: any;
 }
 
+export interface HomeEventsStoryblok {
+  event_blok: any[];
+  component: "home_events";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface RichtextStoryblok {
   type: string;
   content?: RichtextStoryblok[];
@@ -246,6 +254,7 @@ export interface PageStoryblok {
     | GlobalStoryblok
     | GlobalReferenceStoryblok
     | HeroStoryblok
+    | HomeEventsStoryblok
     | HomeMainTextStoryblok
     | HomeTestimonialStoryblok
     | HomeTestimonialsStoryblok

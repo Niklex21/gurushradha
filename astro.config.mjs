@@ -29,6 +29,7 @@ export default defineConfig({
         testimonials: "storyblok/Testimonials",
         events: "storyblok/Events",
         home_testimonials: "storyblok/HomeTestimonials",
+        home_events: "storyblok/HomeEvents",
       },
       apiOptions: {
         // Choose your Storyblok space region

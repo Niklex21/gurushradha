@@ -1,0 +1,61 @@
+---
+import type { EventStoryblok, HomeEventsStoryblok } from "@/component-types";
+import { useStoryblokGetStory } from "@/utils";
+import { CalendarIcon, MapPinIcon } from "lucide-react";
+
+const { blok } = Astro.props as { blok: HomeEventsStoryblok };
+
+const eventsBlok = await useStoryblokGetStory("global/events");
+
+const events = eventsBlok.data.story.content.global[0]
+  .events as EventStoryblok[];
+---
+
+<div class="w-full flex flex-col gap-8 bg-background p-8">
+  <h1
+    class="flex flex-row items-center gap-2 text-2xl font-bold"
+  >
+    <CalendarIcon />
+    Upcoming Events
+  </h1>
+
+  <div
+    class="flex flex-row gap-8 items-center overflow-x-auto bg-background"
+  >
+    {
+      events.map((event) => {
+        return (
+          <div class="w-auto shrink-0 max-w-[35%] flex h-60 flex-col sm:grid sm:grid-cols-3 rounded-xl overflow-hidden border-gray-200 border-2">
+            <img
+              src={event.image.filename}
+              alt={event.image.alt}
+              class="w-full h-full object-cover col-span-1"
+            />
+            <div class="p-6 flex flex-col gap-4 col-span-2">
+              <h1 class="text-xl font-bold mb-4">{event.name}</h1>
+              <div class="grid grid-cols-[1fr,auto] gap-y-2 gap-x-4 items-center mr-auto">
+                <span class="">
+                  <CalendarIcon />
+                </span>
+                <span class="">
+                  {new Date(event.date ?? "").toLocaleString("en-US", {
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric",
+                    hour: "numeric",
+                    minute: "numeric",
+                    hour12: true,
+                  })}
+                </span>
+                <span class="">
+                  <MapPinIcon />
+                </span>
+                <span class="w-full">{event.location}</span>
+              </div>
+            </div>
+          </div>
+        );
+      })
+    }
+  </div>
+</div>

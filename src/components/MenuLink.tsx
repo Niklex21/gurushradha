@@ -70,7 +70,7 @@ export function MenuLink({
         </div>
       )}
       {item.submenus && item.submenus.length > 0 && (
-        <div className="text-nowrap flex sm:absolute top-0 left-0 flex-col p-4 ml-4 sm:mt-6 gap-4 sm:-ml-4 rounded-xl sm:hidden group-hover/menu:flex">
+        <div className="text-nowrap bg-gradient-to-b from-transparent via-background-50 to-background/70 flex sm:absolute top-0 left-0 flex-col p-4 ml-4 sm:mt-6 gap-4 sm:-ml-4 rounded-xl sm:hidden group-hover/menu:flex">
           {item.submenus.map((submenu, index) => (
             <MenuLink item={submenu} pathname={pathname} key={index} />
           ))}

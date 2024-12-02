@@ -22,7 +22,10 @@ export const useStoryblokGet = async (
     slug,
     {
       version: VERSION,
-      resolve_relations: "global_reference.reference",
+      resolve_relations: [
+        "global_reference.reference",
+        "global_reference.reference.reference",
+      ],
       ...params,
     },
     fetchOptions,
@@ -134,4 +137,4 @@ export const useStoryblokGetStory = async (
 
 export const getHref = (link: MultilinkStoryblok) => {
   return link.linktype === "story" ? link.cached_url : link.url;
-}
+};
