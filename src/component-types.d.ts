@@ -178,7 +178,8 @@ export interface HeroStoryblok {
 }
 
 export interface HomeEventsStoryblok {
-  event_blok: any[];
+  event_blok: (ISbStoryData<GlobalStoryblok> | string)[];
+  background_image?: AssetStoryblok;
   component: "home_events";
   _uid: string;
   [k: string]: any;
@@ -300,7 +301,8 @@ export type MultiassetStoryblok = {
 }[];
 
 export interface PageClassesStoryblok {
-  slideshow: MultiassetStoryblok;
+  video?: AssetStoryblok;
+  slideshow?: MultiassetStoryblok;
   text_background: AssetStoryblok;
   text: RichtextStoryblok;
   component: "page_classes";

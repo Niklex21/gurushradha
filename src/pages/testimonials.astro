@@ -1,5 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import VerticalBordersLayout from "@/layouts/VerticalBordersLayout.astro";
 import { useStoryblokGet } from "@/utils";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 
@@ -7,5 +8,7 @@ const { data } = await useStoryblokGet("cdn/stories/testimonials");
 ---
 
 <Layout title="Wall of Love">
-  <StoryblokComponent blok={data.story.content} />
+  <VerticalBordersLayout>
+    <StoryblokComponent blok={data.story.content} />
+  </VerticalBordersLayout>
 </Layout>

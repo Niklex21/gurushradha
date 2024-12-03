@@ -104,8 +104,13 @@ export default function Slideshow({ slides }: SlideshowProps) {
               <video
                 ref={isCurrent ? videoRef : undefined}
                 controls
+                playsInline
                 className="w-full h-auto rounded-xl"
                 src={slide.filename}
+                onLoadedMetadata={(e) => {
+                  const video = e.currentTarget as HTMLVideoElement;
+                  video.volume = 0.5;
+                }}
               />
             ) : (
               <img

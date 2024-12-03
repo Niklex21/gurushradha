@@ -64,7 +64,12 @@ export default function InstagramPost({ post }: InstagramPostProps) {
               {child.media_type === "VIDEO" ? (
                 <video
                   src={child.media_url}
+                  playsInline
                   controls
+                  onLoadedMetadata={(e) => {
+                    const video = e.currentTarget as HTMLVideoElement;
+                    video.volume = 0.5;
+                  }}
                   className="h-full aspect-square rounded-xl object-cover"
                 />
               ) : (
@@ -80,7 +85,12 @@ export default function InstagramPost({ post }: InstagramPostProps) {
       ) : post.media_type === "VIDEO" ? (
         <video
           src={post.media_url}
+          playsInline
           controls
+          onLoadedMetadata={(e) => {
+            const video = e.currentTarget as HTMLVideoElement;
+            video.volume = 0.5;
+          }}
           className="h-full aspect-square rounded-xl object-cover"
         />
       ) : (

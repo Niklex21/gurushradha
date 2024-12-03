@@ -4,6 +4,7 @@ import { useStoryblokGet } from "@/utils";
 import type { PageClassesStoryblok } from "@/component-types";
 import Slideshow from "@/components/Slideshow";
 import { renderRichText } from "@storyblok/astro";
+import VerticalBordersLayout from "@/layouts/VerticalBordersLayout.astro";
 
 const { data } = await useStoryblokGet("cdn/stories/classes");
 
@@ -13,18 +14,37 @@ const textRendered = renderRichText(blok.text);
 ---
 
 <Layout title="Classes">
-  <div class="w-full h-full flex flex-col pb-20 pt-10 bg-foreground">
-    <h1 class="font-bold text-5xl p-4 sm:p-8 uppercase font-serif mx-auto text-background">Classes</h1>
-    <div class="flex flex-col gap-8 sm:grid sm:grid-cols-2 p-4 sm:p-16">
-      <Slideshow slides={blok.slideshow} client:load />
-      <div
-        class="flex !text-background bg-foreground/80 bg-blend-darken rounded-xl aspect-square w-full p-8 bg-cover"
-        style={{
-          backgroundImage: `url(${blok.text_background.filename})`,
-        }}
+  <VerticalBordersLayout>
+    <div class="w-full h-full flex flex-col pt-10 bg-foreground pb-32">
+      <h1
+        class="font-bold text-5xl p-4 sm:p-8 uppercase font-serif mx-auto text-background"
       >
-        <div set:html={textRendered} class="my-auto text-base sm:text-2xl"/>
+        Classes
+      </h1>
+      <div
+        class="flex w-full flex-col gap-8 sm:flex sm:flex-row p-4 sm:p-16 sm:items-stretch"
+      >
+        <video
+          playsinline
+          controls
+          autoplay
+          class="w-[60%] xl:w-[65%] h-auto rounded-xl flex-none"
+          onloadedmetadata="this.volume=0.5"
+        >
+          <source src={blok.video?.filename} type="video/mp4" />
+        </video>
+        <div
+          class="flex w-[40%] xl:w-[35%] h-auto !text-background bg-foreground/80 bg-blend-darken rounded-xl aspect-square p-8 bg-cover"
+          style={{
+            backgroundImage: `url(${blok.text_background.filename})`,
+          }}
+        >
+          <div
+            set:html={textRendered}
+            class="my-auto text-base md:text-xs lg:text-sm xl:text-base"
+          />
+        </div>
       </div>
     </div>
-  </div>
+  </VerticalBordersLayout>
 </Layout>

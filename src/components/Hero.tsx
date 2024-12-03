@@ -1,9 +1,28 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from "react";
 
 const HeroVideo = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const divRef = useRef<HTMLDivElement>(null);
+  const [divHeight, setDivHeight] = useState("auto");
 
-  const videoSource = "https://a-us.storyblok.com/f/1021919/x/a0c458242c/homepage.mp4";
+  const videoSource =
+    "https://a-us.storyblok.com/f/1021919/x/a0c458242c/homepage.mp4";
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (divRef.current) {
+        const divTop = divRef.current.getBoundingClientRect().top;
+        setDivHeight(`calc(100vh - ${divTop}px)`);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -18,22 +37,31 @@ const HeroVideo = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
-    <div className="flex relative w-full h-[80dvh] overflow-hidden bg-fixed">
+    <div
+      ref={divRef}
+      className="flex relative w-full overflow-hidden bg-fixed"
+      style={{ height: divHeight }}
+    >
       <video
         ref={videoRef}
-        autoPlay
-        muted
         loop
+        controls
+        autoPlay
         playsInline
-        className="fixed bottom-0 left-0 w-full h-[80dvh] object-cover -z-10"
+        onPlay={() => {
+          if (videoRef.current) {
+            videoRef.current.play();
+          }
+        }}
+        className="w-full h-auto object-contain"
       >
         <source src={videoSource} type="video/mp4" />
       </video>
