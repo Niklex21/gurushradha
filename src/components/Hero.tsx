@@ -4,6 +4,7 @@ const HeroVideo = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const divRef = useRef<HTMLDivElement>(null);
   const [divHeight, setDivHeight] = useState("auto");
+  const [divTop, setDivTop] = useState<number>(0);
 
   const videoSource =
     "https://a-us.storyblok.com/f/1021919/x/a0c458242c/homepage.mp4";
@@ -11,8 +12,21 @@ const HeroVideo = () => {
   useEffect(() => {
     const handleResize = () => {
       if (divRef.current) {
-        const divTop = divRef.current.getBoundingClientRect().top;
-        setDivHeight(`calc(100vh - ${divTop}px)`);
+        const currentDivTop = divRef.current.getBoundingClientRect().top;
+        setDivTop(currentDivTop);
+        const isMobile = window.innerWidth < 640;
+
+        const video = videoRef.current;
+        if (!video) return;
+
+        const scale = window.innerWidth / video.videoWidth;
+        const height = video.videoHeight * scale;
+
+        setDivHeight(
+          isMobile
+            ? height.toString() + "px"
+            : `calc(100vh - ${currentDivTop}px)`,
+        );
       }
     };
 
@@ -31,8 +45,14 @@ const HeroVideo = () => {
 
     const handleScroll = () => {
       if (window.scrollY === 0) {
+        video.style.zIndex = "20";
+        if (divRef.current) divRef.current.style.zIndex = "20";
+        video.controls = true;
         video.play();
       } else {
+        video.style.zIndex = "-20";
+        video.controls = false;
+        if (divRef.current) divRef.current.style.zIndex = "-20";
         video.pause();
       }
     };
@@ -47,8 +67,10 @@ const HeroVideo = () => {
   return (
     <div
       ref={divRef}
-      className="flex relative w-full overflow-hidden bg-fixed"
-      style={{ height: divHeight }}
+      className="flex relative w-full h-auto sm:h-full bg-black"
+      style={{
+        height: divHeight,
+      }}
     >
       <video
         ref={videoRef}
@@ -61,7 +83,11 @@ const HeroVideo = () => {
             videoRef.current.play();
           }
         }}
-        className="w-full h-auto object-contain"
+        className="w-full object-contain fixed"
+        style={{
+          top: divTop,
+          height: divHeight,
+        }}
       >
         <source src={videoSource} type="video/mp4" />
       </video>
