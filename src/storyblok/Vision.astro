@@ -11,7 +11,7 @@ const { blok } = Astro.props as { blok: VisionStoryblok };
     <h1 class="text-3xl text-[#A00A0A] font-bold mx-auto">
       "{blok.headline}"
     </h1>
-    <div class="flex flex-col sm:grid sm:grid-cols-2 mt-10 gap-16">
+    <div class="hidden flex-col sm:grid sm:grid-cols-2 mt-10 gap-16">
       <div class="flex flex-col gap-6 my-auto p-2 bg-[#A00A0A]/50 rounded-xl">
         <h1 class="text-3xl font-bold font-serif">Mission</h1>
         <span class="text-xl">{blok.mission}</span>
@@ -22,7 +22,18 @@ const { blok } = Astro.props as { blok: VisionStoryblok };
         class="rounded-xl"
       />
     </div>
-    <div class="flex flex-col sm:grid sm:grid-cols-2 mt-16 gap-16 pb-32">
+    <div class="flex sm:hidden flex-col gap-8">
+      <img
+        src={blok.mission_image.filename}
+        alt={blok.mission_image.alt}
+        class="rounded-xl"
+      />
+      <div class="flex flex-col gap-6 my-auto p-6 bg-[#A00A0A]/50 rounded-xl">
+        <h1 class="text-3xl font-bold font-serif">Mission</h1>
+        <span class="text-xl">{blok.mission}</span>
+      </div>
+    </div>
+    <div class="flex flex-col sm:grid sm:grid-cols-2 mt-8 sm:mt-16 gap-8 sm:gap-16 pb-32">
       <img
         src={blok.vision_image.filename}
         alt={blok.vision_image.alt}

@@ -15,9 +15,9 @@ const textRendered = renderRichText(blok.text);
 
 <Layout title="Classes">
   <VerticalBordersLayout>
-    <div class="w-full h-full flex flex-col pt-10 bg-foreground pb-32">
+    <div class="p-8 sm:p-0 w-full h-full flex flex-col pt-10 bg-foreground pb-32">
       <h1
-        class="font-bold text-5xl p-4 sm:p-8 uppercase font-serif mx-auto text-background"
+        class="font-bold text-5xl p-4 sm:p-8 uppercase font-serif sm:mx-auto text-background"
       >
         Classes
       </h1>
@@ -28,13 +28,13 @@ const textRendered = renderRichText(blok.text);
           playsinline
           controls
           autoplay
-          class="w-[60%] xl:w-[65%] h-auto rounded-xl flex-none"
+          class="w-full sm:w-[60%] xl:w-[65%] h-auto rounded-xl flex-none"
           onloadedmetadata="this.volume=0.5"
         >
           <source src={blok.video?.filename} type="video/mp4" />
         </video>
         <div
-          class="flex w-[40%] xl:w-[35%] h-auto !text-background bg-foreground/80 bg-blend-darken rounded-xl aspect-square p-8 bg-cover"
+          class="flex w-full sm:w-[40%] xl:w-[35%] h-auto !text-background bg-foreground/80 bg-blend-darken rounded-xl aspect-square p-8 bg-cover"
           style={{
             backgroundImage: `url(${blok.text_background.filename})`,
           }}

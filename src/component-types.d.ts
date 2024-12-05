@@ -179,7 +179,6 @@ export interface HeroStoryblok {
 
 export interface HomeEventsStoryblok {
   event_blok: (ISbStoryData<GlobalStoryblok> | string)[];
-  background_image?: AssetStoryblok;
   component: "home_events";
   _uid: string;
   [k: string]: any;
@@ -214,6 +213,7 @@ export interface HomeTestimonialStoryblok {
 
 export interface HomeTestimonialsStoryblok {
   testimonials: HomeTestimonialStoryblok[];
+  background_image: AssetStoryblok;
   component: "home_testimonials";
   _uid: string;
   [k: string]: any;

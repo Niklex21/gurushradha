@@ -91,7 +91,7 @@ export default function GalleryEvent({
   return (
     <>
       <div className="flex flex-col gap-4">
-        <div className="flex flex-col gap-2 sm:flex-row sm:gap-6 items-center">
+        <div className="flex flex-col gap-2 sm:flex-row sm:gap-6 sm:items-center">
           <div className="hidden sm:flex w-3 h-3 rounded-full bg-gray-200" />
           <span className="text-xl sm:text-3xl font-semibold text-gray-200">
             {event.name}

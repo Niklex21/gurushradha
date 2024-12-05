@@ -10,7 +10,7 @@ const { blok } = Astro.props as { blok: HomeMainTextStoryblok };
 const renderedRichText = renderRichText(blok.text);
 ---
 
-<div class="flex flex-row gap-8 items-center">
+<div class="flex flex-row gap-8 items-center w-full">
   <div
     class="flex flex-col gap-4 w-full p-8 from-background/90 to-background bg-gradient-to-b rounded-t-xl py-16 items-center"
   >
@@ -25,8 +25,8 @@ const renderedRichText = renderRichText(blok.text);
     <div class="mx-auto max-w-prose mt-8">
       <div set:html={renderedRichText} />
     </div>
-    <a href={"/support-us"} class="mt-8">
-      <Button>Donate Today</Button>
+    <a href={"/support-us"} class="mt-8 w-full sm:mx-auto sm:w-auto">
+      <Button className="w-full sm:w-auto">Donate Today</Button>
     </a>
   </div>
 </div>

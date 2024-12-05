@@ -15,48 +15,50 @@ const ACCESS_KEY = import.meta.env.STATIC_FORMS_ACCESS_KEY;
 <Layout title="Contact Us">
   <VerticalBordersLayout>
     <div
-      class="p-16 flex w-full flex-col text-[#FEFCF5] gap-8 bg-[#FEFCF5] bg-cover bg-no-repeat bg-blend-darken pb-32"
+      class="p-8 sm:p-16 flex w-full flex-col text-background gap-8 bg-background bg-cover bg-no-repeat bg-blend-darken pb-32"
       style={{
         backgroundImage: `url(${backgroundImage.src})`,
         backgroundColor: "rgb(0 0 0 / 0.85);",
       }}
     >
-      <h1 class="text-5xl font-bold mx-auto uppercase font-serif mb-16">
+      <h1 class="text-5xl font-bold sm:mx-auto uppercase font-serif mb-8 sm:mb-16">
         Contact
       </h1>
-      <div class="flex flex-col gap-16 sm:grid grid-cols-2 w-full">
+      <div class="flex flex-col gap-16 sm:grid sm:grid-cols-2 w-full sm:pb-32">
         <ContactForm client:load ACCESS_KEY={ACCESS_KEY} />
-        <div class="flex flex-col h-full justify-between ml-auto gap-8">
+        <div class="ml-auto flex flex-col h-full justify-between sm:ml-auto gap-8">
           <div class="flex flex-col gap-4">
-            <span>
+            <span class="flex flex-wrap flex-col sm:flex-row break-all sm:items-center gap-2">
               Email address: <a
                 target="_blank"
                 class="underline"
                 href="mailto:gurushradha@gmail.com">gurushradha@gmail.com</a
               >
             </span>
-            <span>
+            <span class="flex flex-wrap flex-col sm:flex-row break-all sm:items-center gap-2">
               Facebook: <a
                 target="_blank"
                 class="underline"
                 href="https://www.facebook.com/GuruShradha/"
-                >https://www.facebook.com/GuruShradha/</a
+                >facebook.com/GuruShradha</a
               >
             </span>
             <span
+            class="flex flex-wrap flex-col sm:flex-row break-all sm:items-center gap-2"
               >Instagram: <a
                 target="_blank"
                 class="underline"
                 href="https://www.instagram.com/gurushradha/"
-                >https://www.instagram.com/gurushradha/</a
+                >instagram.com/gurushradha</a
               ></span
             >
             <span
+            class="flex flex-wrap flex-col sm:flex-row break-all sm:items-center gap-2"
               >YouTube: <a
                 target="_blank"
                 class="underline"
                 href="https://www.youtube.com/@GuruShradha"
-                >https://www.youtube.com/@GuruShradha</a
+                >youtube.com/@GuruShradha</a
               ></span
             >
           </div>

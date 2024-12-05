@@ -78,7 +78,7 @@ function TestimonialRotator({
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-full bg-[#FEFCF5] p-8 overflow-hidden"
+      className="relative w-full h-full bg-background/80 p-8 overflow-hidden"
     >
       <div
         ref={textBlockRef}
