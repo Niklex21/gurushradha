@@ -30,6 +30,11 @@ const HeroVideo = () => {
       }
     };
 
+    // wait for the page to load so that the videoRef.current is available
+    setTimeout(() => {
+      handleResize();
+    }, 100);
+
     handleResize();
     window.addEventListener("resize", handleResize);
 
