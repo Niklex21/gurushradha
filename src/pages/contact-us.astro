@@ -12,66 +12,65 @@ const { data } = await useStoryblokGet("cdn/stories/contact-us");
 const ACCESS_KEY = import.meta.env.STATIC_FORMS_ACCESS_KEY;
 ---
 
-<Layout title="Contact Us">
-  <VerticalBordersLayout>
-    <div
-      class="p-8 sm:p-16 flex w-full flex-col text-background gap-8 bg-background bg-cover bg-no-repeat bg-blend-darken pb-32"
-      style={{
-        backgroundImage: `url(${backgroundImage.src})`,
-        backgroundColor: "rgb(0 0 0 / 0.85);",
-      }}
-    >
-      <h1 class="text-5xl font-bold sm:mx-auto uppercase font-serif mb-8 sm:mb-16">
-        Contact
-      </h1>
-      <div class="flex flex-col gap-16 sm:grid sm:grid-cols-2 w-full sm:pb-32">
-        <ContactForm client:load ACCESS_KEY={ACCESS_KEY} />
-        <div class="ml-auto flex flex-col h-full justify-between sm:ml-auto gap-8">
-          <div class="flex flex-col gap-4">
-            <span class="flex flex-wrap flex-col sm:flex-row break-all sm:items-center gap-2">
-              Email address: <a
-                target="_blank"
-                class="underline"
-                href="mailto:gurushradha@gmail.com">gurushradha@gmail.com</a
-              >
-            </span>
-            <span class="flex flex-wrap flex-col sm:flex-row break-all sm:items-center gap-2">
-              Facebook: <a
-                target="_blank"
-                class="underline"
-                href="https://www.facebook.com/GuruShradha/"
-                >facebook.com/GuruShradha</a
-              >
-            </span>
-            <span
-            class="flex flex-wrap flex-col sm:flex-row break-all sm:items-center gap-2"
-              >Instagram: <a
-                target="_blank"
-                class="underline"
-                href="https://www.instagram.com/gurushradha/"
-                >instagram.com/gurushradha</a
-              ></span
-            >
-            <span
-            class="flex flex-wrap flex-col sm:flex-row break-all sm:items-center gap-2"
-              >YouTube: <a
-                target="_blank"
-                class="underline"
-                href="https://www.youtube.com/@GuruShradha"
-                >youtube.com/@GuruShradha</a
-              ></span
-            >
-          </div>
-          <div class="flex flex-col gap-4">
-            <span class="text-xl">Subscribe</span>
-            <span>Sign up to receive newsletter and updates.</span>
-            <SubscribeForm client:load />
-            <span class="text-xs italic">
-              We respect your privacy. Unsubscribe at any time.
-            </span>
-          </div>
-        </div>
+<Layout
+  title="Contact"
+  colorScheme="inverted"
+  style={{
+    backgroundImage: `url(${backgroundImage.src})`,
+    backgroundColor: "rgb(0 0 0 / 0.85);",
+  }}
+  className="bg-cover bg-no-repeat bg-blend-darken "
+>
+  <div class="flex flex-col gap-16 sm:grid sm:grid-cols-2 w-full text-left">
+    <ContactForm client:load ACCESS_KEY={ACCESS_KEY} />
+    <div class="flex flex-col h-full justify-between sm:ml-auto gap-8">
+      <div class="flex flex-col gap-4">
+        <span
+          class="flex flex-wrap flex-col sm:flex-row break-all sm:items-center gap-2"
+        >
+          Email address: <a
+            target="_blank"
+            class="underline"
+            href="mailto:gurushradha@gmail.com">gurushradha@gmail.com</a
+          >
+        </span>
+        <span
+          class="flex flex-wrap flex-col sm:flex-row break-all sm:items-center gap-2"
+        >
+          Facebook: <a
+            target="_blank"
+            class="underline"
+            href="https://www.facebook.com/GuruShradha/"
+            >facebook.com/GuruShradha</a
+          >
+        </span>
+        <span
+          class="flex flex-wrap flex-col sm:flex-row break-all sm:items-center gap-2"
+          >Instagram: <a
+            target="_blank"
+            class="underline"
+            href="https://www.instagram.com/gurushradha/"
+            >instagram.com/gurushradha</a
+          ></span
+        >
+        <span
+          class="flex flex-wrap flex-col sm:flex-row break-all sm:items-center gap-2"
+          >YouTube: <a
+            target="_blank"
+            class="underline"
+            href="https://www.youtube.com/@GuruShradha"
+            >youtube.com/@GuruShradha</a
+          ></span
+        >
+      </div>
+      <div class="flex flex-col gap-4">
+        <span class="text-xl">Subscribe</span>
+        <span>Sign up to receive newsletter and updates.</span>
+        <SubscribeForm client:load />
+        <span class="text-xs italic">
+          We respect your privacy. Unsubscribe at any time.
+        </span>
       </div>
     </div>
-  </VerticalBordersLayout>
+  </div>
 </Layout>

@@ -73,7 +73,7 @@
   }
 
   a {
-    @apply underline hover:text-[#A00A0A];
+    @apply underline hover:text-red-main;
   }
   
   ul {

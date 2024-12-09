@@ -7,56 +7,53 @@ const { blok } = Astro.props as { blok: EventsStoryblok };
 const source = "https://a-us.storyblok.com/f/1021919/x/20a8e0b805/events.mp4";
 ---
 
-<div class="p-8 sm:p-16 flex h-full w-full flex-col gap-8 bg-background pb-32">
-  <h1 class="text-5xl font-bold sm:mx-auto uppercase font-serif">Events</h1>
-  <video
-    autoplay
-    playsinline
-    controls
-    class="w-full sm:w-[80%] rounded-xl h-auto mx-auto"
-    onloadedmetadata="this.volume=0.5"
-  >
-    <source src={source} type="video/mp4" />
-  </video>
-  <h2 class="text-xl sm:text-2xl sm:mx-auto mt-4 sm:mt-16">
-    Please note that all times are in PST.
-  </h2>
-  <div class="flex flex-col gap-8 mt-8 sm:w-[67%] mx-auto mb-32">
-    {
-      blok.events?.map((event) => (
-        <div class="w-full flex flex-col sm:grid sm:grid-cols-3 rounded-xl overflow-hidden border-gray-200 border-2">
-          <img
-            src={event.image.filename}
-            alt={event.image.alt}
-            class="w-full h-full object-cover col-span-1"
-          />
-          <div class="p-6 flex flex-col gap-4 col-span-2">
-            <h1 class="text-2xl sm:text-3xl font-bold mb-4">{event.name}</h1>
-            <div class="grid grid-cols-[1fr,auto] gap-y-2 gap-x-4 items-center mr-auto">
-              <span class="">
-                <CalendarIcon />
-              </span>
-              <span class="">
-                {new Date(event.date ?? "").toLocaleString("en-US", {
-                  month: "long",
-                  day: "numeric",
-                  year: "numeric",
-                  hour: "numeric",
-                  minute: "numeric",
-                  hour12: true,
-                })}
-              </span>
-              <span class="">
-                <MapPinIcon />
-              </span>
-              <span class="w-full">{event.location}</span>
-            </div>
-            {event.description && (
-              <span class="text-sm text-gray-500">{event.description}</span>
-            )}
+<video
+  autoplay
+  playsinline
+  controls
+  class="w-full sm:w-[80%] rounded-xl h-auto mx-auto"
+  onloadedmetadata="this.volume=0.5"
+>
+  <source src={source} type="video/mp4" />
+</video>
+<h2 class="text-xl sm:text-2xl sm:mx-auto mt-4 sm:mt-16">
+  Please note that all times are in PST.
+</h2>
+<div class="flex flex-col gap-8 mt-8 sm:w-[67%] mx-auto text-left">
+  {
+    blok.events?.map((event) => (
+      <div class="w-full flex flex-col sm:grid sm:grid-cols-3 rounded-xl overflow-hidden border-gray-200 border-2">
+        <img
+          src={event.image.filename}
+          alt={event.image.alt}
+          class="w-full h-full object-cover col-span-1"
+        />
+        <div class="p-6 flex flex-col gap-4 col-span-2">
+          <h1 class="text-2xl sm:text-3xl font-bold mb-4">{event.name}</h1>
+          <div class="grid grid-cols-[1fr,auto] gap-y-2 gap-x-4 items-center mr-auto">
+            <span class="">
+              <CalendarIcon />
+            </span>
+            <span class="">
+              {new Date(event.date ?? "").toLocaleString("en-US", {
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+                hour: "numeric",
+                minute: "numeric",
+                hour12: true,
+              })}
+            </span>
+            <span class="">
+              <MapPinIcon />
+            </span>
+            <span class="w-full">{event.location}</span>
           </div>
+          {event.description && (
+            <span class="text-sm text-gray-500">{event.description}</span>
+          )}
         </div>
-      ))
-    }
-  </div>
+      </div>
+    ))
+  }
 </div>

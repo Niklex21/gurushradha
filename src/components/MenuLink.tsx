@@ -35,8 +35,8 @@ export function MenuLink({
         <a
           href={href}
           className={twMerge(
-            "hover:text-[#A00A0A] text-xl h-full flex relative font-yatra font-bold text-black no-underline",
-            active && "text-[#A00A0A]",
+            "hover:text-red-main text-xl h-full flex relative font-yatra font-bold text-black no-underline",
+            active && "text-red-main",
           )}
         >
           {ITEM_NAME_TO_SCULPTURE[item.name.toLowerCase()] !== undefined && (
@@ -54,7 +54,7 @@ export function MenuLink({
       ) : (
         <div
           className={twMerge(
-            "hover:text-[#A00A0A] text-xl h-full flex relative font-yatra font-bold text-black cursor-default",
+            "hover:text-red-main text-xl h-full flex relative font-yatra font-bold text-black cursor-default",
           )}
         >
           {ITEM_NAME_TO_SCULPTURE[item.name.toLowerCase()] !== undefined && (

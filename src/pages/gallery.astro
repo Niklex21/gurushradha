@@ -18,38 +18,27 @@ if (!response.ok) {
 const galleryData: GalleryData = await response.json();
 ---
 
-<Layout title="Gallery">
-  <VerticalBordersLayout>
-    <div class="flex flex-col gap-16 p-8 sm:p-16 bg-foreground">
-      <h1
-        class="text-5xl text-background uppercase font-serif sm:mx-auto font-bold"
-      >
-        Gallery
-      </h1>
-      <div class="flex flex-col gap-16 pb-32">
-        {
-          (data.story.content.events as GalleryPhotoshootStoryblok[])
-            ?.sort(
-              (a, b) =>
-                // sort the dates in descending order
-                new Date(b.date).getTime() - new Date(a.date).getTime(),
-            )
-            .map((event) => {
-              const folderId =
-                galleryData.asset_folders.find(
-                  (folder) => folder.name === event.folder_name,
-                )?.id ?? -1;
+<Layout title="Gallery" colorScheme="inverted">
+  <div class="flex flex-col gap-16 pb-32">
+    {
+      (data.story.content.events as GalleryPhotoshootStoryblok[])
+        ?.sort(
+          (a, b) =>
+            // sort the dates in descending order
+            new Date(b.date).getTime() - new Date(a.date).getTime(),
+        )
+        .map((event) => {
+          const folderId =
+            galleryData.asset_folders.find(
+              (folder) => folder.name === event.folder_name,
+            )?.id ?? -1;
 
-              if (folderId === -1) {
-                console.error(`Folder with name ${event.folder} not found`);
-              }
+          if (folderId === -1) {
+            console.error(`Folder with name ${event.folder} not found`);
+          }
 
-              return (
-                <GalleryEvent event={event} folderId={folderId} client:load />
-              );
-            })
-        }
-      </div>
-    </div>
-  </VerticalBordersLayout>
+          return <GalleryEvent event={event} folderId={folderId} client:load />;
+        })
+    }
+  </div>
 </Layout>

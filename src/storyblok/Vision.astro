@@ -1,48 +1,44 @@
 ---
 import type { VisionStoryblok } from "@/component-types";
-import VerticalBordersLayout from "@/layouts/VerticalBordersLayout.astro";
 
 const { blok } = Astro.props as { blok: VisionStoryblok };
 ---
 
-<VerticalBordersLayout>
-  <div class="p-8 sm:p-16 flex w-full flex-col gap-8 bg-background">
-    <h1 class="text-5xl font-bold sm:mx-auto uppercase font-serif">Vision</h1>
-    <h1 class="text-3xl text-[#A00A0A] font-bold mx-auto">
-      "{blok.headline}"
-    </h1>
-    <div class="hidden flex-col sm:grid sm:grid-cols-2 mt-10 gap-16">
-      <div class="flex flex-col gap-6 my-auto p-2 bg-[#A00A0A]/50 rounded-xl">
-        <h1 class="text-3xl font-bold font-serif">Mission</h1>
-        <span class="text-xl">{blok.mission}</span>
-      </div>
-      <img
-        src={blok.mission_image.filename}
-        alt={blok.mission_image.alt}
-        class="rounded-xl"
-      />
-    </div>
-    <div class="flex sm:hidden flex-col gap-8">
-      <img
-        src={blok.mission_image.filename}
-        alt={blok.mission_image.alt}
-        class="rounded-xl"
-      />
-      <div class="flex flex-col gap-6 my-auto p-6 bg-[#A00A0A]/50 rounded-xl">
-        <h1 class="text-3xl font-bold font-serif">Mission</h1>
-        <span class="text-xl">{blok.mission}</span>
-      </div>
-    </div>
-    <div class="flex flex-col sm:grid sm:grid-cols-2 mt-8 sm:mt-16 gap-8 sm:gap-16 pb-32">
-      <img
-        src={blok.vision_image.filename}
-        alt={blok.vision_image.alt}
-        class="rounded-xl"
-      />
-      <div class="flex flex-col gap-6 my-auto p-2 bg-[#A00A0A]/50 rounded-xl">
-        <h1 class="text-3xl font-bold font-serif">Vision</h1>
-        <span class="text-xl">{blok.our_vision}</span>
-      </div>
-    </div>
+<h2 class="text-3xl text-red-main font-bold mb-8 sm:mb-0">
+  "{blok.headline}"
+</h2>
+<div class="hidden flex-col sm:grid sm:grid-cols-2 mt-10 gap-16">
+  <div class="flex flex-col gap-6 my-auto p-2 bg-red-main/50 rounded-xl">
+    <h1 class="text-3xl font-bold font-serif">Mission</h1>
+    <span class="text-xl">{blok.mission}</span>
   </div>
-</VerticalBordersLayout>
+  <img
+    src={blok.mission_image.filename}
+    alt={blok.mission_image.alt}
+    class="rounded-xl"
+  />
+</div>
+<div class="flex sm:hidden flex-col gap-8">
+  <img
+    src={blok.mission_image.filename}
+    alt={blok.mission_image.alt}
+    class="rounded-xl"
+  />
+  <div class="flex flex-col gap-6 my-auto p-6 bg-red-main/50 rounded-xl">
+    <h1 class="text-3xl font-bold font-serif">Mission</h1>
+    <span class="text-xl">{blok.mission}</span>
+  </div>
+</div>
+<div
+  class="flex flex-col sm:grid sm:grid-cols-2 mt-8 sm:mt-16 gap-8 sm:gap-16"
+>
+  <img
+    src={blok.vision_image.filename}
+    alt={blok.vision_image.alt}
+    class="rounded-xl"
+  />
+  <div class="flex flex-col gap-6 my-auto p-2 bg-red-main/50 rounded-xl">
+    <h1 class="text-3xl font-bold font-serif">Vision</h1>
+    <span class="text-xl">{blok.our_vision}</span>
+  </div>
+</div>

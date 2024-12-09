@@ -10,111 +10,100 @@ import VerticalBordersLayout from "@/layouts/VerticalBordersLayout.astro";
 const { data } = await useStoryblokGet("cdn/stories/support-us");
 ---
 
-<Layout title="Support Us">
-  <StoryblokComponent blok={data.story.content} />
-  <VerticalBordersLayout>
-    <div class="p-8 sm:p-16 flex w-full flex-col gap-16 bg-background pb-32">
-      <h1 class="text-5xl font-bold sm:mx-auto uppercase font-serif">Support</h1>
-      <div class="flex flex-col gap-16">
-        <Image
-          src={SupportUsImage}
-          alt="Picture of Guru Shradha family."
-          class="rounded-xl w-full sm:w-[70%] sm:mx-auto h-auto"
-        />
-        <div class="flex flex-col gap-4">
-          <span class="text-xl md:text-3xl font-bold sm:mx-auto">
-            Join Our Mission
-          </span>
-          <span class="text-base md:text-xl sm:mx-auto">
-            Fuel our <a href="/mission-vision" class="underline">mission</a> with
-            your support! Your contribution helps preserve an ancient art form while
-            creating contemporary cultural connections.
-          </span>
-          <a
-            href="https://www.paypal.com/us/fundraiser/charity/1747478"
-            target="_blank"
-            class="sm:mx-auto"
-          >
-            <Button className={"w-full sm:w-auto"}>Donate</Button>
-          </a>
-          <div class="flex flex-col gap-2 mt-8">
-            <b class="text-2xl">Your Support Helps Us:</b>
-            <ul class="list-disc pl-5">
-              <li>
-                <b>Train Next Generation</b> - Promising students are trained into
-                accomplished artists through expert instruction in the prestigious
-                Mohapatra tradition
-              </li><li>
-                <b>Bring Masters to America</b> - Host world-renowned artists who
-                share their expertise through workshops, performances, and specialized
-                training
-              </li><li>
-                <b>Create Artistic Excellence</b> - Present authentic Odissi performances
-                featuring both traditional masterpieces and innovative new works
-              </li><li>
-                <b>Bridge Cultures Through Dance</b> - Foster cross-cultural understanding
-                through collaborative performances and inclusive community programs
-              </li><li>
-                <b>Make Arts Accessible</b> - Provide free public events and educational
-                programs that bring classical Indian arts to diverse Bay Area communities
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="">
-        <div class="flex flex-col gap-4">
-          <b class="text-2xl">
-            <a href="/our-story" class="underline">Impact Highlights:</a> Support
-            us to keep the momentum going!
-          </b>
-          <ul class="list-disc pl-5">
-            <li>15+ years of continuous classical dance education</li>
-            <li>100+ public performances reaching thousands</li>
-            <li>Multiple free community programs annually</li>
-            <li>Regular workshops with international masters</li>
-            <li>Successful student-to-teacher mentorship program</li>
-          </ul>
-        </div>
-      </div>
-      <div class="">
-        <div class="flex flex-col gap-4">
-          <b class="text-2xl">
-            Guru Shradha upcoming <a href="/events" class="underline"
-              >2025 season</a
-            >
-            includes:
-          </b>
-          <ul class="list-disc pl-5">
-            <li>February 8th: Oneness - The Blossoming</li>
-            <li>
-              June 14th: Kelucharan Keerti Sampradaya Festival 2025, featuring
-              Guru Ratikant Mohapatra, Guru Sujata Mohapatraq
-            </li>
-            <li>June 15th: Guru Shradha Soloists</li>
-            <li>June 22nd: Guru Shradha Junior Showcase</li>
-          </ul>
-        </div>
-      </div>
-      <div class="">
-        <div class="flex flex-col gap-4">
-          <b class="text-2xl"> A couple of donation incentives: </b>
-          <ul class="list-disc pl-5">
-            <li>
-              For a donation of $150 - $250, Guru Shradha will give you 2 VIP
-              tickets for Kelucharan Keerti Sampradaya 2025 in June 2025
-            </li>
-            <li>
-              For a donation of above $250, Guru Shradha will give you 4 VIP
-              tickets for KKS 2025 in June 2025
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="text-xl font-bold">
-        Guru Shradha is a 501(c)(3) non-profit organization (federal tax ID
-        26-2370117). Your donation is tax deductible!
-      </div>
+<Layout title="Support">
+  <div class="flex flex-col gap-16">
+    <Image
+      src={SupportUsImage}
+      alt="Picture of Guru Shradha family."
+      class="rounded-xl w-full sm:w-[70%] sm:mx-auto h-auto"
+    />
+    <div class="flex flex-col gap-4">
+      <span class="text-xl md:text-3xl font-bold sm:mx-auto">
+        Join Our Mission
+      </span>
+      <span class="text-base md:text-xl sm:mx-auto max-w-prose">
+        Fuel our <a href="/mission-vision" class="underline">mission</a> with your
+        support! Your contribution helps preserve an ancient art form while creating
+        contemporary cultural connections.
+      </span>
+      <a
+        href="https://www.paypal.com/us/fundraiser/charity/1747478"
+        target="_blank"
+        class="sm:mx-auto"
+      >
+        <Button className={"w-full sm:w-auto"}>Donate</Button>
+      </a>
     </div>
-  </VerticalBordersLayout>
+  </div>
+
+  <div class="flex flex-col text-left gap-8 mr-auto mt-8">
+    <div class="flex flex-col gap-4">
+      <b class="text-2xl">Your Support Helps Us:</b>
+      <ul class="list-disc pl-5 gap-2">
+        <li>
+          <b>Train Next Generation</b> - Promising students are trained into accomplished
+          artists through expert instruction in the prestigious Mohapatra tradition
+        </li><li>
+          <b>Bring Masters to America</b> - Host world-renowned artists who share
+          their expertise through workshops, performances, and specialized training
+        </li><li>
+          <b>Create Artistic Excellence</b> - Present authentic Odissi performances
+          featuring both traditional masterpieces and innovative new works
+        </li><li>
+          <b>Bridge Cultures Through Dance</b> - Foster cross-cultural understanding
+          through collaborative performances and inclusive community programs
+        </li><li>
+          <b>Make Arts Accessible</b> - Provide free public events and educational
+          programs that bring classical Indian arts to diverse Bay Area communities
+        </li>
+      </ul>
+    </div>
+      <div class="flex flex-col gap-4">
+        <b class="text-2xl">
+          <a href="/our-story" class="underline">Impact Highlights:</a> Support us
+          to keep the momentum going!
+        </b>
+        <ul class="list-disc pl-5 gap-2">
+          <li>15+ years of continuous classical dance education</li>
+          <li>100+ public performances reaching thousands</li>
+          <li>Multiple free community programs annually</li>
+          <li>Regular workshops with international masters</li>
+          <li>Successful student-to-teacher mentorship program</li>
+        </ul>
+      </div>
+      <div class="flex flex-col gap-4">
+        <b class="text-2xl">
+          Guru Shradha upcoming <a href="/events" class="underline"
+            >2025 season</a
+          >
+          includes:
+        </b>
+        <ul class="list-disc pl-5 gap-2">
+          <li>February 8th: Oneness - The Blossoming</li>
+          <li>
+            June 14th: Kelucharan Keerti Sampradaya Festival 2025, featuring
+            Guru Ratikant Mohapatra, Guru Sujata Mohapatraq
+          </li>
+          <li>June 15th: Guru Shradha Soloists</li>
+          <li>June 22nd: Guru Shradha Junior Showcase</li>
+        </ul>
+    </div>
+      <div class="flex flex-col gap-4">
+        <b class="text-2xl"> A couple of donation incentives: </b>
+        <ul class="list-disc pl-5 gap-2">
+          <li>
+            For a donation of $150 - $250, Guru Shradha will give you 2 VIP
+            tickets for Kelucharan Keerti Sampradaya 2025 in June 2025
+          </li>
+          <li>
+            For a donation of above $250, Guru Shradha will give you 4 VIP
+            tickets for KKS 2025 in June 2025
+          </li>
+        </ul>
+      </div>
+    <div class="text-xl font-bold">
+      Guru Shradha is a 501(c)(3) non-profit organization (federal tax ID
+      26-2370117). Your donation is tax deductible!
+    </div>
+  </div>
 </Layout>

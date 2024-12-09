@@ -48,7 +48,7 @@ const ContactForm = ({ ACCESS_KEY }: { ACCESS_KEY: string }) => {
 
   if (status === "success") {
     return (
-      <div className="text-2xl font-bold text-[#FEFCF5]">
+      <div className="text-2xl font-bold text-background">
         Thank you! We received your message and will reply shortly.
       </div>
     );
@@ -68,7 +68,7 @@ const ContactForm = ({ ACCESS_KEY }: { ACCESS_KEY: string }) => {
             type="text"
             id="first_name"
             name="$first_name"
-            className="w-full px-4 py-2 bg-[#FEFCF5] text-black rounded-xl focus:ring-2 focus:ring-gold focus:outline-none"
+            className="w-full px-4 py-2 bg-background text-black rounded-xl focus:ring-2 focus:ring-gold focus:outline-none"
             required
             value={formData.$first_name}
             onChange={handleChange}
@@ -83,7 +83,7 @@ const ContactForm = ({ ACCESS_KEY }: { ACCESS_KEY: string }) => {
             type="text"
             id="last_name"
             name="$last_name"
-            className="w-full px-4 py-2 bg-[#FEFCF5] text-black rounded-xl focus:ring-2 focus:ring-gold focus:outline-none"
+            className="w-full px-4 py-2 bg-background text-black rounded-xl focus:ring-2 focus:ring-gold focus:outline-none"
             required
             value={formData.$last_name}
             onChange={handleChange}
@@ -99,7 +99,7 @@ const ContactForm = ({ ACCESS_KEY }: { ACCESS_KEY: string }) => {
           type="email"
           id="email"
           name="email"
-          className="w-full px-4 py-2 bg-[#FEFCF5] text-black rounded-xl focus:ring-2 focus:ring-gold focus:outline-none"
+          className="w-full px-4 py-2 bg-background text-black rounded-xl focus:ring-2 focus:ring-gold focus:outline-none"
           required
           value={formData.email}
           onChange={handleChange}
@@ -114,7 +114,7 @@ const ContactForm = ({ ACCESS_KEY }: { ACCESS_KEY: string }) => {
           type="text"
           id="subject"
           name="subject"
-          className="w-full px-4 py-2 bg-[#FEFCF5] text-black rounded-xl focus:ring-2 focus:ring-gold focus:outline-none"
+          className="w-full px-4 py-2 bg-background text-black rounded-xl focus:ring-2 focus:ring-gold focus:outline-none"
           required
           value={formData.subject}
           onChange={handleChange}
@@ -128,7 +128,7 @@ const ContactForm = ({ ACCESS_KEY }: { ACCESS_KEY: string }) => {
         <textarea
           id="message"
           name="message"
-          className="w-full px-4 py-2 bg-[#FEFCF5] text-black rounded-xl focus:ring-2 focus:ring-gold focus:outline-none min-h-48"
+          className="w-full px-4 py-2 bg-background text-black rounded-xl focus:ring-2 focus:ring-gold focus:outline-none min-h-48"
           required
           value={formData.message}
           onChange={handleChange}

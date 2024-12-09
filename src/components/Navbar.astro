@@ -12,31 +12,37 @@ const { pathname } = Astro.url;
 
 <!-- mobile navbar -->
 <div
-  class="flex sm:hidden w-full sticky top-0 left-0 z-50 flex-row justify-between items-center p-4 bg-[#FEFCF5]"
+  class="flex flex-col sm:hidden w-full sticky top-0 left-0 z-50 bg-background"
 >
-  <a href="/">
-    <Image
-      src={blok.logo.filename ?? ""}
-      alt={blok.logo.name}
-      width={50}
-      height={50}
-      class="aspect-square h-12 w-auto"
-    />
-  </a>
-  <MobileMenuSheetWrapper client:load>
-    <div class="bg-[#FEFCF5] h-full w-full p-8 gap-12 flex flex-col">
-      <div class="flex flex-col gap-4 h-full">
-        {
-          blok.menu_items.map((item) => (
-            <MenuLink pathname={pathname} item={item} />
-          ))
-        }
+  <div class="flex w-full flex-row justify-between items-center p-4">
+    <a href="/">
+      <Image
+        src={blok.logo.filename ?? ""}
+        alt={blok.logo.name}
+        width={50}
+        height={50}
+        class="aspect-square h-12 w-auto"
+      />
+    </a>
+    <MobileMenuSheetWrapper client:load>
+      <div class="bg-background w-full p-8 gap-12 flex flex-col">
+        <div class="flex flex-col gap-4 h-full">
+          {
+            blok.menu_items.map((item) => (
+              <MenuLink pathname={pathname} item={item} />
+            ))
+          }
+        </div>
+        <div class="flex flex-row gap-4">
+          {blok.social_links?.map((link) => <StoryblokComponent blok={link} />)}
+        </div>
       </div>
-      <div class="flex flex-row gap-4">
-        {blok.social_links?.map((link) => <StoryblokComponent blok={link} />)}
-      </div>
-    </div>
-  </MobileMenuSheetWrapper>
+    </MobileMenuSheetWrapper>
+  </div>
+  <div
+    class="flex w-full bg-[url('/src/images/saree_small.png')] h-10 bg-repeat-x bg-cover"
+  >
+  </div>
 </div>
 <!-- desktop navbar -->
 <div
@@ -62,7 +68,9 @@ const { pathname } = Astro.url;
         />
       </div>
     </a>
-    <div class="flex flex-row gap-8 sm:absolute sm:left-1/2 sm:-translate-x-1/2">
+    <div
+      class="flex flex-row gap-8 sm:absolute sm:left-1/2 sm:-translate-x-1/2"
+    >
       {
         blok.menu_items.map((item) => (
           <MenuLink pathname={pathname} item={item} />
@@ -73,6 +81,8 @@ const { pathname } = Astro.url;
       {blok.social_links?.map((link) => <StoryblokComponent blok={link} />)}
     </div>
   </div>
-  <div class="flex w-full bg-[url('/src/images/saree.jpeg')] h-20 bg-repeat-x bg-contain">
+  <div
+    class="flex w-full bg-[url('/src/images/saree.jpeg')] h-20 bg-repeat-x bg-contain"
+  >
   </div>
 </div>
