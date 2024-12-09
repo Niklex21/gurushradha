@@ -1,10 +1,12 @@
-import type { HomeTestimonialStoryblok } from "@/component-types";
+import type { AssetStoryblok, HomeTestimonialStoryblok } from "@/component-types";
 import { useEffect, useState, useRef } from "react";
 
 function TestimonialRotator({
   testimonials,
+  backgroundImage
 }: {
   testimonials: HomeTestimonialStoryblok[];
+  backgroundImage: AssetStoryblok;
 }) {
   const [current, setCurrent] = useState(0);
   const [position, setPosition] = useState<{ top: string; left: string }>({
@@ -78,7 +80,10 @@ function TestimonialRotator({
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-full bg-background/80 p-8 overflow-hidden"
+      className="relative w-full h-full bg-background/90 p-8 overflow-hidden bg-cover bg-blend-lighten"
+      style={{
+        backgroundImage: `url(${backgroundImage.filename})`,
+      }}
     >
       <div
         ref={textBlockRef}

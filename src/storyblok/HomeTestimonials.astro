@@ -11,5 +11,5 @@ const { blok } = Astro.props as { blok: HomeTestimonialsStoryblok };
     <MessageCircleHeartIcon />
     What People Say
   </h1>
-  <TestimonialRotator testimonials={blok.testimonials} client:load />
+  <TestimonialRotator testimonials={blok.testimonials} backgroundImage={blok.background_image} client:load />
 </div>
