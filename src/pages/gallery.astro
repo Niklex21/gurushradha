@@ -6,7 +6,6 @@ import { useStoryblokGet } from "@/utils";
 import type { GalleryData } from "@/types";
 import type { GalleryPhotoshootStoryblok } from "@/component-types";
 import GalleryEvent from "@/components/GalleryEvent";
-import VerticalBordersLayout from "@/layouts/VerticalBordersLayout.astro";
 
 const { data } = await useStoryblokGet("cdn/stories/gallery");
 const response = await GetGalleryAssets(Astro);
@@ -19,7 +18,7 @@ const galleryData: GalleryData = await response.json();
 ---
 
 <Layout title="Gallery" colorScheme="inverted">
-  <div class="flex flex-col gap-16 pb-32">
+  <div class="flex flex-col gap-16">
     {
       (data.story.content.events as GalleryPhotoshootStoryblok[])
         ?.sort(
