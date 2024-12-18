@@ -1,13 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 
-const HeroVideo = () => {
+const HeroVideo = ({ videoSource } : { videoSource: string }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const divRef = useRef<HTMLDivElement>(null);
   const [divHeight, setDivHeight] = useState("auto");
   const [divTop, setDivTop] = useState<number>(0);
-
-  const videoSource =
-    "https://a-us.storyblok.com/f/1021919/x/a0c458242c/homepage.mp4";
 
   useEffect(() => {
     const handleResize = () => {

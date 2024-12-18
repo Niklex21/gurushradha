@@ -1,4 +1,8 @@
 ---
+import type { HeroStoryblok } from "@/component-types"
 import HeroVideo from "@/components/Hero"
+
+const { blok } = Astro.props as HeroStoryblok
+const { video_url } = blok
 ---
-<HeroVideo client:load />
+<HeroVideo client:load videoSource={ video_url.url } />
