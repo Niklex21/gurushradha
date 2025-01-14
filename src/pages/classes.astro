@@ -24,7 +24,7 @@ const textRendered = renderRichText(blok.text);
       class="w-full sm:w-[60%] xl:w-[65%] h-auto rounded-xl flex-none"
       onloadedmetadata="this.volume=0.5"
     >
-      <source src={blok.video?.filename} type="video/mp4" />
+      <source src={blok.video_url?.url} type="video/mp4" />
     </video>
     <div
       class="flex w-full sm:w-[40%] xl:w-[35%] h-auto !text-background bg-foreground/80 bg-blend-darken rounded-xl aspect-square p-8 bg-cover"

@@ -3,8 +3,6 @@ import type { EventsStoryblok } from "@/component-types";
 import { CalendarIcon, MapIcon, MapPinIcon, PinIcon } from "lucide-react";
 
 const { blok } = Astro.props as { blok: EventsStoryblok };
-
-const source = "https://a-us.storyblok.com/f/1021919/x/20a8e0b805/events.mp4";
 ---
 
 <video
@@ -14,7 +12,7 @@ const source = "https://a-us.storyblok.com/f/1021919/x/20a8e0b805/events.mp4";
   class="w-full sm:w-[80%] rounded-xl h-auto mx-auto"
   onloadedmetadata="this.volume=0.5"
 >
-  <source src={source} type="video/mp4" />
+  <source src={blok.video_source?.url} type="video/mp4" />
 </video>
 <h2 class="text-xl sm:text-2xl sm:mx-auto mt-4 sm:mt-16">
   Please note that all times are in PST.

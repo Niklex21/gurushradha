@@ -44,58 +44,6 @@ export interface EventStoryblok {
   [k: string]: any;
 }
 
-export interface EventsStoryblok {
-  events: EventStoryblok[];
-  component: "events";
-  _uid: string;
-  [k: string]: any;
-}
-
-export interface GalleryPhotoshootStoryblok {
-  name?: string;
-  folder_name: string;
-  date: string;
-  component: "gallery_photoshoot";
-  _uid: string;
-  [k: string]: any;
-}
-
-export interface GlobalStoryblok {
-  global?: (
-    | BulletPointStoryblok
-    | EventStoryblok
-    | EventsStoryblok
-    | GalleryPhotoshootStoryblok
-    | GlobalStoryblok
-    | GlobalReferenceStoryblok
-    | HeroStoryblok
-    | HomeEventsStoryblok
-    | HomeMainTextStoryblok
-    | HomeTestimonialStoryblok
-    | HomeTestimonialsStoryblok
-    | InstagramFeedStoryblok
-    | MenuItemStoryblok
-    | NavbarStoryblok
-    | PageStoryblok
-    | PageClassesStoryblok
-    | SectionStoryblok
-    | SocialLinkStoryblok
-    | TestimonialStoryblok
-    | TestimonialsStoryblok
-    | VisionStoryblok
-  )[];
-  component: "global";
-  _uid: string;
-  [k: string]: any;
-}
-
-export interface GlobalReferenceStoryblok {
-  reference?: any[];
-  component: "global_reference";
-  _uid: string;
-  [k: string]: any;
-}
-
 export type MultilinkStoryblok =
   | {
       fieldtype: "multilink";
@@ -169,6 +117,59 @@ export type MultilinkStoryblok =
       linktype: "asset";
       [k: string]: any;
     };
+
+export interface EventsStoryblok {
+  events: EventStoryblok[];
+  video_source?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  component: "events";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface GalleryPhotoshootStoryblok {
+  name?: string;
+  folder_name: string;
+  date: string;
+  component: "gallery_photoshoot";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface GlobalStoryblok {
+  global?: (
+    | BulletPointStoryblok
+    | EventStoryblok
+    | EventsStoryblok
+    | GalleryPhotoshootStoryblok
+    | GlobalStoryblok
+    | GlobalReferenceStoryblok
+    | HeroStoryblok
+    | HomeEventsStoryblok
+    | HomeMainTextStoryblok
+    | HomeTestimonialStoryblok
+    | HomeTestimonialsStoryblok
+    | InstagramFeedStoryblok
+    | MenuItemStoryblok
+    | NavbarStoryblok
+    | PageStoryblok
+    | PageClassesStoryblok
+    | SectionStoryblok
+    | SocialLinkStoryblok
+    | TestimonialStoryblok
+    | TestimonialsStoryblok
+    | VisionStoryblok
+  )[];
+  component: "global";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface GlobalReferenceStoryblok {
+  reference?: any[];
+  component: "global_reference";
+  _uid: string;
+  [k: string]: any;
+}
 
 export interface HeroStoryblok {
   video_url: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
@@ -305,6 +306,7 @@ export interface PageClassesStoryblok {
   slideshow?: MultiassetStoryblok;
   text_background: AssetStoryblok;
   text: RichtextStoryblok;
+  video_url?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   component: "page_classes";
   _uid: string;
   [k: string]: any;
