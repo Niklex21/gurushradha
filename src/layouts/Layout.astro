@@ -29,6 +29,17 @@ const { title, colorScheme = "default", style, className } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title} | Guru Shradha</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V874FVG159"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-V874FVG159");
+    </script>
   </head>
   <body class="flex flex-col w-full min-h-dvh">
     <Navbar blok={data.story.content.global[0]} />
