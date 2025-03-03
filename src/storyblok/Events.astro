@@ -3,6 +3,14 @@ import type { EventsStoryblok } from "@/component-types";
 import { CalendarIcon, MapIcon, MapPinIcon, PinIcon } from "lucide-react";
 
 const { blok } = Astro.props as { blok: EventsStoryblok };
+
+const upcomingEvents = blok.events
+  ?.filter((event) => new Date(event.date ?? "") > new Date())
+  .sort((a, b) => new Date(a.date ?? "").getTime() - new Date(b.date ?? "").getTime());
+
+const pastEvents = blok.events
+  ?.filter((event) => new Date(event.date ?? "") < new Date())
+  .sort((a, b) => new Date(b.date ?? "").getTime() - new Date(a.date ?? "").getTime());
 ---
 
 <video
@@ -19,7 +27,46 @@ const { blok } = Astro.props as { blok: EventsStoryblok };
 </h2>
 <div class="flex flex-col gap-8 mt-8 sm:w-[67%] mx-auto text-left">
   {
-    blok.events?.map((event) => (
+    upcomingEvents.map((event) => (
+      <div class="w-full flex flex-col sm:grid sm:grid-cols-3 rounded-xl overflow-hidden border-gray-200 border-2">
+        <img
+          src={event.image.filename}
+          alt={event.image.alt}
+          class="w-full h-full object-cover col-span-1"
+        />
+        <div class="p-6 flex flex-col gap-4 col-span-2">
+          <h1 class="text-2xl sm:text-3xl font-bold mb-4">{event.name}</h1>
+          <div class="grid grid-cols-[1fr,auto] gap-y-2 gap-x-4 items-center mr-auto">
+            <span class="">
+              <CalendarIcon />
+            </span>
+            <span class="">
+              {new Date(event.date ?? "").toLocaleString("en-US", {
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+                hour: "numeric",
+                minute: "numeric",
+                hour12: true,
+              })}
+            </span>
+            <span class="">
+              <MapPinIcon />
+            </span>
+            <span class="w-full">{event.location}</span>
+          </div>
+          {event.description && (
+            <span class="text-sm text-gray-500">{event.description}</span>
+          )}
+        </div>
+      </div>
+    ))
+  }
+</div>
+<h2 class="text-2xl sm:text-3xl mt-16 sm:mt-32">Past Events</h2>
+<div class="flex flex-col gap-8 mt-8 sm:w-[67%] mx-auto text-left">
+  {
+    pastEvents.map((event) => (
       <div class="w-full flex flex-col sm:grid sm:grid-cols-3 rounded-xl overflow-hidden border-gray-200 border-2">
         <img
           src={event.image.filename}

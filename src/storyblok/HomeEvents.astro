@@ -9,6 +9,10 @@ const eventsBlok = await useStoryblokGetStory("global/events");
 
 const events = eventsBlok.data.story.content.global[0]
   .events as EventStoryblok[];
+
+const filteredEvents = events
+  .filter((event) => new Date(event.date ?? "") > new Date())
+  .sort((a, b) => new Date(a.date ?? "").getTime() - new Date(b.date ?? "").getTime());
 ---
 
 <div class="w-full flex flex-col gap-8 p-8 bg-cover bg-background"
@@ -25,7 +29,7 @@ const events = eventsBlok.data.story.content.global[0]
 
   <div class="flex flex-row gap-8 items-center overflow-x-auto bg-background">
     {
-      events.map((event) => {
+      filteredEvents.map((event) => {
         return (
           <div class="shrink-0 w-[80%] sm:w-96 flex flex-col rounded-xl overflow-hidden border-gray-200 border-2">
             <img
