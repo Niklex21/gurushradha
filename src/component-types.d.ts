@@ -33,17 +33,6 @@ export interface AssetStoryblok {
   [k: string]: any;
 }
 
-export interface EventStoryblok {
-  name: string;
-  location?: string;
-  date?: string;
-  image: AssetStoryblok;
-  description?: string;
-  component: "event";
-  _uid: string;
-  [k: string]: any;
-}
-
 export type MultilinkStoryblok =
   | {
       fieldtype: "multilink";
@@ -117,6 +106,18 @@ export type MultilinkStoryblok =
       linktype: "asset";
       [k: string]: any;
     };
+
+export interface EventStoryblok {
+  name: string;
+  location?: string;
+  date?: string;
+  image: AssetStoryblok;
+  description?: string;
+  link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  component: "event";
+  _uid: string;
+  [k: string]: any;
+}
 
 export interface EventsStoryblok {
   events: EventStoryblok[];
@@ -276,34 +277,7 @@ export interface PageStoryblok {
   [k: string]: any;
 }
 
-export type MultiassetStoryblok = {
-  alt: string | null;
-  copyright?: string | null;
-  fieldtype: "asset";
-  id: number;
-  filename: string | null;
-  name: string;
-  title: string | null;
-  focus: string | null;
-  meta_data?: {
-    [k: string]: any;
-  };
-  source?: string | null;
-  is_external_url?: boolean;
-  is_private?: boolean;
-  src?: string;
-  updated_at?: string;
-  width?: number | null;
-  height?: number | null;
-  aspect_ratio?: number | null;
-  public_id?: string | null;
-  content_type?: string;
-  [k: string]: any;
-}[];
-
 export interface PageClassesStoryblok {
-  video?: AssetStoryblok;
-  slideshow?: MultiassetStoryblok;
   text_background: AssetStoryblok;
   text: RichtextStoryblok;
   video_url?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;

@@ -35,32 +35,43 @@
       "display_name": null,
       "description": null,
       "created_at": "2024-11-25T08:40:41.470Z",
-      "updated_at": "2024-11-27T09:18:44.694Z",
+      "updated_at": "2025-03-20T15:57:55.791Z",
       "id": 262545,
       "schema": {
         "name": {
           "type": "text",
           "pos": 0,
-          "required": true
+          "required": true,
+          "id": "BkaPd9pnR6O3P4aG7bVq_g"
         },
         "location": {
           "type": "text",
           "pos": 1,
-          "required": false
+          "required": false,
+          "id": "7LoUuntmTKa4NmlWabASIw"
         },
         "date": {
           "type": "datetime",
           "pos": 2,
-          "required": false
+          "required": false,
+          "id": "R0Gds-d8R_SPodj0f5YXyg"
         },
         "image": {
           "type": "asset",
           "pos": 3,
-          "required": true
+          "required": true,
+          "id": "zdabS4jqRNSTt7dLU8exEw"
         },
         "description": {
           "type": "text",
-          "pos": 4
+          "pos": 4,
+          "id": "HqMJ7q8ARNO9QQwiFcEN9w"
+        },
+        "link": {
+          "type": "multilink",
+          "pos": 5,
+          "allow_target_blank": true,
+          "id": "XLJN3ZSXTIiWEb8IJ0JZGA"
         }
       },
       "image": null,
@@ -590,25 +601,9 @@
       "display_name": null,
       "description": null,
       "created_at": "2024-12-02T07:11:51.887Z",
-      "updated_at": "2025-01-14T07:41:00.027Z",
+      "updated_at": "2025-01-14T07:42:03.657Z",
       "id": 264713,
       "schema": {
-        "video": {
-          "type": "asset",
-          "pos": 0,
-          "id": "y6HLCNGpSd2-1McqZ8TaZg"
-        },
-        "slideshow": {
-          "type": "multiasset",
-          "pos": 1,
-          "filetypes": [
-            "videos",
-            "images"
-          ],
-          "asset_folder_id": 20238,
-          "required": false,
-          "id": "BeVyInbaSi6bM9B_xCW9Aw"
-        },
         "text_background": {
           "type": "asset",
           "pos": 2,
