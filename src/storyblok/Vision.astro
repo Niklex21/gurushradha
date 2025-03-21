@@ -29,9 +29,7 @@ const { blok } = Astro.props as { blok: VisionStoryblok };
     <span class="text-xl">{blok.mission}</span>
   </div>
 </div>
-<div
-  class="flex flex-col sm:grid sm:grid-cols-2 mt-8 sm:mt-16 gap-8 sm:gap-16"
->
+<div class="flex flex-col sm:grid sm:grid-cols-2 mt-8 sm:mt-16 gap-8 sm:gap-16">
   <img
     src={blok.vision_image.filename}
     alt={blok.vision_image.alt}

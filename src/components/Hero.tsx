@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-const HeroVideo = ({ videoSource } : { videoSource: string }) => {
+const HeroVideo = ({ videoSource }: { videoSource: string }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const divRef = useRef<HTMLDivElement>(null);
   const [divHeight, setDivHeight] = useState("auto");

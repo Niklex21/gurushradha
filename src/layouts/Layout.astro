@@ -30,8 +30,10 @@ const { title, colorScheme = "default", style, className } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title} | Guru Shradha</title>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V874FVG159"
-    ></script>
+    <script
+      is:inline
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-V874FVG159"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag() {

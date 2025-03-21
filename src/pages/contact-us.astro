@@ -1,13 +1,8 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { useStoryblokGet } from "@/utils";
-import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import backgroundImage from "@/images/contact_background.jpg";
 import ContactForm from "@/components/ContactForm";
 import SubscribeForm from "@/components/SubscribeForm";
-import VerticalBordersLayout from "@/layouts/VerticalBordersLayout.astro";
-
-const { data } = await useStoryblokGet("cdn/stories/contact-us");
 
 const ACCESS_KEY = import.meta.env.STATIC_FORMS_ACCESS_KEY;
 ---

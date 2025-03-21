@@ -1,11 +1,8 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { useStoryblokGet } from "@/utils";
 import { Image } from "astro:assets";
 import SupportUsImage from "@/images/support_us.jpg";
 import { Button } from "@/components/ui/button";
-
-const { data } = await useStoryblokGet("cdn/stories/support-us");
 ---
 
 <Layout title="Support">
@@ -56,51 +53,59 @@ const { data } = await useStoryblokGet("cdn/stories/support-us");
         </li>
       </ul>
     </div>
-      <div class="flex flex-col gap-4">
-        <h3 class="text-xl font-bold">
-          <a href="/our-story" class="underline">Impact Highlights:</a> Support us
-          to keep the momentum going!
-        </h3>
-        <ul class="list-disc pl-5 gap-2 text-base">
-          <li>15+ years of continuous classical dance education</li>
-          <li>100+ public performances reaching thousands</li>
-          <li>Multiple free community programs annually</li>
-          <li>Regular workshops with international masters</li>
-          <li>Successful student-to-teacher mentorship program</li>
-        </ul>
-      </div>
-      <div class="flex flex-col gap-4">
-        <h3 class="text-xl font-bold">
-          Guru Shradha upcoming <a href="/events" class="underline"
-            >2025 season</a
-          >
-          includes:
-        </h3>
-        <ul class="list-disc pl-5 gap-2 text-base">
-          <li>
-            June 14th: Kelucharan Keerti Sampradaya Festival 2025, featuring Guru Ratikant Mohapatra, Guru Sujata Mohapatra
-          </li>
-          <li>June 15th: Aikyam: Guru Shradha Senior Soloists</li>
-          <li>June 22nd: Navojyoti: Youth Showcase</li>
-        </ul>
+    <div class="flex flex-col gap-4">
+      <h3 class="text-xl font-bold">
+        <a href="/our-story" class="underline">Impact Highlights:</a> Support us
+        to keep the momentum going!
+      </h3>
+      <ul class="list-disc pl-5 gap-2 text-base">
+        <li>15+ years of continuous classical dance education</li>
+        <li>100+ public performances reaching thousands</li>
+        <li>Multiple free community programs annually</li>
+        <li>Regular workshops with international masters</li>
+        <li>Successful student-to-teacher mentorship program</li>
+      </ul>
     </div>
-      <div class="flex flex-col gap-4">
-        <h3 class="text-xl font-bold"> A Few Sponsor Incentives: </h3>
-        <ul class="list-disc pl-5 gap-2 text-base">
-          <li>
-            For a sponsorship of $250+, Guru Shradha will gift you the following: 2 VIP tickets for Kelucharan Keerti Sampradaya
-            in June 2025 and an invitation to the VIP reception to meet Guru Ratikant and Guru Sujata Mohapatra after the program.
-          </li>
-          <li>
-            For a sponsorship of $500+, Guru Shradha will gift you the following: 4 VIP tickets for Kelucharan Keerti Sampradaya 2025 in June 2025,
-            and an invitation to the VIP reception to meet Guru Ratikant and Guru Sujata Mohapatra after the program and a special gift from Guru Shradha.
-          </li>
-          <li>
-            For a sponsorship of $1000+, Guru Shradha will gift you the following: 4 VIP tickets for Kelucharan Keerti Sampradaya 2025 in June 2025,
-            mention your name on stage and in our social media, an invitation to the VIP reception to meet Guru Ratikant and Guru Sujata Mohapatra after the program, a special gift from Guru Shradha.
-          </li>
-        </ul>
-      </div>
+    <div class="flex flex-col gap-4">
+      <h3 class="text-xl font-bold">
+        Guru Shradha upcoming <a href="/events" class="underline">2025 season</a
+        >
+        includes:
+      </h3>
+      <ul class="list-disc pl-5 gap-2 text-base">
+        <li>
+          June 14th: Kelucharan Keerti Sampradaya Festival 2025, featuring Guru
+          Ratikant Mohapatra, Guru Sujata Mohapatra
+        </li>
+        <li>June 15th: Aikyam: Guru Shradha Senior Soloists</li>
+        <li>June 22nd: Navojyoti: Youth Showcase</li>
+      </ul>
+    </div>
+    <div class="flex flex-col gap-4">
+      <h3 class="text-xl font-bold">A Few Sponsor Incentives:</h3>
+      <ul class="list-disc pl-5 gap-2 text-base">
+        <li>
+          For a sponsorship of $250+, Guru Shradha will gift you the following:
+          2 VIP tickets for Kelucharan Keerti Sampradaya in June 2025 and an
+          invitation to the VIP reception to meet Guru Ratikant and Guru Sujata
+          Mohapatra after the program.
+        </li>
+        <li>
+          For a sponsorship of $500+, Guru Shradha will gift you the following:
+          4 VIP tickets for Kelucharan Keerti Sampradaya 2025 in June 2025, and
+          an invitation to the VIP reception to meet Guru Ratikant and Guru
+          Sujata Mohapatra after the program and a special gift from Guru
+          Shradha.
+        </li>
+        <li>
+          For a sponsorship of $1000+, Guru Shradha will gift you the following:
+          4 VIP tickets for Kelucharan Keerti Sampradaya 2025 in June 2025,
+          mention your name on stage and in our social media, an invitation to
+          the VIP reception to meet Guru Ratikant and Guru Sujata Mohapatra
+          after the program, a special gift from Guru Shradha.
+        </li>
+      </ul>
+    </div>
     <div class="text-lg font-bold">
       Guru Shradha is a 501(c)(3) non-profit organization (federal tax ID
       26-2370117). Your donation is tax deductible!

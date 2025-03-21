@@ -1,9 +1,12 @@
-import type { AssetStoryblok, HomeTestimonialStoryblok } from "@/component-types";
+import type {
+  AssetStoryblok,
+  HomeTestimonialStoryblok,
+} from "@/component-types";
 import { useEffect, useState, useRef } from "react";
 
 function TestimonialRotator({
   testimonials,
-  backgroundImage
+  backgroundImage,
 }: {
   testimonials: HomeTestimonialStoryblok[];
   backgroundImage: AssetStoryblok;

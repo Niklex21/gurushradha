@@ -2,9 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import { useStoryblokGet } from "@/utils";
 import type { PageClassesStoryblok } from "@/component-types";
-import Slideshow from "@/components/Slideshow";
 import { renderRichText } from "@storyblok/astro";
-import VerticalBordersLayout from "@/layouts/VerticalBordersLayout.astro";
 
 const { data } = await useStoryblokGet("cdn/stories/classes");
 
@@ -14,9 +12,7 @@ const textRendered = renderRichText(blok.text);
 ---
 
 <Layout title="Classes" colorScheme="inverted">
-  <div
-    class="flex w-full flex-col gap-8 sm:flex sm:flex-row sm:items-stretch"
-  >
+  <div class="flex w-full flex-col gap-8 sm:flex sm:flex-row sm:items-stretch">
     <video
       playsinline
       controls

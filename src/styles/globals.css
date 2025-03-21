@@ -63,7 +63,7 @@
   body {
     @apply bg-background text-foreground;
   }
-  
+
   h1 {
     @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-4xl font-bold;
   }
@@ -75,7 +75,7 @@
   a {
     @apply underline hover:text-red-main;
   }
-  
+
   ul {
     @apply list-disc gap-4 flex flex-col;
   }

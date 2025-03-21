@@ -1,9 +1,7 @@
 ---
-import type { EventStoryblok, HomeEventsStoryblok } from "@/component-types";
+import type { EventStoryblok } from "@/component-types";
 import { useStoryblokGetStory } from "@/utils";
-import { CalendarIcon, MapPinIcon } from "lucide-react";
-
-const { blok } = Astro.props as { blok: HomeEventsStoryblok };
+import { CalendarIcon } from "lucide-react";
 
 const eventsBlok = await useStoryblokGetStory("global/events");
 
@@ -12,11 +10,13 @@ const events = eventsBlok.data.story.content.global[0]
 
 const filteredEvents = events
   .filter((event) => new Date(event.date ?? "") > new Date())
-  .sort((a, b) => new Date(a.date ?? "").getTime() - new Date(b.date ?? "").getTime());
+  .sort(
+    (a, b) =>
+      new Date(a.date ?? "").getTime() - new Date(b.date ?? "").getTime(),
+  );
 ---
 
-<div class="w-full flex flex-col gap-8 p-8 bg-cover bg-background"
->
+<div class="w-full flex flex-col gap-8 p-8 bg-cover bg-background">
   <h1
     class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-2xl font-bold"
   >

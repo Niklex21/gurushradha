@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { type InstagramPost as InstagramPostType } from "@/types";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { Button } from "./ui/button";
