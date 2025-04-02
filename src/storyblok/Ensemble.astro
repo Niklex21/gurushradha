@@ -1,0 +1,109 @@
+---
+import type { EnsembleStoryblok } from "@/component-types";
+const { blok } = Astro.props as { blok: EnsembleStoryblok };
+---
+<h3 class="subtitle">
+  Formed in 2019, the Guru Shradha Ensemble brings together senior disciples of Guru Shradha, each a skilled soloist in their own right. These dancers, hailing from diverse backgrounds and united by years of dedicated training, share a commitment to imbibing the prestigious tradition and mastering the nuanced technique of Guru Kelucharan Mohapatra. The Ensemble demonstrates both individual brilliance and collective harmony, performing as a unified company and in regionally based groups (West and East). Their performances have been featured at prominent festivals across the United States, including those in the Bay Area, Michigan, NYC, and North Carolina.
+</h3>
+<div class="ensemble-grid">
+  {blok.ensemble?.map((ensemble_member) => (
+    <div class="ensemble-member">
+      <div class="image-container">
+        <img
+          src={ensemble_member?.image?.filename}
+          alt={ensemble_member?.image?.alt}
+          class="member-image"
+        />
+        <div class="name-overlay">
+          <h3>{ensemble_member?.name}</h3>
+        </div>
+        <div class="bio-overlay">
+          <p>{ensemble_member?.bio}</p>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+<style>
+  .subtitle {
+    margin: -25px 0 25px 0;
+  }
+
+  .ensemble-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(300px, 1fr)); /* Force 4 columns */
+    gap: 20px; 
+    padding: 20px;
+  } 
+
+  @media (max-width: 768px) {  
+    .ensemble-grid {
+      grid-template-columns: 1fr; /* Switch to a single column */
+    }
+  }
+
+  .ensemble-member {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  
+  }
+
+  .image-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 125%; 
+  }
+
+  .member-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .name-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .ensemble-member:hover .name-overlay {
+    opacity: 0;
+  }
+
+  .bio-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 40px 20px 20px 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    overflow-y: auto;
+  }
+
+  .ensemble-member:hover .bio-overlay {
+    opacity: 1;
+  }
+
+  .bio-overlay h3 {
+    margin-bottom: 10px;
+  }
+
+  .bio-overlay p {
+    font-size: 0.9em;
+    line-height: 1.4;
+  }
+</style>

@@ -31,6 +31,90 @@
       "component_group_name": ""
     },
     {
+      "name": "ensemble ",
+      "display_name": null,
+      "description": "list of ensemble members",
+      "created_at": "2025-03-27T03:17:43.677Z",
+      "updated_at": "2025-04-01T12:58:19.327Z",
+      "id": 289120,
+      "schema": {
+        "ensemble": {
+          "type": "bloks",
+          "pos": 0,
+          "id": "4e7X0yhOS3WutKI46fG2Bw",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "ensemble_member"
+          ],
+          "required": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "ensemble ",
+      "component_group_uuid": "all",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": ""
+    },
+    {
+      "name": "ensemble_member",
+      "display_name": null,
+      "description": "bio + image of ensemble dancer",
+      "created_at": "2025-03-27T04:10:43.162Z",
+      "updated_at": "2025-04-01T12:59:36.822Z",
+      "id": 289121,
+      "schema": {
+        "name": {
+          "type": "text",
+          "pos": 0,
+          "id": "PngiSod8Q6KaOvjjgGPt9Q",
+          "required": true
+        },
+        "bio": {
+          "type": "textarea",
+          "pos": 1,
+          "id": "dE6RFpWATbi92Ezzz3zNhw",
+          "required": true
+        },
+        "ig_handle": {
+          "type": "multilink",
+          "pos": 2,
+          "id": "G0EwsmK8Rj-Z8nfzMcdMHA",
+          "required": true
+        },
+        "image": {
+          "type": "asset",
+          "pos": 3,
+          "id": "1H2V78jPS6GgLx2PHRBA_Q"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "ensemble_member",
+      "component_group_uuid": "all",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": ""
+    },
+    {
       "name": "event",
       "display_name": null,
       "description": null,
@@ -104,7 +188,9 @@
           "required": true,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": ["event"],
+          "component_whitelist": [
+            "event"
+          ],
           "id": "TpqKwW88Q5WM6-mEyv4Afg"
         },
         "video_source": {
@@ -278,7 +364,9 @@
           "entry_appearance": "card",
           "allow_advanced_search": true,
           "required": true,
-          "filter_content_type": ["global"]
+          "filter_content_type": [
+            "global"
+          ]
         }
       },
       "image": null,
@@ -390,7 +478,9 @@
           "required": true,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": ["home_testimonial"]
+          "component_whitelist": [
+            "home_testimonial"
+          ]
         },
         "background_image": {
           "type": "asset",
@@ -475,7 +565,9 @@
           "pos": 2,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": ["menu_item"]
+          "component_whitelist": [
+            "menu_item"
+          ]
         }
       },
       "image": null,
@@ -495,7 +587,9 @@
           "name": "navbar"
         }
       ],
-      "internal_tag_ids": ["8202"],
+      "internal_tag_ids": [
+        "8202"
+      ],
       "content_type_asset_preview": null,
       "component_group_name": ""
     },
@@ -517,7 +611,9 @@
           "pos": 2,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": ["menu_item"],
+          "component_whitelist": [
+            "menu_item"
+          ],
           "required": true
         },
         "social_links": {
@@ -525,7 +621,9 @@
           "pos": 3,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": ["social_link"]
+          "component_whitelist": [
+            "social_link"
+          ]
         },
         "logo_text": {
           "type": "asset",
@@ -550,7 +648,9 @@
           "name": "global"
         }
       ],
-      "internal_tag_ids": ["8201"],
+      "internal_tag_ids": [
+        "8201"
+      ],
       "content_type_asset_preview": null
     },
     {
@@ -792,7 +892,9 @@
           "required": false,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": ["testimonial"]
+          "component_whitelist": [
+            "testimonial"
+          ]
         }
       },
       "image": null,

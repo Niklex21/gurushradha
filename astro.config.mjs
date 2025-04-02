@@ -3,7 +3,7 @@ import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 import { loadEnv } from "vite";
-import storyblok from "@storyblok/astro";
+import { storyblok } from "@storyblok/astro";
 
 import vercel from "@astrojs/vercel/serverless";
 
@@ -30,6 +30,7 @@ export default defineConfig({
         events: "storyblok/Events",
         home_testimonials: "storyblok/HomeTestimonials",
         home_events: "storyblok/HomeEvents",
+        ensemble:"storyblok/Ensemble",
       },
       apiOptions: {
         // Choose your Storyblok space region
