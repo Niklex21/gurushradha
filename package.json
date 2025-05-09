@@ -9,7 +9,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier --write .",
-    "sb-sync": "storyblok pull-components --space 1021919 --path /Users/alex/Desktop/dev/gurushradha/src/ --file-name schema && storyblok generate-typescript-typedefs --sourceFilePaths /Users/alex/Desktop/dev/gurushradha/src/components.schema.json --destinationFilePath  /Users/alex/Desktop/dev/gurushradha/src/component-types.d.ts"
+    "sb-sync": "storyblok pull-components --space 1021919 --path /Users/trinasarkar/Documents/Projects/gurushradha/src/ --file-name schema && storyblok generate-typescript-typedefs --sourceFilePaths /Users/trinasarkar/Documents/Projects/gurushradha/src/components.schema.json --destinationFilePath  /Users/trinasarkar/Documents/Projects/gurushradha/src/component-types.d.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -21,7 +21,7 @@
     "@fontsource/yatra-one": "^5.1.0",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-slot": "^1.1.0",
-    "@storyblok/astro": "^5.0.2",
+    "@storyblok/astro": "^6.1.1",
     "@types/node": "^22.7.4",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.0",

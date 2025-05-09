@@ -8,28 +8,10 @@ export interface BulletPointStoryblok {
   [k: string]: any;
 }
 
-export interface AssetStoryblok {
-  alt: string | null;
-  copyright?: string | null;
-  fieldtype: "asset";
-  id: number;
-  filename: string | null;
-  name: string;
-  title: string | null;
-  focus: string | null;
-  meta_data?: {
-    [k: string]: any;
-  };
-  source?: string | null;
-  is_external_url?: boolean;
-  is_private?: boolean;
-  src?: string;
-  updated_at?: string;
-  width?: number | null;
-  height?: number | null;
-  aspect_ratio?: number | null;
-  public_id?: string | null;
-  content_type?: string;
+export interface EnsembleStoryblok {
+  ensemble: EnsembleMemberStoryblok[];
+  component: "ensemble ";
+  _uid: string;
   [k: string]: any;
 }
 
@@ -107,16 +89,48 @@ export type MultilinkStoryblok =
       [k: string]: any;
     };
 
+export interface AssetStoryblok {
+  alt: string | null;
+  copyright?: string | null;
+  fieldtype: "asset";
+  id: number;
+  filename: string | null;
+  name: string;
+  title: string | null;
+  focus: string | null;
+  meta_data?: {
+    [k: string]: any;
+  };
+  source?: string | null;
+  is_external_url?: boolean;
+  is_private?: boolean;
+  src?: string;
+  updated_at?: string;
+  width?: number | null;
+  height?: number | null;
+  aspect_ratio?: number | null;
+  public_id?: string | null;
+  content_type?: string;
+  [k: string]: any;
+}
+
+export interface EnsembleMemberStoryblok {
+  name: string;
+  bio: string;
+  ig_handle: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  image?: AssetStoryblok;
+  component: "ensemble_member";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface EventStoryblok {
   name: string;
   location?: string;
   date?: string;
   image: AssetStoryblok;
   description?: string;
-  link?: Exclude<
-    MultilinkStoryblok,
-    { linktype?: "email" } | { linktype?: "asset" }
-  >;
+  link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   component: "event";
   _uid: string;
   [k: string]: any;
@@ -124,10 +138,7 @@ export interface EventStoryblok {
 
 export interface EventsStoryblok {
   events: EventStoryblok[];
-  video_source?: Exclude<
-    MultilinkStoryblok,
-    { linktype?: "email" } | { linktype?: "asset" }
-  >;
+  video_source?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   component: "events";
   _uid: string;
   [k: string]: any;
@@ -145,6 +156,8 @@ export interface GalleryPhotoshootStoryblok {
 export interface GlobalStoryblok {
   global?: (
     | BulletPointStoryblok
+    | EnsembleStoryblok
+    | EnsembleMemberStoryblok
     | EventStoryblok
     | EventsStoryblok
     | GalleryPhotoshootStoryblok
@@ -179,10 +192,7 @@ export interface GlobalReferenceStoryblok {
 }
 
 export interface HeroStoryblok {
-  video_url: Exclude<
-    MultilinkStoryblok,
-    { linktype?: "email" } | { linktype?: "asset" }
-  >;
+  video_url: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   component: "hero";
   _uid: string;
   [k: string]: any;
@@ -240,10 +250,7 @@ export interface InstagramFeedStoryblok {
 
 export interface MenuItemStoryblok {
   name: string;
-  link?: Exclude<
-    MultilinkStoryblok,
-    { linktype?: "email" } | { linktype?: "asset" }
-  >;
+  link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   submenus?: MenuItemStoryblok[];
   component: "menu_item";
   _uid: string;
@@ -263,6 +270,8 @@ export interface NavbarStoryblok {
 export interface PageStoryblok {
   body?: (
     | BulletPointStoryblok
+    | EnsembleStoryblok
+    | EnsembleMemberStoryblok
     | EventStoryblok
     | EventsStoryblok
     | GalleryPhotoshootStoryblok
@@ -292,10 +301,7 @@ export interface PageStoryblok {
 export interface PageClassesStoryblok {
   text_background: AssetStoryblok;
   text: RichtextStoryblok;
-  video_url?: Exclude<
-    MultilinkStoryblok,
-    { linktype?: "email" } | { linktype?: "asset" }
-  >;
+  video_url?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   component: "page_classes";
   _uid: string;
   [k: string]: any;
@@ -311,10 +317,7 @@ export interface SectionStoryblok {
 
 export interface SocialLinkStoryblok {
   type: "facebook" | "instagram" | "youtube" | "tiktok";
-  link: Exclude<
-    MultilinkStoryblok,
-    { linktype?: "email" } | { linktype?: "asset" }
-  >;
+  link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   component: "social_link";
   _uid: string;
   [k: string]: any;
@@ -324,10 +327,7 @@ export interface TestimonialStoryblok {
   person_name: string;
   quote: string;
   relation_to_gs: string;
-  source?: Exclude<
-    MultilinkStoryblok,
-    { linktype?: "email" } | { linktype?: "asset" }
-  >;
+  source?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   type?: "" | "review" | "testimonial";
   component: "testimonial";
   _uid: string;
