@@ -44,9 +44,7 @@
           "id": "4e7X0yhOS3WutKI46fG2Bw",
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "ensemble_member"
-          ],
+          "component_whitelist": ["ensemble_member"],
           "required": true
         }
       },
@@ -188,9 +186,7 @@
           "required": true,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "event"
-          ],
+          "component_whitelist": ["event"],
           "id": "TpqKwW88Q5WM6-mEyv4Afg"
         },
         "video_source": {
@@ -364,9 +360,7 @@
           "entry_appearance": "card",
           "allow_advanced_search": true,
           "required": true,
-          "filter_content_type": [
-            "global"
-          ]
+          "filter_content_type": ["global"]
         }
       },
       "image": null,
@@ -478,9 +472,7 @@
           "required": true,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "home_testimonial"
-          ]
+          "component_whitelist": ["home_testimonial"]
         },
         "background_image": {
           "type": "asset",
@@ -565,9 +557,7 @@
           "pos": 2,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "menu_item"
-          ]
+          "component_whitelist": ["menu_item"]
         }
       },
       "image": null,
@@ -587,9 +577,7 @@
           "name": "navbar"
         }
       ],
-      "internal_tag_ids": [
-        "8202"
-      ],
+      "internal_tag_ids": ["8202"],
       "content_type_asset_preview": null,
       "component_group_name": ""
     },
@@ -611,9 +599,7 @@
           "pos": 2,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "menu_item"
-          ],
+          "component_whitelist": ["menu_item"],
           "required": true
         },
         "social_links": {
@@ -621,9 +607,7 @@
           "pos": 3,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "social_link"
-          ]
+          "component_whitelist": ["social_link"]
         },
         "logo_text": {
           "type": "asset",
@@ -648,9 +632,7 @@
           "name": "global"
         }
       ],
-      "internal_tag_ids": [
-        "8201"
-      ],
+      "internal_tag_ids": ["8201"],
       "content_type_asset_preview": null
     },
     {
@@ -892,9 +874,7 @@
           "required": false,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "testimonial"
-          ]
+          "component_whitelist": ["testimonial"]
         }
       },
       "image": null,
