@@ -2,25 +2,36 @@
 import type { EnsembleStoryblok } from "@/component-types";
 const { blok } = Astro.props as { blok: EnsembleStoryblok };
 ---
+
 <h3 class="mt-[-25px] mb-6">
-  Formed in 2019, the Guru Shradha Ensemble brings together senior disciples of Guru Shradha, each a skilled soloist in their own right. These dancers, hailing from diverse backgrounds and united by years of dedicated training, share a commitment to imbibing the prestigious tradition and mastering the nuanced technique of Guru Kelucharan Mohapatra. The Ensemble demonstrates both individual brilliance and collective harmony, performing as a unified company and in regionally based groups (West and East). Their performances have been featured at prominent festivals across the United States, including those in the Bay Area, Michigan, NYC, and North Carolina.
+  Formed in 2019, the Guru Shradha Ensemble brings together senior disciples of
+  Guru Shradha, each a skilled soloist in their own right. These dancers,
+  hailing from diverse backgrounds and united by years of dedicated training,
+  share a commitment to imbibing the prestigious tradition and mastering the
+  nuanced technique of Guru Kelucharan Mohapatra. The Ensemble demonstrates both
+  individual brilliance and collective harmony, performing as a unified company
+  and in regionally based groups (West and East). Their performances have been
+  featured at prominent festivals across the United States, including those in
+  the Bay Area, Michigan, NYC, and North Carolina.
 </h3>
 <div class="grid gap-5 p-5 md:grid-cols-4">
-  {blok.ensemble?.map((ensemble_member) => (
-    <div class="relative overflow-hidden rounded-md shadow-md group">
-      <div class="relative w-full h-0 pb-[125%]">
-        <img
-          src={ensemble_member?.image?.filename}
-          alt={ensemble_member?.image?.alt}
-          class="absolute w-full h-full object-cover transition-opacity duration-300 ease-in-out opacity-100 group-hover:opacity-0"
-        />
-        <div class="absolute bottom-0 left-0 w-full bg-black/60 text-white p-2 text-center transition-opacity duration-300 ease-in-out opacity-100 group-hover:opacity-0">
-          <h3 class="text-sm">{ensemble_member?.name}</h3>
-        </div>
-        <div class="absolute top-0 left-0 w-full h-full bg-black/80 text-white p-10 opacity-0 transition-opacity duration-300 ease-in-out overflow-y-auto group-hover:opacity-100 flex flex-col justify-start items-center text-center box-border">
-          <p class="leading-relaxed text-sm">{ensemble_member?.bio}</p>
+  {
+    blok.ensemble?.map((ensemble_member) => (
+      <div class="relative overflow-hidden rounded-md shadow-md group">
+        <div class="relative w-full h-0 pb-[125%]">
+          <img
+            src={ensemble_member?.image?.filename}
+            alt={ensemble_member?.image?.alt}
+            class="absolute w-full h-full object-cover transition-opacity duration-300 ease-in-out opacity-100 group-hover:opacity-0"
+          />
+          <div class="absolute bottom-0 left-0 w-full bg-black/60 text-white p-2 text-center transition-opacity duration-300 ease-in-out opacity-100 group-hover:opacity-0">
+            <h3 class="text-sm">{ensemble_member?.name}</h3>
+          </div>
+          <div class="absolute top-0 left-0 w-full h-full bg-black/80 text-white p-10 opacity-0 transition-opacity duration-300 ease-in-out overflow-y-auto group-hover:opacity-100 flex flex-col justify-start items-center text-center box-border">
+            <p class="leading-relaxed text-sm">{ensemble_member?.bio}</p>
+          </div>
         </div>
       </div>
-    </div>
-  ))}
+    ))
+  }
 </div>

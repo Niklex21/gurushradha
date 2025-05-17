@@ -1,14 +1,21 @@
 import React, { useState } from "react";
 import { Button } from "./ui/button";
 
-const ContactForm = ({ ACCESS_KEY }: { ACCESS_KEY: string }) => {
+const ContactForm = ({
+  ACCESS_KEY,
+  STATIC_FORMS_RECAPTCHA_KEY,
+}: {
+  ACCESS_KEY: string;
+  STATIC_FORMS_RECAPTCHA_KEY: string;
+}) => {
   const [formData, setFormData] = useState({
     $first_name: "",
     $last_name: "",
     email: "",
     subject: "",
     message: "",
-    accessKey: ACCESS_KEY,
+    apiKey: ACCESS_KEY,
+    staticFormsRecaptchaKey: STATIC_FORMS_RECAPTCHA_KEY,
   });
   const [status, setStatus] = useState<
     "idle" | "success" | "error" | "loading"
@@ -57,7 +64,15 @@ const ContactForm = ({ ACCESS_KEY }: { ACCESS_KEY: string }) => {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       {status === "error" && <div className="text-red-500">{errorMessage}</div>}
-      <input type="hidden" name="accessKey" value={ACCESS_KEY} />
+      <input type="hidden" name="apiKey" value={ACCESS_KEY} />
+      <input type="hidden" name="replyTo" value="@" />
+      <input
+        type="text"
+        name="honeypot"
+        className="hidden"
+        tabIndex={-1}
+        autoComplete="off"
+      />
       <div className="flex flex-col sm:flex-row items-center gap-4 w-full">
         {/* First Name */}
         <div className="space-y-2 w-full">
@@ -134,6 +149,14 @@ const ContactForm = ({ ACCESS_KEY }: { ACCESS_KEY: string }) => {
           onChange={handleChange}
         />
       </div>
+
+      <div className="g-recaptcha" data-sitekey={STATIC_FORMS_RECAPTCHA_KEY} />
+      <script
+        src="https://www.google.com/recaptcha/api.js"
+        async
+        defer
+      ></script>
+
       <Button type="submit" disabled={status === "loading"}>
         {status === "loading" ? "Sending..." : "Send Message"}
       </Button>

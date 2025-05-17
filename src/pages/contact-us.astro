@@ -5,6 +5,7 @@ import ContactForm from "@/components/ContactForm";
 import SubscribeForm from "@/components/SubscribeForm";
 
 const ACCESS_KEY = import.meta.env.STATIC_FORMS_ACCESS_KEY;
+const STATIC_FORMS_RECAPTCHA_KEY = import.meta.env.STATIC_FORMS_RECAPTCHA_KEY;
 ---
 
 <Layout
@@ -17,7 +18,11 @@ const ACCESS_KEY = import.meta.env.STATIC_FORMS_ACCESS_KEY;
   className="bg-cover bg-no-repeat bg-blend-darken "
 >
   <div class="flex flex-col gap-16 sm:grid sm:grid-cols-2 w-full text-left">
-    <ContactForm client:load ACCESS_KEY={ACCESS_KEY} />
+    <ContactForm
+      client:load
+      ACCESS_KEY={ACCESS_KEY}
+      STATIC_FORMS_RECAPTCHA_KEY={STATIC_FORMS_RECAPTCHA_KEY}
+    />
     <div class="flex flex-col h-full justify-between sm:ml-auto gap-8">
       <div class="flex flex-col gap-4">
         <span
