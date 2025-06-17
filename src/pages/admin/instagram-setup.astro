@@ -1,0 +1,76 @@
+---
+import { actions } from "astro:actions";
+
+let authUrl = '';
+
+try {
+  const result = await actions.getInstagramAuthUrl();
+  if (result.data) {
+    authUrl = result.data.authUrl;
+  }
+} catch (error) {
+  console.error('Error getting auth URL:', error);
+}
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Instagram Setup</title>
+  </head>
+  <body>
+    <div style="max-width: 600px; margin: 50px auto; padding: 20px; font-family: Arial, sans-serif;">
+      <h1>Instagram API Setup</h1>
+      
+      <div style="background: #f8f9fa; padding: 20px; border-radius: 5px; margin: 20px 0;">
+        <h2>Step 1: Configure Your Meta App</h2>
+        <ol>
+          <li>Go to <a href="https://developers.facebook.com/apps/" target="_blank">Facebook Developers Console</a></li>
+          <li>Select your app or create a new one</li>
+          <li>Add "Instagram Graph API" product to your app</li>
+          <li>In Instagram Graph API settings, add this redirect URI: <br/>
+              <code style="background: #e9ecef; padding: 5px; border-radius: 3px;">{Astro.url.origin}/instagram-callback</code>
+          </li>
+          <li>Make sure your app is in "Live" mode (not Development)</li>
+          <li>Ensure you have the following environment variables set:
+            <ul>
+              <li><code>INSTAGRAM_APP_ID</code> - Your App ID</li>
+              <li><code>INSTAGRAM_APP_SECRET</code> - Your App Secret</li>
+              <li><code>INSTAGRAM_REDIRECT_URI</code> - {Astro.url.origin}/instagram-callback</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+
+      <div style="background: #d1ecf1; padding: 20px; border-radius: 5px; margin: 20px 0;">
+        <h2>Step 2: Authorize Your Instagram Account</h2>
+        <p>Click the button below to authorize your Instagram account. This will create a long-lived access token that automatically refreshes.</p>
+        
+        {authUrl ? (
+          <a 
+            href={authUrl}
+            style="background: #007bff; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; display: inline-block;"
+          >
+            Authorize Instagram Account
+          </a>
+        ) : (
+          <div style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px;">
+            <p>Error: Could not generate authorization URL. Please check your environment variables.</p>
+          </div>
+        )}
+      </div>
+
+      <div style="background: #fff3cd; padding: 20px; border-radius: 5px; margin: 20px 0;">
+        <h3>⚠️ Important Notes:</h3>
+        <ul>
+          <li>This setup only needs to be done once</li>
+          <li>The token will automatically refresh every ~60 days</li>
+          <li>Make sure your Instagram account is connected to a Facebook Page</li>
+          <li>Only Business or Creator Instagram accounts work with the Graph API</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
