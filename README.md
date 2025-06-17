@@ -1,54 +1,118 @@
-# Astro Starter Kit: Basics
+# Gurushradha Website
 
-```sh
-npm create astro@latest -- --template basics
+A modern, responsive website built with Astro for showcasing cultural activities, events, and Instagram content.
+
+## 🚀 Features
+
+- **Static Site Generation** with Astro for fast performance
+- **Instagram Integration** with automatic token refresh (zero maintenance)
+- **Responsive Design** with Tailwind CSS
+- **Type-Safe** development with TypeScript
+- **Component Library** with shadcn/ui components
+- **SEO Optimized** with proper meta tags and structure
+
+## 📸 Instagram Integration
+
+This site includes a robust, zero-maintenance Instagram integration that:
+
+- ✅ **Automatically refreshes** access tokens every 30 days via GitHub Actions
+- ✅ **No database required** - stateless approach
+- ✅ **No manual intervention** needed once set up
+- ✅ **Works with static hosting** (Vercel, Netlify, etc.)
+
+For setup instructions, see [SIMPLE_SETUP.md](./SIMPLE_SETUP.md).
+
+## �️ Development
+
+### Prerequisites
+
+- Node.js 18+ or Bun
+- Instagram Business Account (for Instagram integration)
+
+### Setup
+
+1. **Clone and install dependencies:**
+   ```bash
+   git clone <repository-url>
+   cd gurushradha
+   bun install  # or npm install
+   ```
+
+2. **Environment setup:**
+   ```bash
+   cp .env.example .env
+   # Add your Instagram token (see SIMPLE_SETUP.md)
+   ```
+
+3. **Start development server:**
+   ```bash
+   bun dev  # or npm run dev
+   ```
+
+   Open [http://localhost:4321](http://localhost:4321) in your browser.
+
+### Commands
+
+| Command | Action |
+|---------|--------|
+| `bun dev` | Start development server |
+| `bun build` | Build for production |
+| `bun preview` | Preview production build |
+| `bun astro ...` | Run Astro CLI commands |
+
+## 📁 Project Structure
+
 ```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
 /
-├── public/
-│   └── favicon.svg
+├── .github/workflows/          # GitHub Actions for token refresh
 ├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── components/            # Reusable components
+│   ├── layouts/              # Page layouts
+│   ├── pages/                # Routes and pages
+│   ├── lib/                  # Utility functions
+│   └── styles/               # Global styles
+├── public/                   # Static assets
+└── documentation/            # Setup guides
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🚀 Deployment
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### Vercel (Recommended)
 
-Any static assets, like images, can be placed in the `public/` directory.
+1. **Connect your repository** to Vercel
+2. **Add environment variables** in Vercel dashboard:
+   ```
+   INSTAGRAM_LONG_LIVED_TOKEN=your_token_here
+   ```
+3. **Deploy** - Vercel will automatically build and deploy
 
-## 🧞 Commands
+### Other Platforms
 
-All commands are run from the root of the project, from a terminal:
+This static site can be deployed to any platform that supports Astro:
+- Netlify
+- GitHub Pages
+- AWS S3 + CloudFront
+- Any static hosting provider
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## 📚 Documentation
 
-## 👀 Want to learn more?
+- [Simple Instagram Setup](./SIMPLE_SETUP.md) - Main setup guide
+- [Instagram Setup Overview](./INSTAGRAM_SETUP.md) - Quick reference
+- [Meta App Production Config](./META_APP_PRODUCTION.md) - Facebook app setup
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## � Technology Stack
+
+- **Framework**: [Astro](https://astro.build)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com)
+- **Components**: [shadcn/ui](https://ui.shadcn.com)
+- **Language**: TypeScript
+- **Deployment**: Vercel / Netlify
+- **CI/CD**: GitHub Actions
+
+## 📄 License
+
+This project is for the Gurushradha cultural organization.
+
+---
+
+**Need help?** Check the documentation files or open an issue.

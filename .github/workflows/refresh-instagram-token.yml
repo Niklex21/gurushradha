@@ -1,0 +1,51 @@
+name: Refresh Instagram Token
+
+on:
+  schedule:
+    # Run every 30 days at 2 AM UTC
+    - cron: '0 2 */30 * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  refresh-token:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Refresh Instagram Long-lived Token
+        run: |
+          echo "🔄 Refreshing Instagram access token..."
+          
+          # Call Instagram API to refresh the token
+          response=$(curl -s -w "%{http_code}" -o response.json \
+            "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=${{ secrets.INSTAGRAM_LONG_LIVED_TOKEN }}")
+          
+          http_code="${response: -3}"
+          
+          if [ "$http_code" -eq 200 ]; then
+            echo "✅ Instagram token refreshed successfully!"
+            echo "📅 Token extended for another 60 days"
+            
+            # Parse the response to get the new expiration info
+            expires_in=$(cat response.json | grep -o '"expires_in":[0-9]*' | cut -d':' -f2)
+            if [ ! -z "$expires_in" ]; then
+              expires_date=$(date -d "+${expires_in} seconds" '+%Y-%m-%d %H:%M:%S UTC')
+              echo "🕐 Token will expire on: $expires_date"
+            fi
+            
+            echo "ℹ️  Note: Token value remains the same, no environment variable update needed"
+          else
+            echo "❌ Failed to refresh Instagram token"
+            echo "🔍 Response code: $http_code"
+            cat response.json
+            exit 1
+          fi
+          
+          # Clean up
+          rm -f response.json
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "🚨 Instagram token refresh failed!"
+          echo "🔧 Manual action may be required"
+          echo "📖 Check the Instagram API documentation or re-run the OAuth flow"
