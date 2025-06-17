@@ -127,6 +127,14 @@ Update your production environment with:
 3. **Database security**: Store tokens in an encrypted database
 4. **Access control**: Restrict access to the `/admin/instagram-setup` page
 
+## Privacy Policy and Terms of Service
+
+✅ **Privacy Policy**: Available at `/privacy-policy`  
+✅ **Terms of Service**: Available at `/terms-of-service`  
+✅ **Footer Links**: Both pages are linked in the website footer  
+
+These pages are required for Meta app approval and comply with Meta's Platform Policy requirements. They specifically address the Instagram integration and clarify that no user data is collected.
+
 ## Troubleshooting
 
 ### "Invalid redirect URI" error
