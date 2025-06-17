@@ -1,0 +1,58 @@
+---
+import { actions } from "astro:actions";
+
+// Get the authorization code from URL parameters
+const code = Astro.url.searchParams.get('code');
+const error = Astro.url.searchParams.get('error');
+
+let success = false;
+let message = '';
+let errorMessage = null;
+
+if (error) {
+  errorMessage = `Instagram authorization error: ${error}`;
+} else if (code) {
+  try {
+    const result = await actions.handleInstagramCallback({ code });
+    if (result.data) {
+      success = result.data.success;
+      message = result.data.message;
+    } else if (result.error) {
+      errorMessage = `Failed to process Instagram callback: ${result.error.message}`;
+    }
+  } catch (err) {
+    errorMessage = `Failed to process Instagram callback: ${err instanceof Error ? err.message : 'Unknown error'}`;
+  }
+} else {
+  errorMessage = 'No authorization code received';
+}
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Instagram OAuth Callback</title>
+  </head>
+  <body>
+    <div style="max-width: 600px; margin: 50px auto; padding: 20px; font-family: Arial, sans-serif;">
+      <h1>Instagram Authentication</h1>
+      
+      {success ? (
+        <div style="background: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin: 20px 0;">
+          <h2>✅ Success!</h2>
+          <p>{message}</p>
+          <p>Your Instagram access token has been configured and will automatically refresh when needed.</p>
+          <a href="/" style="color: #155724; text-decoration: underline;">Return to homepage</a>
+        </div>
+      ) : (
+        <div style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin: 20px 0;">
+          <h2>❌ Error</h2>
+          <p>{errorMessage}</p>
+          <a href="/admin/instagram-setup" style="color: #721c24; text-decoration: underline;">Try again</a>
+        </div>
+      )}
+    </div>
+  </body>
+</html>
