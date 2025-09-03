@@ -42,7 +42,7 @@ export const GET: APIRoute = async ({ request }) => {
     // Optional: Verify the request is from Vercel Cron or has proper authorization
     if (
       request.headers.get("Authorization") !==
-      `Bearer ${process.env.CRON_SECRET}`
+      `Bearer ${import.meta.env.CRON_SECRET}`
     ) {
       return new Response("Unauthorized", { status: 401 });
     }
