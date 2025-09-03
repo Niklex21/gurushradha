@@ -39,7 +39,7 @@ export default defineConfig({
     }),
   ],
   output: "server",
-  adapter: vercel(),
+  adapter: vercel({}),
   redirects: {
     "/": "/home",
   },

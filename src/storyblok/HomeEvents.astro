@@ -54,5 +54,12 @@ const filteredEvents = events
         );
       })
     }
+    {
+      filteredEvents.length === 0 && (
+        <p class="text-muted-foreground">
+          No upcoming events, please check in later!
+        </p>
+      )
+    }
   </div>
 </div>
