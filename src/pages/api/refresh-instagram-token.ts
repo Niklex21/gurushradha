@@ -39,14 +39,6 @@ export const GET: APIRoute = async ({ request }) => {
       );
     }
 
-    // Optional: Verify the request is from Vercel Cron or has proper authorization
-    if (
-      request.headers.get("Authorization") !==
-      `Bearer ${import.meta.env.CRON_SECRET}`
-    ) {
-      return new Response("Unauthorized", { status: 401 });
-    }
-
     console.log("🔄 Starting Instagram token refresh via cron job...");
 
     // Initialize token manager

@@ -7,9 +7,12 @@ import type { InstagramPost as InstagramPostType } from "@/types";
 
 const { blok } = Astro.props as { blok: InstagramFeedStoryblok };
 
-const { data: posts, error } = await actions.fetchInstagramPosts({
-  limit: parseInt(blok.limit),
-});
+const { data: posts, error } = await Astro.callAction(
+  actions.fetchInstagramPosts,
+  {
+    limit: parseInt(blok.limit),
+  },
+);
 ---
 
 <div class="space-y-6 flex flex-col p-8 bg-background pb-32">
