@@ -32,6 +32,7 @@ export const server = {
       }
 
       let posts = (await response.json()).data;
+
       posts = (await Promise.all(
         posts.map(async (post: any) => {
           if (post.media_type === "CAROUSEL_ALBUM" && post.children?.data) {
