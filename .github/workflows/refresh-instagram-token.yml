@@ -54,9 +54,9 @@ jobs:
       - name: Refresh Instagram token
         id: refresh-token
         run: |
-          RESPONSE=$(curl -s "https://graph.instagram.com/refresh_access_token" \
-            -d "grant_type=ig_refresh_token" \
-            -d "access_token=${{ steps.get-token.outputs.current_token }}")
+          RESPONSE=$(curl -s -G "https://graph.instagram.com/refresh_access_token" \
+            --data-urlencode "grant_type=ig_refresh_token" \
+            --data-urlencode "access_token=${{ steps.get-token.outputs.current_token }}")
           NEW_TOKEN=$(echo $RESPONSE | jq -r '.access_token')
           if [ -z "$NEW_TOKEN" ] || [ "$NEW_TOKEN" = "null" ]; then
             echo "Error: Failed to refresh Instagram token. Response: ${RESPONSE}"
