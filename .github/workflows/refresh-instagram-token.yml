@@ -140,7 +140,6 @@ jobs:
             -H "Content-Type: application/json" \
             -d "{
               \"name\": \"gurushradha\",
-              \"projectId\": \"${VERCEL_PROJECT_ID}\",
               \"target\": \"production\",
               \"deploymentId\": \"${LATEST_DEPLOYMENT_ID}\"
             }")
