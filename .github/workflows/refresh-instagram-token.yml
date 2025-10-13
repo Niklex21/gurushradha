@@ -85,7 +85,7 @@ jobs:
               value: $value,
               type: "encrypted",
               target: ["production", "preview", "development"],
-              comment: "Updated by GitHub Actions on " + $date + ". Expires in " + $expires + " seconds."
+              comment: "Updated by GitHub Actions on \($date). Expires in \($expires) seconds."
             }')
           
           # Make the API request and capture the response
