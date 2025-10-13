@@ -19,28 +19,44 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Get current Instagram token from Vercel
+      - name: Get Instagram token from Vercel
         id: get-token
         env:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         run: |
-          CURRENT_TOKEN=$(curl -s "https://api.vercel.com/v10/projects/${VERCEL_PROJECT_ID}/env" \
+          # First, get the environment variable ID
+          ENV_INFO=$(curl -s "https://api.vercel.com/v10/projects/${VERCEL_PROJECT_ID}/env" \
             -H "Authorization: Bearer ${VERCEL_TOKEN}" \
             -H "Content-Type: application/json" \
-            | jq -r '.envs[] | select(.key=="INSTAGRAM_ACCESS_KEY") | .value')
-          if [ -z "$CURRENT_TOKEN" ]; then
-            echo "Error: Could not retrieve INSTAGRAM_ACCESS_KEY from Vercel"
+            | jq -r '.envs[] | select(.key=="INSTAGRAM_ACCESS_KEY")')
+          
+          ENV_ID=$(echo "$ENV_INFO" | jq -r '.id')
+          if [ -z "$ENV_ID" ] || [ "$ENV_ID" = "null" ]; then
+            echo "Error: Could not find INSTAGRAM_ACCESS_KEY in Vercel"
             exit 1
           fi
+          
+          # Then, get the decrypted value using the v1 API
+          CURRENT_TOKEN=$(curl -s "https://api.vercel.com/v1/projects/${VERCEL_PROJECT_ID}/env/${ENV_ID}" \
+            -H "Authorization: Bearer ${VERCEL_TOKEN}" \
+            -H "Content-Type: application/json" \
+            | jq -r '.value')
+          
+          if [ -z "$CURRENT_TOKEN" ] || [ "$CURRENT_TOKEN" = "null" ]; then
+            echo "Error: Could not retrieve decrypted INSTAGRAM_ACCESS_KEY from Vercel"
+            exit 1
+          fi
+          
+          echo "env_id=${ENV_ID}" >> $GITHUB_OUTPUT
           echo "current_token=${CURRENT_TOKEN}" >> $GITHUB_OUTPUT
 
       - name: Refresh Instagram token
         id: refresh-token
         run: |
-          RESPONSE=$(curl -s "https://graph.instagram.com/refresh_access_token" \
-            -d "grant_type=ig_refresh_token" \
-            -d "access_token=${{ steps.get-token.outputs.current_token }}")
+          RESPONSE=$(curl -s -G "https://graph.instagram.com/refresh_access_token" \
+            --data-urlencode "grant_type=ig_refresh_token" \
+            --data-urlencode "access_token=${{ steps.get-token.outputs.current_token }}")
           NEW_TOKEN=$(echo $RESPONSE | jq -r '.access_token')
           if [ -z "$NEW_TOKEN" ] || [ "$NEW_TOKEN" = "null" ]; then
             echo "Error: Failed to refresh Instagram token. Response: ${RESPONSE}"
@@ -55,7 +71,8 @@ jobs:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         run: |
-          curl -X POST "https://api.vercel.com/v10/projects/${VERCEL_PROJECT_ID}/env" \
+          # Update the existing environment variable with the new token
+          curl -X PATCH "https://api.vercel.com/v9/projects/${VERCEL_PROJECT_ID}/env/${{ steps.get-token.outputs.env_id }}" \
             -H "Authorization: Bearer ${VERCEL_TOKEN}" \
             -H "Content-Type: application/json" \
             -d '{
@@ -65,3 +82,8 @@ jobs:
               "target": ["production", "preview", "development"],
               "comment": "Updated by GitHub Actions on $(date -u +"%Y-%m-%d"). Expires in ${{ steps.refresh-token.outputs.expires_in }} seconds."
             }'
+          
+          if [ $? -ne 0 ]; then
+            echo "Error: Failed to update environment variable in Vercel"
+            exit 1
+          fi
