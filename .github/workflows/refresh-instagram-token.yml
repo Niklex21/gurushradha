@@ -109,3 +109,60 @@ jobs:
           fi
           
           echo "Successfully updated Instagram token in Vercel"
+
+      - name: Trigger Vercel Production Redeploy
+        if: success()
+        env:
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          echo "Getting latest production deployment..."
+          
+          # Get the latest production deployment
+          DEPLOYMENTS=$(curl -s "https://api.vercel.com/v6/deployments?projectId=${VERCEL_PROJECT_ID}&target=production&limit=1" \
+            -H "Authorization: Bearer ${VERCEL_TOKEN}")
+          
+          LATEST_DEPLOYMENT=$(echo "$DEPLOYMENTS" | jq -r '.deployments[0]')
+          if [ -z "$LATEST_DEPLOYMENT" ] || [ "$LATEST_DEPLOYMENT" = "null" ]; then
+            echo "Error: Could not find latest production deployment"
+            exit 1
+          fi
+          
+          # Extract deployment ID
+          LATEST_DEPLOYMENT_ID=$(echo "$LATEST_DEPLOYMENT" | jq -r '.uid')
+          echo "Found latest deployment: ${LATEST_DEPLOYMENT_ID}"
+          
+          echo "Triggering redeploy..."
+          
+          # Trigger a new deployment using the latest production build
+          DEPLOY_RESPONSE=$(curl -s -X POST "https://api.vercel.com/v13/deployments?forceNew=1" \
+            -H "Authorization: Bearer ${VERCEL_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"name\": \"gurushradha\",
+              \"projectId\": \"${VERCEL_PROJECT_ID}\",
+              \"target\": \"production\",
+              \"deploymentId\": \"${LATEST_DEPLOYMENT_ID}\"
+            }")
+          
+          NEW_DEPLOYMENT_ID=$(echo "$DEPLOY_RESPONSE" | jq -r '.id')
+          if [ -z "$NEW_DEPLOYMENT_ID" ] || [ "$NEW_DEPLOYMENT_ID" = "null" ]; then
+            echo "Error: Failed to trigger redeployment"
+            echo "$DEPLOY_RESPONSE"
+            exit 1
+          fi
+          
+          echo "Successfully triggered redeployment"
+          echo "New deployment ID: ${NEW_DEPLOYMENT_ID}"
+          echo "You can view the deployment at: https://vercel.com/niklex21/gurushradha/deployments/${NEW_DEPLOYMENT_ID}"
+          RESPONSE_BODY=$(echo "$RESPONSE" | sed '$ d')
+          
+          # Check if the request was successful
+          if [ "$HTTP_STATUS" -ne 200 ]; then
+            echo "Error: Failed to update environment variable in Vercel"
+            echo "Status code: $HTTP_STATUS"
+            echo "Response: $RESPONSE_BODY"
+            exit 1
+          fi
+          
+          echo "Successfully updated Instagram token in Vercel"
