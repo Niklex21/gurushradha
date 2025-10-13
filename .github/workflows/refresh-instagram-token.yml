@@ -1,0 +1,67 @@
+name: Refresh Instagram Access Token
+
+on:
+  schedule:
+    # Runs at 00:00 on the 1st of every month
+    - cron: '0 0 1 * *'
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  refresh-token:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Get current Instagram token from Vercel
+        id: get-token
+        env:
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          CURRENT_TOKEN=$(curl -s "https://api.vercel.com/v10/projects/${VERCEL_PROJECT_ID}/env" \
+            -H "Authorization: Bearer ${VERCEL_TOKEN}" \
+            -H "Content-Type: application/json" \
+            | jq -r '.envs[] | select(.key=="INSTAGRAM_ACCESS_KEY") | .value')
+          if [ -z "$CURRENT_TOKEN" ]; then
+            echo "Error: Could not retrieve INSTAGRAM_ACCESS_KEY from Vercel"
+            exit 1
+          fi
+          echo "current_token=${CURRENT_TOKEN}" >> $GITHUB_OUTPUT
+
+      - name: Refresh Instagram token
+        id: refresh-token
+        run: |
+          RESPONSE=$(curl -s "https://graph.instagram.com/refresh_access_token" \
+            -d "grant_type=ig_refresh_token" \
+            -d "access_token=${{ steps.get-token.outputs.current_token }}")
+          NEW_TOKEN=$(echo $RESPONSE | jq -r '.access_token')
+          if [ -z "$NEW_TOKEN" ] || [ "$NEW_TOKEN" = "null" ]; then
+            echo "Error: Failed to refresh Instagram token. Response: ${RESPONSE}"
+            exit 1
+          fi
+          echo "new_token=${NEW_TOKEN}" >> $GITHUB_OUTPUT
+          echo "expires_in=$(echo $RESPONSE | jq -r '.expires_in')" >> $GITHUB_OUTPUT
+
+      - name: Update token in Vercel
+        if: steps.refresh-token.outputs.new_token != ''
+        env:
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          curl -X POST "https://api.vercel.com/v10/projects/${VERCEL_PROJECT_ID}/env" \
+            -H "Authorization: Bearer ${VERCEL_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "key": "INSTAGRAM_ACCESS_KEY",
+              "value": "${{ steps.refresh-token.outputs.new_token }}",
+              "type": "encrypted",
+              "target": ["production", "preview", "development"],
+              "comment": "Updated by GitHub Actions on $(date -u +"%Y-%m-%d"). Expires in ${{ steps.refresh-token.outputs.expires_in }} seconds."
+            }'
