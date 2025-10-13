@@ -34,7 +34,7 @@ const { data: posts, error } = await Astro.callAction(
           {error.message}
         </Alert>
       ) : (
-        posts
+        posts.posts
           .slice(0, parseInt(blok.limit))
           .map((post: InstagramPostType) => (
             <InstagramPost client:load post={post} />

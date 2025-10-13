@@ -71,19 +71,41 @@ jobs:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         run: |
-          # Update the existing environment variable with the new token
-          curl -X PATCH "https://api.vercel.com/v9/projects/${VERCEL_PROJECT_ID}/env/${{ steps.get-token.outputs.env_id }}" \
+          # Prepare the current date
+          CURRENT_DATE=$(date -u +"%Y-%m-%d")
+          
+          # Create the JSON payload
+          JSON_PAYLOAD=$(jq -n \
+            --arg key "INSTAGRAM_ACCESS_KEY" \
+            --arg value "${{ steps.refresh-token.outputs.new_token }}" \
+            --arg date "$CURRENT_DATE" \
+            --arg expires "${{ steps.refresh-token.outputs.expires_in }}" \
+            '{
+              key: $key,
+              value: $value,
+              type: "encrypted",
+              target: ["production", "preview", "development"],
+              comment: "Updated by GitHub Actions on \($date). Expires in \($expires) seconds."
+            }')
+          
+          # Make the API request and capture the response
+          RESPONSE=$(curl -s -w "\n%{http_code}" -X PATCH \
+            "https://api.vercel.com/v9/projects/${VERCEL_PROJECT_ID}/env/${{ steps.get-token.outputs.env_id }}" \
             -H "Authorization: Bearer ${VERCEL_TOKEN}" \
             -H "Content-Type: application/json" \
-            -d '{
-              "key": "INSTAGRAM_ACCESS_KEY",
-              "value": "${{ steps.refresh-token.outputs.new_token }}",
-              "type": "encrypted",
-              "target": ["production", "preview", "development"],
-              "comment": "Updated by GitHub Actions on $(date -u +"%Y-%m-%d"). Expires in ${{ steps.refresh-token.outputs.expires_in }} seconds."
-            }'
+            -d "$JSON_PAYLOAD")
           
-          if [ $? -ne 0 ]; then
+          # Extract the HTTP status code
+          HTTP_STATUS=$(echo "$RESPONSE" | tail -n1)
+          # Extract the response body
+          RESPONSE_BODY=$(echo "$RESPONSE" | sed '$ d')
+          
+          # Check if the request was successful
+          if [ "$HTTP_STATUS" -ne 200 ]; then
             echo "Error: Failed to update environment variable in Vercel"
+            echo "Status code: $HTTP_STATUS"
+            echo "Response: $RESPONSE_BODY"
             exit 1
           fi
+          
+          echo "Successfully updated Instagram token in Vercel"
