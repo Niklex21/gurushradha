@@ -28,8 +28,148 @@
       "internal_tags_list": [],
       "internal_tag_ids": [],
       "content_type_asset_preview": null,
-      "component_group_name": ""
+      "metadata": {}
     },
+    {
+      "name": "director",
+      "display_name": null,
+      "description": "bio for the directors",
+      "created_at": "2025-07-29T01:37:31.412Z",
+      "updated_at": "2025-07-29T01:37:57.138Z",
+      "id": 73987896990628,
+      "schema": {
+        "Name": {
+          "type": "text",
+          "pos": 0,
+          "id": "CpbC1MPdSNiz-NXdQQeCsw"
+        },
+        "Picture": {
+          "type": "asset",
+          "pos": 1,
+          "id": "kTuwvupMQeixQlf1pASOxQ"
+        },
+        "Description": {
+          "type": "textarea",
+          "pos": 2,
+          "id": "yAL0SWtMQYWNhlme8lm6nQ"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "director",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "metadata": {}
+    },
+    {
+      "name": "directors",
+      "display_name": null,
+      "description": "List of Directors",
+      "created_at": "2025-07-29T02:17:34.650Z",
+      "updated_at": "2025-07-29T02:23:17.538Z",
+      "id": 73997740653478,
+      "schema": {
+        "directors": {
+          "type": "bloks",
+          "pos": 0,
+          "id": "R1FGAayZQaqspCsJgvtH6g"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "directors",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "metadata": {}
+    },
+    {
+    "name": "director",
+    "display_name": null,
+    "description": "bio for the directors",
+    "created_at": "2025-07-29T01:37:31.412Z",
+    "updated_at": "2025-07-29T01:37:57.138Z",
+    "id": 73987896990628,
+    "schema": {
+      "Name": {
+        "type": "text",
+        "pos": 0,
+        "id": "CpbC1MPdSNiz-NXdQQeCsw"
+      },
+      "Picture": {
+        "type": "asset",
+        "pos": 1,
+        "id": "kTuwvupMQeixQlf1pASOxQ"
+      },
+      "Description": {
+        "type": "textarea",
+        "pos": 2,
+        "id": "yAL0SWtMQYWNhlme8lm6nQ"
+      }
+    },
+    "image": null,
+    "preview_field": null,
+    "is_root": false,
+    "preview_tmpl": null,
+    "is_nestable": true,
+    "all_presets": [],
+    "preset_id": null,
+    "real_name": "director",
+    "component_group_uuid": null,
+    "color": null,
+    "icon": null,
+    "internal_tags_list": [],
+    "internal_tag_ids": [],
+    "content_type_asset_preview": null,
+    "metadata": {}
+  },
+    {
+    "name": "directors",
+    "display_name": null,
+    "description": "List of Directors",
+    "created_at": "2025-07-29T02:17:34.650Z",
+    "updated_at": "2025-07-29T02:23:17.538Z",
+    "id": 73997740653478,
+    "schema": {
+      "directors": {
+        "type": "bloks",
+        "pos": 0,
+        "id": "R1FGAayZQaqspCsJgvtH6g"
+      }
+    },
+    "image": null,
+    "preview_field": null,
+    "is_root": false,
+    "preview_tmpl": null,
+    "is_nestable": true,
+    "all_presets": [],
+    "preset_id": null,
+    "real_name": "directors",
+    "component_group_uuid": null,
+    "color": null,
+    "icon": null,
+    "internal_tags_list": [],
+    "internal_tag_ids": [],
+    "content_type_asset_preview": null,
+    "metadata": {}
+  },
     {
       "name": "ensemble ",
       "display_name": null,
@@ -44,7 +184,9 @@
           "id": "4e7X0yhOS3WutKI46fG2Bw",
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": ["ensemble_member"],
+          "component_whitelist": [
+            "ensemble_member"
+          ],
           "required": true
         }
       },
@@ -62,14 +204,14 @@
       "internal_tags_list": [],
       "internal_tag_ids": [],
       "content_type_asset_preview": null,
-      "component_group_name": ""
+      "metadata": {}
     },
     {
       "name": "ensemble_member",
       "display_name": null,
       "description": "bio + image of ensemble dancer",
       "created_at": "2025-03-27T04:10:43.162Z",
-      "updated_at": "2025-04-01T12:59:36.822Z",
+      "updated_at": "2025-04-01T13:06:55.011Z",
       "id": 289121,
       "schema": {
         "name": {
@@ -88,12 +230,13 @@
           "type": "multilink",
           "pos": 2,
           "id": "G0EwsmK8Rj-Z8nfzMcdMHA",
-          "required": true
+          "required": false
         },
         "image": {
           "type": "asset",
           "pos": 3,
-          "id": "1H2V78jPS6GgLx2PHRBA_Q"
+          "id": "1H2V78jPS6GgLx2PHRBA_Q",
+          "required": true
         }
       },
       "image": null,
@@ -110,7 +253,7 @@
       "internal_tags_list": [],
       "internal_tag_ids": [],
       "content_type_asset_preview": null,
-      "component_group_name": ""
+      "metadata": {}
     },
     {
       "name": "event",
@@ -170,7 +313,7 @@
       "internal_tags_list": [],
       "internal_tag_ids": [],
       "content_type_asset_preview": null,
-      "component_group_name": ""
+      "metadata": {}
     },
     {
       "name": "events",
@@ -186,7 +329,9 @@
           "required": true,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": ["event"],
+          "component_whitelist": [
+            "event"
+          ],
           "id": "TpqKwW88Q5WM6-mEyv4Afg"
         },
         "video_source": {
@@ -209,7 +354,7 @@
       "internal_tags_list": [],
       "internal_tag_ids": [],
       "content_type_asset_preview": null,
-      "component_group_name": ""
+      "metadata": {}
     },
     {
       "name": "gallery_photoshoot",
@@ -249,7 +394,7 @@
       "internal_tags_list": [],
       "internal_tag_ids": [],
       "content_type_asset_preview": null,
-      "component_group_name": ""
+      "metadata": {}
     },
     {
       "name": "global",
@@ -278,7 +423,7 @@
       "internal_tags_list": [],
       "internal_tag_ids": [],
       "content_type_asset_preview": null,
-      "component_group_name": ""
+      "metadata": {}
     },
     {
       "name": "global_reference",
@@ -312,7 +457,7 @@
       "internal_tags_list": [],
       "internal_tag_ids": [],
       "content_type_asset_preview": null,
-      "component_group_name": ""
+      "metadata": {}
     },
     {
       "name": "hero",
@@ -342,7 +487,7 @@
       "internal_tags_list": [],
       "internal_tag_ids": [],
       "content_type_asset_preview": null,
-      "component_group_name": ""
+      "metadata": {}
     },
     {
       "name": "home_events",
@@ -360,7 +505,9 @@
           "entry_appearance": "card",
           "allow_advanced_search": true,
           "required": true,
-          "filter_content_type": ["global"]
+          "filter_content_type": [
+            "global"
+          ]
         }
       },
       "image": null,
@@ -377,7 +524,7 @@
       "internal_tags_list": [],
       "internal_tag_ids": [],
       "content_type_asset_preview": null,
-      "component_group_name": ""
+      "metadata": {}
     },
     {
       "name": "home_main_text",
@@ -417,7 +564,7 @@
       "internal_tags_list": [],
       "internal_tag_ids": [],
       "content_type_asset_preview": null,
-      "component_group_name": ""
+      "metadata": {}
     },
     {
       "name": "home_testimonial",
@@ -456,7 +603,7 @@
       "internal_tags_list": [],
       "internal_tag_ids": [],
       "content_type_asset_preview": null,
-      "component_group_name": ""
+      "metadata": {}
     },
     {
       "name": "home_testimonials",
@@ -472,7 +619,9 @@
           "required": true,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": ["home_testimonial"]
+          "component_whitelist": [
+            "home_testimonial"
+          ]
         },
         "background_image": {
           "type": "asset",
@@ -494,7 +643,7 @@
       "internal_tags_list": [],
       "internal_tag_ids": [],
       "content_type_asset_preview": null,
-      "component_group_name": ""
+      "metadata": {}
     },
     {
       "name": "instagram_feed",
@@ -532,7 +681,7 @@
       "internal_tags_list": [],
       "internal_tag_ids": [],
       "content_type_asset_preview": null,
-      "component_group_name": ""
+      "metadata": {}
     },
     {
       "name": "menu_item",
@@ -557,7 +706,9 @@
           "pos": 2,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": ["menu_item"]
+          "component_whitelist": [
+            "menu_item"
+          ]
         }
       },
       "image": null,
@@ -577,9 +728,11 @@
           "name": "navbar"
         }
       ],
-      "internal_tag_ids": ["8202"],
+      "internal_tag_ids": [
+        "8202"
+      ],
       "content_type_asset_preview": null,
-      "component_group_name": ""
+      "metadata": {}
     },
     {
       "name": "navbar",
@@ -599,7 +752,9 @@
           "pos": 2,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": ["menu_item"],
+          "component_whitelist": [
+            "menu_item"
+          ],
           "required": true
         },
         "social_links": {
@@ -607,7 +762,9 @@
           "pos": 3,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": ["social_link"]
+          "component_whitelist": [
+            "social_link"
+          ]
         },
         "logo_text": {
           "type": "asset",
@@ -632,19 +789,33 @@
           "name": "global"
         }
       ],
-      "internal_tag_ids": ["8201"],
-      "content_type_asset_preview": null
+      "internal_tag_ids": [
+        "8201"
+      ],
+      "content_type_asset_preview": null,
+      "metadata": {}
     },
     {
       "name": "page",
       "display_name": null,
       "description": null,
       "created_at": "2024-10-05T20:49:53.205Z",
-      "updated_at": "2024-12-02T06:48:18.466Z",
+      "updated_at": "2025-07-18T22:14:07.240Z",
       "id": 248712,
       "schema": {
         "body": {
-          "type": "bloks"
+          "type": "bloks",
+          "id": "0_DOf6w7QMeBGeZTwi9aTA"
+        },
+        "events": {
+          "type": "bloks",
+          "pos": 1,
+          "id": "XdonT_O9QKeeOGMEAHEXbg"
+        },
+        "sections": {
+          "type": "bloks",
+          "pos": 2,
+          "id": "d3v7Z_e9RI2C0lqB9JMRSw"
         }
       },
       "image": null,
@@ -660,7 +831,8 @@
       "icon": null,
       "internal_tags_list": [],
       "internal_tag_ids": [],
-      "content_type_asset_preview": null
+      "content_type_asset_preview": null,
+      "metadata": {}
     },
     {
       "name": "page_classes",
@@ -702,7 +874,7 @@
       "internal_tags_list": [],
       "internal_tag_ids": [],
       "content_type_asset_preview": null,
-      "component_group_name": ""
+      "metadata": {}
     },
     {
       "name": "section",
@@ -736,7 +908,7 @@
       "internal_tags_list": [],
       "internal_tag_ids": [],
       "content_type_asset_preview": null,
-      "component_group_name": ""
+      "metadata": {}
     },
     {
       "name": "social_link",
@@ -796,7 +968,7 @@
       "internal_tags_list": [],
       "internal_tag_ids": [],
       "content_type_asset_preview": null,
-      "component_group_name": ""
+      "metadata": {}
     },
     {
       "name": "testimonial",
@@ -858,7 +1030,7 @@
       "internal_tags_list": [],
       "internal_tag_ids": [],
       "content_type_asset_preview": null,
-      "component_group_name": ""
+      "metadata": {}
     },
     {
       "name": "testimonials",
@@ -874,7 +1046,9 @@
           "required": false,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": ["testimonial"]
+          "component_whitelist": [
+            "testimonial"
+          ]
         }
       },
       "image": null,
@@ -891,7 +1065,7 @@
       "internal_tags_list": [],
       "internal_tag_ids": [],
       "content_type_asset_preview": null,
-      "component_group_name": ""
+      "metadata": {}
     },
     {
       "name": "vision",
@@ -941,8 +1115,7 @@
       "internal_tags_list": [],
       "internal_tag_ids": [],
       "content_type_asset_preview": null,
-      "component_group_name": ""
+      "metadata": {}
     }
-  ],
-  "component_groups": []
+  ]
 }
