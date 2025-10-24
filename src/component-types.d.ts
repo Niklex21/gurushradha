@@ -8,6 +8,22 @@ export interface BulletPointStoryblok {
   [k: string]: any;
 }
 
+export interface DirectorStoryblok {
+  Name?: string;
+  Picture?: StoryblokAsset;
+  Description?: string;
+  component: "director";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface DirectorsStoryblok {
+  directors: DirectorStoryblok[];
+  component: "directors ";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface EnsembleStoryblok {
   ensemble: EnsembleMemberStoryblok[];
   component: "ensemble ";
@@ -165,6 +181,8 @@ export interface GalleryPhotoshootStoryblok {
 export interface GlobalStoryblok {
   global?: (
     | BulletPointStoryblok
+    | DirectorStoryblok
+    | DirectorsStoryblok
     | EnsembleStoryblok
     | EnsembleMemberStoryblok
     | EventStoryblok
@@ -285,6 +303,8 @@ export interface NavbarStoryblok {
 export interface PageStoryblok {
   body?: (
     | BulletPointStoryblok
+    | DirectorStoryblok
+    | DirectorsStoryblok
     | EnsembleStoryblok
     | EnsembleMemberStoryblok
     | EventStoryblok
