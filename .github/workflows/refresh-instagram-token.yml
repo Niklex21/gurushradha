@@ -2,110 +2,131 @@ name: Refresh Instagram Access Token
 
 on:
   schedule:
-    # Runs at 00:00 on the 1st of every month
-    - cron: '0 0 1 * *'
-  # Allow manual trigger
+    # Run weekly so a missed run still leaves a large safety margin before
+    # Meta's long-lived token expires.
+    - cron: "17 3 * * 1"
   workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: instagram-token-refresh
+  cancel-in-progress: false
 
 jobs:
   refresh-token:
     runs-on: ubuntu-latest
+    env:
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Get Instagram token from Vercel
-        id: get-token
+      - name: Refresh token and update Vercel
         env:
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_PROJECT_ID: ${{ env.VERCEL_PROJECT_ID }}
+          VERCEL_TOKEN: ${{ env.VERCEL_TOKEN }}
         run: |
-          # First, get the environment variable ID
-          ENV_INFO=$(curl -s "https://api.vercel.com/v10/projects/${VERCEL_PROJECT_ID}/env" \
+          set -euo pipefail
+
+          if [ -z "${VERCEL_PROJECT_ID}" ] || [ -z "${VERCEL_TOKEN}" ]; then
+            echo "VERCEL_PROJECT_ID and VERCEL_TOKEN GitHub secrets are required"
+            exit 1
+          fi
+
+          ENV_INFO=$(curl --fail-with-body -sS "https://api.vercel.com/v10/projects/${VERCEL_PROJECT_ID}/env" \
             -H "Authorization: Bearer ${VERCEL_TOKEN}" \
-            -H "Content-Type: application/json" \
-            | jq -r '.envs[] | select(.key=="INSTAGRAM_ACCESS_KEY")')
-          
-          ENV_ID=$(echo "$ENV_INFO" | jq -r '.id')
-          if [ -z "$ENV_ID" ] || [ "$ENV_ID" = "null" ]; then
+            -H "Content-Type: application/json")
+
+          ENV_ID=$(echo "${ENV_INFO}" | jq -r '.envs[] | select(.key == "INSTAGRAM_ACCESS_KEY") | .id' | head -n 1)
+          ENV_TYPE=$(echo "${ENV_INFO}" | jq -r '.envs[] | select(.key == "INSTAGRAM_ACCESS_KEY") | .type' | head -n 1)
+
+          if [ -z "${ENV_ID}" ] || [ "${ENV_ID}" = "null" ]; then
             echo "Error: Could not find INSTAGRAM_ACCESS_KEY in Vercel"
             exit 1
           fi
-          
-          # Then, get the decrypted value using the v1 API
-          CURRENT_TOKEN=$(curl -s "https://api.vercel.com/v1/projects/${VERCEL_PROJECT_ID}/env/${ENV_ID}" \
+
+          if [ -z "${ENV_TYPE}" ] || [ "${ENV_TYPE}" = "null" ]; then
+            ENV_TYPE="encrypted"
+          fi
+
+          # Vercel keeps encrypted values hidden in the list response. This
+          # endpoint is the supported project-environment decryption endpoint.
+          CURRENT_TOKEN=$(curl --fail-with-body -sS "https://api.vercel.com/v1/projects/${VERCEL_PROJECT_ID}/env/${ENV_ID}" \
             -H "Authorization: Bearer ${VERCEL_TOKEN}" \
-            -H "Content-Type: application/json" \
-            | jq -r '.value')
-          
-          if [ -z "$CURRENT_TOKEN" ] || [ "$CURRENT_TOKEN" = "null" ]; then
+            -H "Content-Type: application/json" | jq -r '.value // empty')
+
+          if [ -z "${CURRENT_TOKEN}" ]; then
             echo "Error: Could not retrieve decrypted INSTAGRAM_ACCESS_KEY from Vercel"
             exit 1
           fi
-          
-          echo "env_id=${ENV_ID}" >> $GITHUB_OUTPUT
-          echo "current_token=${CURRENT_TOKEN}" >> $GITHUB_OUTPUT
 
-      - name: Refresh Instagram token
-        id: refresh-token
-        run: |
-          RESPONSE=$(curl -s -G "https://graph.instagram.com/refresh_access_token" \
+          REFRESH_RESPONSE=$(curl --fail-with-body -sS -G "https://graph.instagram.com/refresh_access_token" \
             --data-urlencode "grant_type=ig_refresh_token" \
-            --data-urlencode "access_token=${{ steps.get-token.outputs.current_token }}")
-          NEW_TOKEN=$(echo $RESPONSE | jq -r '.access_token')
-          if [ -z "$NEW_TOKEN" ] || [ "$NEW_TOKEN" = "null" ]; then
-            echo "Error: Failed to refresh Instagram token. Response: ${RESPONSE}"
+            --data-urlencode "access_token=${CURRENT_TOKEN}")
+          NEW_TOKEN=$(echo "${REFRESH_RESPONSE}" | jq -r '.access_token // empty')
+          EXPIRES_IN=$(echo "${REFRESH_RESPONSE}" | jq -r '.expires_in // empty')
+
+          if [ -z "${NEW_TOKEN}" ] || [ -z "${EXPIRES_IN}" ]; then
+            echo "Error: Instagram did not return a refreshed token"
+            echo "Meta response: $(echo "${REFRESH_RESPONSE}" | jq -c 'del(.access_token)')"
             exit 1
           fi
-          echo "new_token=${NEW_TOKEN}" >> $GITHUB_OUTPUT
-          echo "expires_in=$(echo $RESPONSE | jq -r '.expires_in')" >> $GITHUB_OUTPUT
 
-      - name: Update token in Vercel
-        if: steps.refresh-token.outputs.new_token != ''
-        env:
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        run: |
-          # Prepare the current date
+          VALIDATION_RESPONSE=$(curl --fail-with-body -sS -G "https://graph.instagram.com/v21.0/me" \
+            --data-urlencode "fields=id" \
+            --data-urlencode "access_token=${NEW_TOKEN}")
+          if ! echo "${VALIDATION_RESPONSE}" | jq -e '.id' >/dev/null; then
+            echo "Error: Instagram returned a token that could not be validated"
+            echo "Meta response: $(echo "${VALIDATION_RESPONSE}" | jq -c 'del(.id)')"
+            exit 1
+          fi
+
           CURRENT_DATE=$(date -u +"%Y-%m-%d")
-          
-          # Create the JSON payload
           JSON_PAYLOAD=$(jq -n \
             --arg key "INSTAGRAM_ACCESS_KEY" \
-            --arg value "${{ steps.refresh-token.outputs.new_token }}" \
-            --arg date "$CURRENT_DATE" \
-            --arg expires "${{ steps.refresh-token.outputs.expires_in }}" \
+            --arg value "${NEW_TOKEN}" \
+            --arg type "${ENV_TYPE:-encrypted}" \
+            --arg date "${CURRENT_DATE}" \
+            --arg expires "${EXPIRES_IN}" \
             '{
               key: $key,
               value: $value,
-              type: "encrypted",
+              type: $type,
               target: ["production", "preview", "development"],
               comment: "Updated by GitHub Actions on \($date). Expires in \($expires) seconds."
             }')
-          
-          # Make the API request and capture the response
-          RESPONSE=$(curl -s -w "\n%{http_code}" -X PATCH \
-            "https://api.vercel.com/v9/projects/${VERCEL_PROJECT_ID}/env/${{ steps.get-token.outputs.env_id }}" \
+
+          curl --fail-with-body -sS -X PATCH \
+            "https://api.vercel.com/v9/projects/${VERCEL_PROJECT_ID}/env/${ENV_ID}" \
             -H "Authorization: Bearer ${VERCEL_TOKEN}" \
             -H "Content-Type: application/json" \
-            -d "$JSON_PAYLOAD")
-          
-          # Extract the HTTP status code
-          HTTP_STATUS=$(echo "$RESPONSE" | tail -n1)
-          # Extract the response body
-          RESPONSE_BODY=$(echo "$RESPONSE" | sed '$ d')
-          
-          # Check if the request was successful
-          if [ "$HTTP_STATUS" -ne 200 ]; then
-            echo "Error: Failed to update environment variable in Vercel"
-            echo "Status code: $HTTP_STATUS"
-            echo "Response: $RESPONSE_BODY"
+            -d "${JSON_PAYLOAD}" >/dev/null
+
+          echo "Instagram token refreshed; Meta reports ${EXPIRES_IN} seconds until expiry."
+
+      - name: Redeploy production with the new token
+        env:
+          VERCEL_PROJECT_ID: ${{ env.VERCEL_PROJECT_ID }}
+          VERCEL_TOKEN: ${{ env.VERCEL_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          DEPLOYMENTS=$(curl --fail-with-body -sS \
+            "https://api.vercel.com/v6/deployments?projectId=${VERCEL_PROJECT_ID}&target=production&limit=1" \
+            -H "Authorization: Bearer ${VERCEL_TOKEN}" \
+            -H "Content-Type: application/json")
+          DEPLOYMENT_ID=$(echo "${DEPLOYMENTS}" | jq -r '.deployments[0].uid // empty')
+
+          if [ -z "${DEPLOYMENT_ID}" ]; then
+            echo "Error: Could not find the latest production deployment"
             exit 1
           fi
-          
-          echo "Successfully updated Instagram token in Vercel"
+
+          # Environment-variable changes only affect new deployments. The
+          # Vercel CLI redeploys the existing production build with the new env.
+          npx --yes vercel@latest redeploy "${DEPLOYMENT_ID}" \
+            --token "${VERCEL_TOKEN}" \
+            --target production
+
+          echo "Production redeployment completed with the refreshed token."
