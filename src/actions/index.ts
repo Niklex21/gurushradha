@@ -82,7 +82,7 @@ export const server = {
         }),
       )) as any as InstagramPost[];
 
-      return posts;
+      return { posts };
     },
   }),
 };
