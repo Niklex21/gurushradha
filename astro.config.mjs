@@ -40,7 +40,7 @@ export default defineConfig({
     }),
   ],
   output: "server",
-  adapter: vercel({}),
+  adapter: vercel({ maxDuration: 60 }),
   redirects: {
     "/": "/home",
   },

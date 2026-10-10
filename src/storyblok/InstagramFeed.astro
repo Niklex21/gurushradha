@@ -1,16 +1,19 @@
 ---
 import type { InstagramFeedStoryblok } from "@/component-types";
-import { Alert, AlertTitle } from "@/components/ui/alert";
 import { actions } from "astro:actions";
 import InstagramPost from "@/components/InstagramPost";
 import type { InstagramPost as InstagramPostType } from "@/types";
 
 const { blok } = Astro.props as { blok: InstagramFeedStoryblok };
+const requestedLimit = Number.parseInt(blok.limit, 10);
+const limit = Number.isFinite(requestedLimit)
+  ? Math.min(25, Math.max(1, requestedLimit))
+  : 5;
 
 const { data: posts, error } = await Astro.callAction(
   actions.fetchInstagramPosts,
   {
-    limit: parseInt(blok.limit),
+    limit,
   },
 );
 ---
@@ -28,14 +31,24 @@ const { data: posts, error } = await Astro.callAction(
 
   <div class="flex flex-row gap-4 overflow-x-auto">
     {
-      error ? (
-        <Alert>
-          <AlertTitle>Error</AlertTitle>
-          {error.message}
-        </Alert>
+      error || !posts?.posts.length ? (
+        <div class="w-full rounded-xl border p-6 space-y-3">
+          <p>
+            Follow Guru Shradha on Instagram for our latest performances,
+            classes, and updates.
+          </p>
+          <a
+            href="https://www.instagram.com/gurushradha/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex font-semibold underline underline-offset-4"
+          >
+            Visit @gurushradha
+          </a>
+        </div>
       ) : (
         posts.posts
-          .slice(0, parseInt(blok.limit))
+          .slice(0, limit)
           .map((post: InstagramPostType) => (
             <InstagramPost client:load post={post} />
           ))

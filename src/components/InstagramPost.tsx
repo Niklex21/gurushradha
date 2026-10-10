@@ -26,9 +26,10 @@ export default function InstagramPost({ post }: InstagramPostProps) {
     <a
       href={post.permalink}
       target="_blank"
-      className="flex-none h-80 group hover:brightness-90"
+      rel="noopener noreferrer"
+      className="relative flex-none h-80 group hover:brightness-90"
     >
-      {post.media_type === "CAROUSEL_ALBUM" ? (
+      {post.media_type === "CAROUSEL_ALBUM" && post.children?.length ? (
         <div className="relative h-full w-auto rounded-xl">
           <div className="absolute inset-0 flex z-10 top-1/2 -translate-y-1/2 items-center justify-between mx-2 sm:opacity-10 group-hover:opacity-100 transition-opacity">
             <Button
