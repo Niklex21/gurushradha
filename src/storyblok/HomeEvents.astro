@@ -1,7 +1,10 @@
 ---
 import type { EventStoryblok } from "@/component-types";
+import type { EditableHomeEvents } from "@/lib/site-content";
 import { useStoryblokGetStory } from "@/utils";
 import { CalendarIcon } from "lucide-react";
+
+const { blok } = Astro.props as { blok: EditableHomeEvents };
 
 const eventsBlok = await useStoryblokGetStory("global/events");
 
@@ -22,9 +25,9 @@ const filteredEvents = events
   >
     <div class="flex flex-row gap-2 items-center">
       <CalendarIcon />
-      Upcoming Events
+      {blok.heading}
     </div>
-    <a href="/events" class="text-lg sm:text-sm">View All</a>
+    <a href="/events" class="text-lg sm:text-sm">{blok.view_all_label}</a>
   </h1>
 
   <div class="flex flex-row gap-8 items-center overflow-x-auto bg-background">
@@ -56,9 +59,7 @@ const filteredEvents = events
     }
     {
       filteredEvents.length === 0 && (
-        <p class="text-muted-foreground">
-          No upcoming events, please check in later!
-        </p>
+        <p class="text-muted-foreground">{blok.empty_message}</p>
       )
     }
   </div>

@@ -1,5 +1,5 @@
 ---
-import type { HomeMainTextStoryblok } from "@/component-types";
+import type { EditableHomeMainText as HomeMainTextStoryblok } from "@/lib/site-content";
 import { Button } from "@/components/ui/button";
 import { renderRichText } from "@storyblok/astro";
 
@@ -22,8 +22,8 @@ const renderedRichText = renderRichText(blok.text);
     <div class="mx-auto max-w-prose mt-8">
       <div set:html={renderedRichText} />
     </div>
-    <a href={"/support-us"} class="mt-8 w-full sm:mx-auto sm:w-auto">
-      <Button className="w-full sm:w-auto">Donate Today</Button>
+    <a href={blok.donation_url} class="mt-8 w-full sm:mx-auto sm:w-auto">
+      <Button className="w-full sm:w-auto">{blok.donation_label}</Button>
     </a>
   </div>
 </div>

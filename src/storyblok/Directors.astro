@@ -1,8 +1,12 @@
 ---
-import type { DirectorsStoryblok } from "@/component-types";
+import { renderRichText } from "@storyblok/astro";
+import type { EditableDirectors as DirectorsStoryblok } from "@/lib/site-content";
 const { blok } = Astro.props as { blok: DirectorsStoryblok };
+const board = blok.board ? renderRichText(blok.board) : "";
 ---
-{blok.directors?.map((director) => (
+
+{
+  blok.directors?.map((director) => (
     <div class="flex items-start gap-4 py-4 border-b border-border">
       <div class="flex-1">
         <h2 class="text-3xl font-bold text-left ">{director?.Name}</h2>
@@ -15,18 +19,6 @@ const { blok } = Astro.props as { blok: DirectorsStoryblok };
         alt={director?.Picture?.alt}
       />
     </div>
- ))}
-<div class="mt-5">
- <b> Board of Directors </b>:
- Niharika Mohanty (Executive Director),
- Anjana Mohanty (Treasurer),
- Maya Devalcheruvu (Secretary),
- Ritu Bhatnagar,
- Kanika Mitra Bhattacharya,
- Subarna Bhattacharya,
- Anushmita Dash,
- Namrata Mohanty,
- Shravani Mukherjee,
- Smitanjali Indira Priyadarshini,
- Ragini Vecham
- </div>
+  ))
+}
+<div class="mt-5" set:html={board} />

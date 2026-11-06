@@ -1,5 +1,5 @@
 ---
-import type { EventsStoryblok } from "@/component-types";
+import type { EditableEvents as EventsStoryblok } from "@/lib/site-content";
 import EventCard from "@/components/EventCard";
 
 const { blok } = Astro.props as { blok: EventsStoryblok };
@@ -29,12 +29,12 @@ const pastEvents = blok.events
   <source src={blok.video_source?.url} type="video/mp4" />
 </video>
 <h2 class="text-xl sm:text-2xl sm:mx-auto mt-4 sm:mt-16">
-  Please note that all times are in PST.
+  {blok.time_notice}
 </h2>
 <div class="flex flex-col gap-8 mt-8 sm:w-[67%] mx-auto text-left">
   {upcomingEvents.map((event) => <EventCard event={event} />)}
 </div>
-<h2 class="text-2xl sm:text-3xl mt-16 sm:mt-32">Past Events</h2>
+<h2 class="text-2xl sm:text-3xl mt-16 sm:mt-32">{blok.past_heading}</h2>
 <div class="flex flex-col gap-8 mt-8 sm:w-[67%] mx-auto text-left">
   {pastEvents.map((event) => <EventCard event={event} />)}
 </div>

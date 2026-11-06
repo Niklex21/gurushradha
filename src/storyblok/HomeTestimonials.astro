@@ -1,5 +1,5 @@
 ---
-import type { HomeTestimonialsStoryblok } from "@/component-types";
+import type { EditableHomeTestimonials as HomeTestimonialsStoryblok } from "@/lib/site-content";
 import TestimonialRotator from "@/components/TestimonialRotator";
 import { MessageCircleHeartIcon } from "lucide-react";
 
@@ -9,7 +9,7 @@ const { blok } = Astro.props as { blok: HomeTestimonialsStoryblok };
 <div class="flex flex-col w-full h-[30rem] bg-background px-8 py-16">
   <h1 class="flex flex-row items-center gap-2 text-2xl font-bold">
     <MessageCircleHeartIcon />
-    What People Say
+    {blok.heading}
   </h1>
   <TestimonialRotator
     testimonials={blok.testimonials}

@@ -1,19 +1,9 @@
 ---
-import type { EnsembleStoryblok } from "@/component-types";
+import type { EditableEnsemble as EnsembleStoryblok } from "@/lib/site-content";
 const { blok } = Astro.props as { blok: EnsembleStoryblok };
 ---
 
-<h3 class="mt-[-25px] mb-6">
-  Formed in 2019, the Guru Shradha Ensemble brings together senior disciples of
-  Guru Shradha, each a skilled soloist in their own right. These dancers,
-  hailing from diverse backgrounds and united by years of dedicated training,
-  share a commitment to imbibing the prestigious tradition and mastering the
-  nuanced technique of Guru Kelucharan Mohapatra. The Ensemble demonstrates both
-  individual brilliance and collective harmony, performing as a unified company
-  and in regionally based groups (West and East). Their performances have been
-  featured at prominent festivals across the United States, including those in
-  the Bay Area, Michigan, NYC, and North Carolina.
-</h3>
+<h3 class="mt-[-25px] mb-6">{blok.introduction}</h3>
 <div class="grid gap-5 p-5 md:grid-cols-4">
   {
     blok.ensemble?.map((ensemble_member) => (

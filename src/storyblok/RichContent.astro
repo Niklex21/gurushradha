@@ -1,0 +1,20 @@
+---
+import { renderRichText, storyblokEditable } from "@storyblok/astro";
+import type { RichContent } from "@/lib/site-content";
+
+const { blok } = Astro.props as { blok: RichContent };
+const content = blok.content ? renderRichText(blok.content) : "";
+---
+
+<div {...storyblokEditable(blok)} class="rich-content w-full">
+  {
+    blok.image?.filename && (
+      <img
+        src={blok.image.filename}
+        alt={blok.image.alt ?? ""}
+        class="rounded-xl mb-8 mx-auto"
+      />
+    )
+  }
+  <div set:html={content} />
+</div>
