@@ -1,0 +1,82 @@
+---
+import { Image } from "astro:assets";
+import { renderRichText, storyblokEditable } from "@storyblok/astro";
+import type { AssetStoryblok, RichtextStoryblok } from "@/component-types";
+import SupportUsImage from "@/images/support_us.jpg";
+import { Button } from "@/components/ui/button";
+
+interface Props {
+  blok: {
+    component: "support_content";
+    _uid: string;
+    headline?: string;
+    introduction?: RichtextStoryblok;
+    content?: RichtextStoryblok;
+    donation_label?: string;
+    donation_url?: string;
+    image?: AssetStoryblok;
+  };
+}
+
+const { blok } = Astro.props;
+const introduction = blok.introduction ? renderRichText(blok.introduction) : "";
+const content = blok.content ? renderRichText(blok.content) : "";
+---
+
+<div {...storyblokEditable(blok)} class="w-full flex flex-col gap-16">
+  {
+    blok.image?.filename ? (
+      <img
+        src={blok.image.filename}
+        alt={blok.image.alt ?? "Picture of Guru Shradha family."}
+        class="rounded-xl w-full sm:w-[70%] sm:mx-auto h-auto"
+      />
+    ) : (
+      <Image
+        src={SupportUsImage}
+        alt="Picture of Guru Shradha family."
+        class="rounded-xl w-full sm:w-[70%] sm:mx-auto h-auto"
+      />
+    )
+  }
+  <div class="flex flex-col gap-4">
+    <h2 class="text-2xl md:text-3xl font-bold sm:mx-auto">{blok.headline}</h2>
+    <div
+      class="text-base md:text-xl sm:mx-auto max-w-prose"
+      set:html={introduction}
+    />
+    {
+      blok.donation_url && blok.donation_label && (
+        <a
+          href={blok.donation_url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="sm:mx-auto"
+        >
+          <Button className="w-full sm:w-auto">{blok.donation_label}</Button>
+        </a>
+      )
+    }
+  </div>
+  <div class="support-content text-left mr-auto" set:html={content} />
+</div>
+
+<style>
+  .support-content :global(h2),
+  .support-content :global(h3) {
+    @apply text-xl font-bold mb-4;
+  }
+
+  .support-content :global(ul),
+  .support-content :global(ol) {
+    @apply pl-5 gap-2 text-base mb-8;
+  }
+
+  .support-content :global(ol) {
+    @apply list-decimal flex flex-col;
+  }
+
+  .support-content > :global(p) {
+    @apply text-lg mb-4;
+  }
+</style>
