@@ -1,7 +1,7 @@
 ---
 import type { SectionStoryblok } from "@/component-types";
 
-const { section } = Astro.props as { section: SectionStoryblok };
+const { blok: section } = Astro.props as { blok: SectionStoryblok };
 ---
 
 <div class="flex flex-col md:grid md:grid-cols-2 gap-4 md:gap-8 w-full">
@@ -21,21 +21,8 @@ const { section } = Astro.props as { section: SectionStoryblok };
   {
     section.text && (
       <div class="flex p-8 justify-center text-background md:my-auto">
-        <span class="text-wrap text-left font-sans text-2xl max-w-prose">
-          Guru Shradha&apos;s instruction in the institution follows a
-          curriculum and level-based learning and the illustrious tradition of
-          Guru Kelucharan Mohapatra. We hold classes in Cubberley Community
-          Center, studio L6, in Palo Alto, in the Bay Area. Enrollment is
-          assessed based on those who would like to join and continue a serious
-          path to learning Guru Kelucharan Mohapatra&apos;s tradition involving
-          daily practice, class readiness, and regular attendance. We take
-          potential students from age 6.
-          <>
-            <br />
-            <br />
-          </>
-          Currently, all enrollment is closed. We hope to offer new classes in
-          August 2025.
+        <span class="text-wrap text-left font-sans text-2xl max-w-prose whitespace-pre-line">
+          {section.text}
         </span>
       </div>
     )

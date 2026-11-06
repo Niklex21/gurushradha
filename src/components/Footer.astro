@@ -3,106 +3,66 @@ import SocialLinkComponent from "./SocialLinkComponent.astro";
 import SubscribeForm from "./SubscribeForm";
 import { Button } from "./ui/button";
 import FooterImage from "@/images/footer_background.png";
+import { renderRichText, storyblokEditable } from "@storyblok/astro";
+import type { SocialLinkStoryblok } from "@/component-types";
+import type { SiteFooterContent } from "@/lib/site-content";
+import { getHref } from "@/utils";
 
-const socials = [
-  {
-    linkType: "facebook",
-    url: "https://www.facebook.com/GuruShradha/",
-  },
-  {
-    linkType: "instagram",
-    url: "https://www.instagram.com/gurushradha/",
-  },
-  {
-    linkType: "youtube",
-    url: "https://www.youtube.com/@GuruShradha",
-  },
-  {
-    linkType: "tiktok",
-    url: "https://www.tiktok.com/@gurushradha",
-  },
-];
+const { blok, socialLinks } = Astro.props as {
+  blok: SiteFooterContent;
+  socialLinks: SocialLinkStoryblok[];
+};
+const navigation = blok.navigation ? renderRichText(blok.navigation) : "";
+const currentYear = new Date().getFullYear();
 ---
 
-<div class="relative flex flex-col w-full">
+<div {...storyblokEditable(blok)} class="relative flex flex-col w-full">
   <div
     class="absolute top-0 left-0 -translate-y-12 flex w-full h-12 from-transparent to-[#896B34] bg-gradient-to-b"
   >
   </div>
   <div
     class="flex flex-col gap-8 sm:grid sm:grid-cols-4 w-full p-8 text-background mt-auto bg-no-repeat bg-cover"
-    style={`background-image: url(${FooterImage.src});`}
+    style={{
+      backgroundImage: `url(${blok.background_image?.filename || FooterImage.src})`,
+    }}
   >
     <div class="flex flex-col gap-8 col-span-1">
-      <h1 class="text-2xl">Guru Shradha</h1>
+      <h1 class="text-2xl">{blok.brand_name}</h1>
       <div class="flex flex-row gap-4 items-center">
         {
-          socials.map((social) => (
+          socialLinks.map((social) => (
             <SocialLinkComponent
-              linkType={social.linkType}
-              url={social.url}
+              linkType={social.type}
+              url={getHref(social.link) ?? ""}
               hexColor="FEFCF5"
             />
           ))
         }
       </div>
-      <a href={"/support-us"} class="sm:mr-auto">
-        <Button className="w-full sm:w-auto">Donate</Button>
+      <a href={blok.donation_url} class="sm:mr-auto">
+        <Button className="w-full sm:w-auto">{blok.donation_label}</Button>
       </a>
-      <span class="text-xs">
-        © 2024 Guru Shradha. All rights reserved. Designed and developed by
-        Alex Nikanov, Maya Devalcheruvu, Ragini Vecham, Mayura Garg, Trina
-        Sarkar, and Niharika Mohanty.
-      </span>
+      <span class="text-xs">© {currentYear} {blok.copyright}</span>
     </div>
     <div class="col-span-2 sm:items-center flex flex-col gap-8 my-auto">
-      <h1 class="text-2xl font-bold">Subscribe</h1>
-      <span class="text-lg">Sign up to receive newsletter and updates.</span>
-      <SubscribeForm client:load />
+      <h1 class="text-2xl font-bold">{blok.newsletter_heading}</h1>
+      <span class="text-lg">{blok.newsletter_description}</span>
+      <SubscribeForm
+        client:load
+        label={blok.newsletter_button}
+        url={blok.newsletter_url}
+      />
     </div>
     <div
-      class="col-span-1 grid grid-cols-2 sm:flex sm:flex-col h-full gap-2 justify-between sm:items-end"
-    >
-      <a
-        href="/mission-vision"
-        class="text-xl sm:text-base text-background no-underline hover:underline hover:text-background font-bold"
-        >Vision</a
-      >
-      <a
-        href="/our-story"
-        class="text-xl sm:text-base text-background no-underline hover:underline hover:text-background font-bold"
-        >Our Story</a
-      >
-      <a
-        href="/testimonials"
-        class="text-xl sm:text-base text-background no-underline hover:underline hover:text-background font-bold"
-        >Wall of Love</a
-      >
-      <a
-        href="/events"
-        class="text-xl sm:text-base text-background no-underline hover:underline hover:text-background font-bold"
-        >Events</a
-      >
-      <a
-        href="/classes"
-        class="text-xl sm:text-base text-background no-underline hover:underline hover:text-background font-bold"
-        >Classes</a
-      >
-      <a
-        href="/gallery"
-        class="text-xl sm:text-base text-background no-underline hover:underline hover:text-background font-bold"
-        >Gallery</a
-      >
-      <a
-        href="/support-us"
-        class="text-xl sm:text-base text-background no-underline hover:underline hover:text-background font-bold"
-        >Support</a
-      >
-      <a
-        href="/contact-us"
-        class="text-xl sm:text-base text-background no-underline hover:underline hover:text-background font-bold"
-        >Contact</a
-      >
-    </div>
+      class="footer-nav col-span-1 grid grid-cols-2 sm:flex sm:flex-col h-full gap-2 justify-between sm:items-end"
+      set:html={navigation}
+    />
   </div>
 </div>
+
+<style>
+  .footer-nav :global(a) {
+    @apply text-xl sm:text-base text-background no-underline hover:underline hover:text-background font-bold;
+  }
+</style>

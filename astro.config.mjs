@@ -33,6 +33,8 @@ export default defineConfig({
         ensemble: "storyblok/Ensemble",
         directors: "storyblok/Directors",
         support_content: "storyblok/SupportContent",
+        rich_content: "storyblok/RichContent",
+        story_timeline: "storyblok/StoryTimeline",
       },
       apiOptions: {
         // Choose your Storyblok space region

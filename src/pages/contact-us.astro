@@ -3,16 +3,28 @@ import Layout from "@/layouts/Layout.astro";
 import backgroundImage from "@/images/contact_background.jpg";
 import ContactForm from "@/components/ContactForm";
 import SubscribeForm from "@/components/SubscribeForm";
+import { useStoryblokGet } from "@/utils";
+import { renderRichText, storyblokEditable } from "@storyblok/astro";
+import type { RichContent, SiteFooterContent } from "@/lib/site-content";
 
+const [{ data }, { data: footerData }] = await Promise.all([
+  useStoryblokGet("cdn/stories/contact-us"),
+  useStoryblokGet("cdn/stories/footer"),
+]);
+const details = (
+  data.story.content.sections as RichContent[] | undefined
+)?.find((blok) => blok.component === "rich_content");
+const contactContent = details?.content ? renderRichText(details.content) : "";
+const newsletter = footerData.story.content as SiteFooterContent;
 const ACCESS_KEY = import.meta.env.STATIC_FORMS_ACCESS_KEY;
 const STATIC_FORMS_RECAPTCHA_KEY = import.meta.env.STATIC_FORMS_RECAPTCHA_KEY;
 ---
 
 <Layout
-  title="Contact"
+  title={data.story.name}
   colorScheme="inverted"
   style={{
-    backgroundImage: `url(${backgroundImage.src})`,
+    backgroundImage: `url(${details?.image?.filename || backgroundImage.src})`,
     backgroundColor: "rgb(0 0 0 / 0.85);",
   }}
   className="bg-cover bg-no-repeat bg-blend-darken "
@@ -24,53 +36,27 @@ const STATIC_FORMS_RECAPTCHA_KEY = import.meta.env.STATIC_FORMS_RECAPTCHA_KEY;
       STATIC_FORMS_RECAPTCHA_KEY={STATIC_FORMS_RECAPTCHA_KEY}
     />
     <div class="flex flex-col h-full justify-between sm:ml-auto gap-8">
+      <div
+        {...details ? storyblokEditable(details) : {}}
+        class="contact-details flex flex-col gap-4"
+        set:html={contactContent}
+      />
       <div class="flex flex-col gap-4">
-        <span
-          class="flex flex-wrap flex-col sm:flex-row break-all sm:items-center gap-2"
-        >
-          Email address: <a
-            target="_blank"
-            class="underline"
-            href="mailto:gurushradha@gmail.com">gurushradha@gmail.com</a
-          >
-        </span>
-        <span
-          class="flex flex-wrap flex-col sm:flex-row break-all sm:items-center gap-2"
-        >
-          Facebook: <a
-            target="_blank"
-            class="underline"
-            href="https://www.facebook.com/GuruShradha/"
-            >facebook.com/GuruShradha</a
-          >
-        </span>
-        <span
-          class="flex flex-wrap flex-col sm:flex-row break-all sm:items-center gap-2"
-          >Instagram: <a
-            target="_blank"
-            class="underline"
-            href="https://www.instagram.com/gurushradha/"
-            >instagram.com/gurushradha</a
-          ></span
-        >
-        <span
-          class="flex flex-wrap flex-col sm:flex-row break-all sm:items-center gap-2"
-          >YouTube: <a
-            target="_blank"
-            class="underline"
-            href="https://www.youtube.com/@GuruShradha"
-            >youtube.com/@GuruShradha</a
-          ></span
-        >
-      </div>
-      <div class="flex flex-col gap-4">
-        <span class="text-xl">Subscribe</span>
-        <span>Sign up to receive newsletter and updates.</span>
-        <SubscribeForm client:load />
-        <span class="text-xs italic">
-          We respect your privacy. Unsubscribe at any time.
-        </span>
+        <span class="text-xl">{newsletter.newsletter_heading}</span>
+        <span>{newsletter.newsletter_description}</span>
+        <SubscribeForm
+          client:load
+          label={newsletter.newsletter_button}
+          url={newsletter.newsletter_url}
+        />
+        <span class="text-xs italic">{newsletter.newsletter_privacy}</span>
       </div>
     </div>
   </div>
 </Layout>
+
+<style>
+  .contact-details :global(p) {
+    @apply flex flex-wrap flex-col sm:flex-row break-all sm:items-center gap-2;
+  }
+</style>
